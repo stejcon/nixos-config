@@ -74,6 +74,7 @@
   };
 
   programs.hyprland.enable = true;
+  programs.ssh.startAgent = true;
 
   security.pam.loginLimits = [{
     domain = "*";
