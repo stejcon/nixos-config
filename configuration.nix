@@ -1,12 +1,6 @@
 { machine, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   nixpkgs.config.allowUnfree = true;
 
   # Use the grub EFI boot loader.
