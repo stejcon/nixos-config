@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ machine, pkgs, ... }:
 
 {
   imports =
@@ -9,7 +9,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Use the systemd-boot EFI boot loader.
+  # Use the grub EFI boot loader.
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -56,32 +56,9 @@
       };
     };
     gnome.gnome-keyring.enable = true;
-    mpd = {
-        enable = true;
-        musicDirectory = "/home/stephen/music";
-        extraConfig = ''
-            audio_output {
-                type "pipewire"
-                name "PipeWire Output"
-            }
-        '';
-        user = "stephen";
-    };
-  };
-
-  systemd.services.mpd.environment = {
-      XDG_RUNTIME_DIR = "/run/user/1000";
   };
 
   programs.hyprland.enable = true;
-  programs.ssh.startAgent = true;
-
-  security.pam.loginLimits = [{
-    domain = "*";
-    type = "soft";
-    item = "nofile";
-    value = "4096";
-  }];
 
   # services.printing.enable = true;
 
@@ -89,9 +66,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "lp" "scanner" ];
     initialPassword = "password";
-    openssh.authorizedKeys.keys = [
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCKHyioZ40QMVciPyUttWk9uatUysQ02rSdJ2EA2cbbEuQ4dGGszmJ/KGBbm6eLdSkTg9fyGvTfxtSDPK77kEYkxg1wadQpZIBBLUpLJplve0BbTuhH2K8jwwMzGb5t/FGS1gIc3Fq1k9Wyewp0E/5LRScBLmvOh7g0GjMjeNsULpCanJ8MMwlvYwEMAr+w6ZnlbkuCWPFbiavPyvPPrrsqFnrbgnwJ/6KrULYH9yJdxCLVptBXUqj5AbDcfHwmGnKCOhK4Q4knVCTIRTLKiqsSiTNc/no9IYOeNoQ4rkWnATUQvPBkQ2QTSi4Lqew0D2OYFe9Qa7lXhT0OEyVxZmsxdowJckpxmjvPPjxBpgBxNfniRLKf1LMqfC9rL14RzHDK7pEeaAR5dGLWPzTCdB1W8KerROJLI7+ao9hdZUCATJD5JA0oTpDoWnLwC4DiTWgNFOJgzzRet0JRduIOAfQ5c9L/GLQMRJC6kIR0MUZtgjMaq28cPji0+nKi48AvQlc= stephen@nixos"
-    ];
   };
 
   environment.systemPackages = with pkgs; [
