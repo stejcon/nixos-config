@@ -57,6 +57,6 @@
     # Enable the nvidia settings menu
     nvidiaSettings = true;
 
-    powerManagement.finegrained = true;
+    powerManagement.enable = true;
   };
 }
