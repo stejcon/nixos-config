@@ -35,4 +35,26 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+# Make sure opengl is enabled
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Tell Xorg to use the nvidia driver (also valid for Wayland)
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+    # Modesetting is needed for most Wayland compositors
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module
+    # Only available on driver 515.43.04+
+    open = false;
+
+    # Enable the nvidia settings menu
+    nvidiaSettings = true;
+  };
 }
