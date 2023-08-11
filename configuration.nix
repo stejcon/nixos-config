@@ -69,11 +69,19 @@
     fzf
     glow
     wl-clipboard
+    wofi
+    hyprpaper
+    waybar
   ];
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
+
+  security = {
+    sudo.wheelNeedsPassword = false;
+    doas.wheelNeedsPassword = false;
+  };
 
   system.stateVersion = "22.11"; # Did you read the comment?
 
