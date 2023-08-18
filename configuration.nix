@@ -69,6 +69,7 @@
     fzf
     glow
     wl-clipboard
+    waybar
   ];
 
   fonts.packages = with pkgs; [
