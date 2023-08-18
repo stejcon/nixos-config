@@ -45,7 +45,9 @@
 
   programs.hyprland.enable = true;
 
-  # services.printing.enable = true;
+  security = {
+    sudo.wheelNeedsPassword = false;
+  };
 
   users.users.stephen = {
     isNormalUser = true;
