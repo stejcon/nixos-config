@@ -25,6 +25,10 @@
   i18n.defaultLocale = "en_IE.UTF-8";
 
   services = {
+    xserver = {
+      enable = true;
+      displayManager.sddm.enable = true;
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
