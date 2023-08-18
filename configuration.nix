@@ -26,16 +26,6 @@
 
   services = {
     flatpak.enable = true;
-    xserver = {
-      libinput.enable = true;
-      enable = true;
-      displayManager = {
-        sddm.enable = true;
-        defaultSession = "plasma";
-      };
-      desktopManager.plasma5.enable = true;
-      windowManager.awesome.enable = true;
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
