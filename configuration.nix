@@ -54,12 +54,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    librespot
     neovim
     wget
     firefox
     git
-    xclip
     texlive.combined.scheme-full
     btop
     ncdu
