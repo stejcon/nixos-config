@@ -40,7 +40,6 @@
         X11Forwarding = true;
       };
     };
-    gnome.gnome-keyring.enable = true;
   };
 
   programs.hyprland.enable = true;
