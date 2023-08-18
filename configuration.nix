@@ -40,6 +40,7 @@
         X11Forwarding = true;
       };
     };
+    printing.enable = true;
   };
 
   programs.hyprland.enable = true;
