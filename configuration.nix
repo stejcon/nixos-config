@@ -48,10 +48,6 @@
 
   programs.hyprland.enable = true;
 
-  security = {
-    sudo.wheelNeedsPassword = false;
-  };
-
   users.users.stephen = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "lp" "scanner" ];
