@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font.name = "JetBrainsMono Nerd Font Mono";
-    font.size = 8;
+    font.size = 14;
     extraConfig = ''
       background #1E1D23
       foreground #DED7D0
