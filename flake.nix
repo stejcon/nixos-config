@@ -11,7 +11,8 @@
   };
 
   outputs = { nixpkgs, home-manager, nixos-hardware, ... }:
-    let system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = {
@@ -26,7 +27,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.stephen = import ./home/default.nix { machine = "laptop"; };
+                users.stephen = (import ./home/default.nix { machine = "laptop"; });
               };
             }
           ];
