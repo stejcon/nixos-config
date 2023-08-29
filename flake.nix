@@ -26,7 +26,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.stephen = ./home;
+                users.stephen = ./home { machine = "laptop"; };
               };
             }
           ];
@@ -41,7 +41,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.stephen = ./home;
+                users.stephen = ./home { machine = "desktop"; };
               };
             }
           ];
