@@ -20,6 +20,8 @@
       inactive_tab_foreground #CFD0D7
       inactive_tab_font_style italic
 
+      confirm_os_window_close 0
+
       # Black
       color0 #938884
       color8 #938884
