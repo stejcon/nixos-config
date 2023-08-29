@@ -66,7 +66,7 @@
     glow
     wl-clipboard
     wofi
-    hyprpaper
+    swww
     waybar
   ];
 
