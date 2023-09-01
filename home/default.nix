@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [ ./neovim ./kitty ./tmux ./git ./rofi ./picom ./awesomewm ./hyprland ];
+  imports =
+    [ ./neovim ./kitty ./tmux ./git ./rofi ./picom ./awesomewm ./hyprland ];
 
   home.username = "stephen";
   home.homeDirectory = "/home/stephen";
