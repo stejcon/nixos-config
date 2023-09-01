@@ -1,16 +1,7 @@
-{ machine, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [ 
-    ./neovim 
-    ./kitty 
-    ./tmux 
-    ./git 
-    ./rofi 
-    ./picom 
-    ./awesomewm 
-    ./hyprland { inherit machine; }
-  ];
+  imports = [ ./neovim ./kitty ./tmux ./git ./rofi ./picom ./awesomewm ./hyprland ];
 
   home.username = "stephen";
   home.homeDirectory = "/home/stephen";
