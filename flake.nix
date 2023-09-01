@@ -19,7 +19,7 @@
           inherit system;
           modules = [
             ./configuration.nix
-            ./hardware/laptop/hardware-configuration.nix
+            ./hosts/loki/hardware-configuration.nix
             nixos-hardware.nixosModules.framework-12th-gen-intel
             home-manager.nixosModules.home-manager
             {
@@ -35,7 +35,7 @@
           inherit system;
           modules = [
             ./configuration.nix
-            ./hardware/desktop/hardware-configuration.nix
+            ./hosts/thor/hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
