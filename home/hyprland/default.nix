@@ -4,15 +4,8 @@
     recursive = true;
   };
 
-  xdg.configFile.hypr."background.webp" =
+  xdg.configFile.hypr."background.webp".source =
     if osConfig.networking.hostName == "thor"
-    then {
-      source = ./loki-background.webp;
-      recursive = false;
-    }
-    else {
-      # If not on a laptop default to 1920x1080 image
-      source = ./thor-background.webp;
-      recursive = false;
-    };
+    then ./loki-background.webp
+    else ./thor-background.webp;
 }
