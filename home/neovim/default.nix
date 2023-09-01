@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-with lib;
-
-let
-  python-debug = pkgs.python3.withPackages (p: with p; [ debugpy ]);
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
+  python-debug = pkgs.python3.withPackages (p: with p; [debugpy]);
   oh-lucy-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "oh-lucy-nvim";
     src = pkgs.fetchFromGitHub {

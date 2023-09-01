@@ -1,9 +1,14 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.tmux = {
     enable = true;
     clock24 = true;
     prefix = "C-a";
-    plugins = with pkgs.tmuxPlugins; [ sensible ];
+    plugins = with pkgs.tmuxPlugins; [sensible];
     extraConfig = ''
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"

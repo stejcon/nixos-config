@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
 
   # Use the grub EFI boot loader.
@@ -49,7 +47,7 @@
 
   users.users.stephen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" "lp" "scanner" ];
+    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner"];
     initialPassword = "password";
   };
 
@@ -70,7 +68,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
   ];
 
   security = {
@@ -84,5 +82,4 @@
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
-
 }
