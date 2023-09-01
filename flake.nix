@@ -20,7 +20,7 @@
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations = {
-      nixos-laptop = nixpkgs.lib.nixosSystem {
+      loki = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix
@@ -36,7 +36,7 @@
           }
         ];
       };
-      nixos-desktop = nixpkgs.lib.nixosSystem {
+      thor = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix
