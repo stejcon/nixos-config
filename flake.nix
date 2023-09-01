@@ -45,7 +45,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.stephen = import ./home/default.nix { machine = "desktop"; };
+                users.stephen = ./home;
               };
             }
           ];
