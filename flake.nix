@@ -13,7 +13,7 @@
   outputs = { nixpkgs, home-manager, nixos-hardware, ... }:
     let system = "x86_64-linux";
     in {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
       nixosConfigurations = {
         nixos-laptop = nixpkgs.lib.nixosSystem {
           inherit system;
