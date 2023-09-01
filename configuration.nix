@@ -17,7 +17,6 @@
     };
   };
 
-  networking.hostName = "nixos";
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   time.timeZone = "Europe/Dublin";
