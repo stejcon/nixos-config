@@ -5,7 +5,7 @@
   };
 
   xdg.configFile."hypr/background.webp".source =
-    if osConfig.networking.hostName != "loki"
+    if osConfig.networking.hostName == "loki"
     then ./loki-background.webp
     else ./thor-background.webp;
 }
