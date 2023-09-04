@@ -27,7 +27,7 @@
     settings = {
       position = "top";
       layer = "top";
-      height = "18";
+      height = 18;
       margin-top = 0;
       margin-bottom = 0;
       margin-left = 0;
