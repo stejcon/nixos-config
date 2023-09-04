@@ -64,7 +64,7 @@
     wl-clipboard
     wofi
     swww
-    waybar
+    networkmanagerapplet
   ];
 
   fonts.packages = with pkgs; [
