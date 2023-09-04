@@ -24,7 +24,7 @@
 
   programs.waybar = {
     enable = true;
-    settings = {
+    settings = [{
       position = "top";
       layer = "top";
       height = 18;
@@ -34,7 +34,7 @@
       margin-right = 0;
       modules-left = ["wlr/workspaces"];
       modules-center = ["clock"];
-      modules-right = ["tray" "cpu" "memory" "disk" "network" "battery"];
+      modules-right = ["tray" "cpu" "memory" "disk" "network"] ++ (if osConfig.networking.hostName == "loki" then [ "battery" ] else [ ]);
       clock = {
         format = " {:%H:%M}";
         tooltip = "true";
@@ -104,7 +104,7 @@
       };
       # TODO: Screenshot item
       # TODO: Recorder item
-    };
+    }];
     style = ''
       * {
           border: none;
