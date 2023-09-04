@@ -83,7 +83,7 @@
         format = "󰋊 {}%";
         format-alt = "󰋊 {used}/{total} GiB";
         interval = 5;
-        path = "/dev/disk/by-label/nixos";
+        path = "/";
       };
       network = {
         format-wifi = "󰤨";
