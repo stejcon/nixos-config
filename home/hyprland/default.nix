@@ -80,7 +80,7 @@
         interval = 5;
       };
       disk = {
-        format = "󰋊 {}%";
+        format = "󰋊 {percentage_used}%";
         format-alt = "󰋊 {used}/{total} GiB";
         interval = 5;
         path = "/";
