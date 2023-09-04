@@ -181,17 +181,14 @@
       }
 
       #clock {
-          color: #E6B9C6;
           background-color: #282828;
-          border-radius: 0px 0px 0px 24px;
-          padding-left: 13px;
-          padding-right: 15px;
-          margin-right: 0px;
-          margin-left: 10px;
-          margin-top: 0px;
-          margin-bottom: 0px;
+          /*color: #8EC07C;*/
+          border-radius: 16px;
+          margin: 5px;
+          margin-left: 5px;
+          margin-right: 5px;
+          padding: 0px 10px 0px 10px;
           font-weight: bold;
-          /*border-left: solid 1px #282738;*/
       }
 
 
