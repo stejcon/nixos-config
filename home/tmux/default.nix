@@ -9,6 +9,9 @@
     clock24 = true;
     prefix = "C-a";
     plugins = with pkgs.tmuxPlugins; [sensible];
+    baseIndex = 1;
+    disableConfirmationPrompt = true;
+    keyMode = "vi";
     extraConfig = ''
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"
