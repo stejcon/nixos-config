@@ -72,6 +72,8 @@
   ];
 
   fonts.packages = with pkgs; [
+    liberation_ttf_v1
+    helvetica-neue-lt-std
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
   ];
 
