@@ -24,87 +24,95 @@
 
   programs.waybar = {
     enable = true;
-    settings = [{
-      position = "top";
-      layer = "top";
-      height = 18;
-      margin-top = 0;
-      margin-bottom = 0;
-      margin-left = 0;
-      margin-right = 0;
-      modules-left = ["wlr/workspaces"];
-      modules-center = ["clock"];
-      modules-right = ["tray" "cpu" "memory" "disk" "network"] ++ (if osConfig.networking.hostName == "loki" then [ "battery" ] else [ ]);
-      clock = {
-        format = " {:%H:%M}";
-        tooltip = "true";
-        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        format-alt = " {:%d/%m}";
-      };
-      "wlr/workspaces" = {
-        active-only = false;
-        all-outputs = true;
-        disable-scroll = false;
-        on-scroll-up = "hyprctl dispatch workspace -1";
-        on-scroll-down = "hyprctl dispatch workspace +1";
-        format = "{icon}";
-        on-click = "activate";
-        format-icons = {
-          urgent = "";
-          active = "";
-          default = "󰧞";
-          sort-by-number = true;
+    settings = [
+      {
+        position = "top";
+        layer = "top";
+        height = 18;
+        margin-top = 0;
+        margin-bottom = 0;
+        margin-left = 0;
+        margin-right = 0;
+        modules-left = ["wlr/workspaces"];
+        modules-center = ["clock"];
+        modules-right =
+          ["tray" "cpu" "memory" "disk" "network"]
+          ++ (
+            if osConfig.networking.hostName == "loki"
+            then ["battery"]
+            else []
+          );
+        clock = {
+          format = " {:%H:%M}";
+          tooltip = "true";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = " {:%d/%m}";
         };
-      };
-      # TODO: Setup playerctl
-      battery = {
-        states = {
-          good = 95;
-          warning = 30;
-          critical = 15;
+        "wlr/workspaces" = {
+          active-only = false;
+          all-outputs = true;
+          disable-scroll = false;
+          on-scroll-up = "hyprctl dispatch workspace -1";
+          on-scroll-down = "hyprctl dispatch workspace +1";
+          format = "{icon}";
+          on-click = "activate";
+          format-icons = {
+            urgent = "";
+            active = "";
+            default = "󰧞";
+            sort-by-number = true;
+          };
         };
-        format = "{icon}  {capacity}%";
-        format-charging = "{capacity}% 󰂄";
-        format-plugged = "{capacity}% ";
-        format-alt = "{icon} {time}";
-        format-icons = ["" "" "" "" ""];
-      };
-      memory = {
-        format = "󰍛 {}%";
-        format-alt = "󰍛 {used}/{total} GiB";
-        interval = 5;
-      };
-      cpu = {
-        format = "󰻠 {usage}%";
-        format-alt = "󰻠 {avg_frequency} GHz";
-        interval = 5;
-      };
-      disk = {
-        format = "󰋊 {percentage_used}%";
-        format-alt = "󰋊 {used}/{total} GiB";
-        interval = 5;
-        path = "/";
-      };
-      network = {
-        format-wifi = "󰤨";
-        format-ethernet = " {ifname}: Aesthetic";
-        format-linked = " {ifname} (No IP)";
-        format-disconnected = "󰤭";
-        format-alt = " {ifname}: {ipaddr}/{cidr}";
-        tooltip-format = "{essid}";
-        on-click-right = "nm-connection-editor";
-      };
-      tray = {
-        icon-size = 16;
-        spacing = 5;
-      };
-      backlight = {
-        format = "{icon} {percent}%";
-        format-icons = ["" "" "" "" "" "" "" "" ""];
-      };
-      # TODO: Screenshot item
-      # TODO: Recorder item
-    }];
+        # TODO: Setup playerctl
+        battery = {
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon}  {capacity}%";
+          format-charging = "{capacity}% 󰂄";
+          format-plugged = "{capacity}% ";
+          format-alt = "{icon} {time}";
+          format-icons = ["" "" "" "" ""];
+        };
+        memory = {
+          format = "󰍛 {}%";
+          format-alt = "󰍛 {used}/{total} GiB";
+          interval = 5;
+        };
+        cpu = {
+          format = "󰻠 {usage}%";
+          format-alt = "󰻠 {avg_frequency} GHz";
+          interval = 5;
+        };
+        disk = {
+          format = "󰋊 {percentage_used}%";
+          format-alt = "󰋊 {used}/{total} GiB";
+          interval = 5;
+          path = "/";
+        };
+        network = {
+          format-wifi = "󰤨";
+          format-ethernet = " {ifname}: Aesthetic";
+          format-linked = " {ifname} (No IP)";
+          format-disconnected = "󰤭";
+          format-alt = " {ifname}: {ipaddr}/{cidr}";
+          tooltip-format = "{essid}";
+          on-click-right = "nm-connection-editor";
+        };
+        tray = {
+          icon-size = 16;
+          spacing = 5;
+        };
+        backlight = {
+          format = "{icon} {percent}%";
+          format-icons = ["" "" "" "" "" "" "" "" ""];
+        };
+        # TODO: Screenshot item
+        # TODO: Recorder item
+      }
+    ];
     style = ''
       * {
           border: none;
