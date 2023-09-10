@@ -46,6 +46,7 @@
     };
     printing.enable = true;
     flatpak.enable = true;
+    blueman.enable = true;
   };
 
   programs.hyprland.enable = true;
