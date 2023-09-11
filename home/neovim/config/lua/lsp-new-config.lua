@@ -1,5 +1,7 @@
 local lspconfig = require("lspconfig")
 local lsp_defaults = lspconfig.util.default_config
+local snippetCapabilities = vim.lsp.protocol.make_client_capabilities()
+snippetCapabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lsp_defaults.capabilities = vim.tbl_deep_extend('force', lsp_defaults.capabilities,
     require('cmp_nvim_lsp').default_capabilities())
@@ -33,10 +35,10 @@ lspconfig.clangd.setup({})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.cssls.setup({
-    capabilities = vim.lsp.protocol.make_client_capabilities().textDocument.completion.completionItem.snippetSupport = true
+    capabilities = snippetCapabilities
 })
 lspconfig.html.setup({
-    capabilities = vim.lsp.protocol.make_client_capabilities().textDocument.completion.completionItem.snippetSupport = true
+    capabilities = snippetCapabilities
 })
 lspconfig.eslint.setup({
 on_attach = function(client, bufnr)
