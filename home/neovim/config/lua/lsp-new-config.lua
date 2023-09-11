@@ -50,7 +50,7 @@ on_attach = function(client, bufnr)
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
-    desp = 'LSP Actions',
+    desc = 'LSP Actions',
     callback = function()
         local bufmap = function(mode, lhs, rhs)
             local opts = { buffer = true }
