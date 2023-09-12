@@ -6,6 +6,7 @@ require("neorg").setup({
             config = {
                 workspaces = {
                     ee500 = "~/college/ee500/notes",
+                    ee514 = "~/college/ee514/notes",
                 },
             },
         },
