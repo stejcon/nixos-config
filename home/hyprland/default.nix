@@ -36,7 +36,7 @@
         modules-left = ["wlr/workspaces"];
         modules-center = ["clock"];
         modules-right =
-          ["tray" "cpu" "memory" "disk" "network"]
+          ["backlight" "tray" "cpu" "memory" "disk" "wireplumber" "network"]
           ++ (
             if osConfig.networking.hostName == "loki"
             then ["battery"]
@@ -108,6 +108,13 @@
         backlight = {
           format = "{icon} {percent}%";
           format-icons = ["" "" "" "" "" "" "" "" ""];
+          scroll-step = 5.0;
+        };
+        wireplumber = {
+            format = " {volume}%";
+            format-muted = "󰝟";
+            scroll-step = 5;
+            max-volume = 150;
         };
         # TODO: Screenshot item
         # TODO: Recorder item
