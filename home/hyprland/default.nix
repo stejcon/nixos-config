@@ -36,12 +36,13 @@
         modules-left = ["wlr/workspaces"];
         modules-center = ["clock"];
         modules-right =
-          ["backlight" "tray" "cpu" "memory" "disk" "wireplumber" "network"]
+          ["backlight" "tray" "cpu" "memory" "disk" "wireplumber"]
           ++ (
             if osConfig.networking.hostName == "loki"
             then ["battery"]
             else []
-          );
+          ) ++
+          ["network"];
         clock = {
           format = " {:%H:%M}";
           tooltip = "true";
@@ -94,10 +95,10 @@
         };
         network = {
           format-wifi = "󰤨";
-          format-ethernet = " {ifname}: Aesthetic";
-          format-linked = " {ifname} (No IP)";
+          format-ethernet = "{ifname}";
+          format-linked = "{ifname} (No IP)";
           format-disconnected = "󰤭";
-          format-alt = " {ifname}: {ipaddr}/{cidr}";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
           tooltip-format = "{essid}";
           on-click-right = "nm-connection-editor";
         };
@@ -108,12 +109,12 @@
         backlight = {
           format = "{icon} {percent}%";
           format-icons = ["" "" "" "" "" "" "" "" ""];
-          scroll-step = 5.0;
+          scroll-step = 0.2;
         };
         wireplumber = {
             format = " {volume}%";
             format-muted = "󰝟";
-            scroll-step = 5;
+            scroll-step = 1;
             max-volume = 150;
         };
         # TODO: Screenshot item
