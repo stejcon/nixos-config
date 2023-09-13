@@ -164,14 +164,6 @@
       	border-radius: 16px;
       }
 
-      #custom-date, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher {
-      	background: transparent;
-      	padding: 5px 5px 5px 5px;
-      	margin: 5px 5px 5px 5px;
-        border-radius: 8px;
-        border: solid 0px #f4d9e1;
-      }
-
       #custom-date {
       	color: #D3869B;
       }
@@ -206,11 +198,6 @@
           font-weight: bold;
       }
 
-
-      #battery {
-          color: #9ece6a;
-      }
-
       #battery.charging {
           color: #9ece6a;
       }
@@ -219,16 +206,6 @@
           background-color: #f7768e;
           color: #24283b;
           border-radius: 5px 5px 5px 5px;
-      }
-
-      #backlight {
-          background-color: #24283b;
-          color: #db4b4b;
-          border-radius: 0px 0px 0px 0px;
-          margin: 5px;
-          margin-left: 0px;
-          margin-right: 0px;
-          padding: 0px 0px;
       }
 
       #network {
@@ -343,6 +320,9 @@
           font-weight: bold;
       }
 
+      #backlight,
+      #battery,
+      #wireplumber,
       #disk {
           background-color: #282828;
           /*color: #8EC07C;*/
