@@ -71,6 +71,8 @@
     wofi
     swww
     networkmanagerapplet
+    zathura
+    pulsemixer
   ];
 
   fonts.packages = with pkgs; [
