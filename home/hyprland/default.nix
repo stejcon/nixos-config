@@ -1,4 +1,4 @@
-{osConfig, ...}: {
+{osConfig, pkgs, ...}: {
   wayland.windowManager = {
     hyprland.enable = true;
     hyprland.enableNvidiaPatches =
@@ -8,8 +8,11 @@
     # TODO: Switch to using hyprland.settings instead of the xdg method below
   };
 
-  # TODO: xdg-desktop-portal-hyprland
-  # TODO: xdg-desktop-portal-gtk
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+  ];
 
   xdg.configFile.hypr = {
     source = ./config;
