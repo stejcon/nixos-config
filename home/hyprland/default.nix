@@ -8,8 +8,8 @@
     # TODO: Switch to using hyprland.settings instead of the xdg method below
   };
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
+  osConfig.xdg.portal.enable = true;
+  osConfig.xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
   ];
