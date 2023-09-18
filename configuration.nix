@@ -22,6 +22,15 @@
 
   i18n.defaultLocale = "en_IE.UTF-8";
 
+  virtualisation = {
+    qemu = {
+      enable = true;
+    };
+    libvirtd = {
+      enable = true;
+    };
+  };
+
   services = {
     xserver = {
       enable = true;
@@ -47,10 +56,19 @@
   };
 
   programs.hyprland.enable = true;
+  programs.dconf = {
+    enable = true;
+    settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+    };
+  };
 
   users.users.stephen = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "docker"];
+    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
     initialPassword = "password";
   };
 
@@ -70,7 +88,7 @@
     networkmanagerapplet
     zathura
     pulsemixer
-    distrobox
+    virt-manager
   ];
 
   xdg.portal.enable = true;
@@ -84,10 +102,6 @@
     helvetica-neue-lt-std
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
   ];
-
-  virtualisation.docker = {
-    enable = true;
-  };
 
   security = {
     sudo.wheelNeedsPassword = false;
