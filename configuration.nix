@@ -58,12 +58,6 @@
   programs.hyprland.enable = true;
   programs.dconf = {
     enable = true;
-    settings = {
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
-      };
-    };
   };
 
   users.users.stephen = {
