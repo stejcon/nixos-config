@@ -16,6 +16,7 @@
   };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.firewall.enable = false;
 
   time.timeZone = "Europe/Dublin";
 
@@ -69,6 +70,7 @@
     networkmanagerapplet
     zathura
     pulsemixer
+    distrobox
   ];
 
   xdg.portal.enable = true;
@@ -82,6 +84,10 @@
     helvetica-neue-lt-std
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
   ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   security = {
     sudo.wheelNeedsPassword = false;
