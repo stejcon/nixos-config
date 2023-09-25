@@ -38,7 +38,7 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.sddm.enable = true;
+      displayManager.gdm.enable = true;
     };
     pipewire = {
       enable = true;
