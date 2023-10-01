@@ -1,9 +1,9 @@
 {
-  description = "Your new nix config";
+  description = "NixOS Dotfiles";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager.url = "github:nix-community/home-manager";

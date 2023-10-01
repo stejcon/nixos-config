@@ -1,4 +1,8 @@
-{osConfig, pkgs, ...}: {
+{
+  osConfig,
+  pkgs,
+  ...
+}: {
   wayland.windowManager = {
     hyprland.enable = true;
     hyprland.enableNvidiaPatches =
@@ -38,8 +42,8 @@
             if osConfig.networking.hostName == "loki"
             then ["battery"]
             else []
-          ) ++
-          ["network"];
+          )
+          ++ ["network"];
         clock = {
           format = " {:%H:%M}";
           tooltip = "true";
@@ -109,10 +113,10 @@
           scroll-step = 0.2;
         };
         wireplumber = {
-            format = " {volume}%";
-            format-muted = "󰝟";
-            scroll-step = 1;
-            max-volume = 150;
+          format = " {volume}%";
+          format-muted = "󰝟";
+          scroll-step = 1;
+          max-volume = 150;
         };
         # TODO: Screenshot item
         # TODO: Recorder item
