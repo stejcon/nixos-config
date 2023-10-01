@@ -17,9 +17,12 @@
     ...
   }: let
     system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter.${system} = pkgs.alejandra;
+
     nixosConfigurations = {
+      # Laptop setup
       loki = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -36,6 +39,8 @@
           }
         ];
       };
+
+      # Desktop setup
       thor = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -50,6 +55,13 @@
             };
           }
         ];
+      };
+    };
+
+    homeConfigurations = {
+      stephen = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./home];
       };
     };
   };
