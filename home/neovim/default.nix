@@ -6,7 +6,7 @@
 }:
 with lib; let
   python-debug = pkgs.python3.withPackages (p: with p; [debugpy]);
-  oh-lucy-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  oh-lucy-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "oh-lucy-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "Yazeed1s";
