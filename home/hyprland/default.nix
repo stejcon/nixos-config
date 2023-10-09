@@ -32,8 +32,10 @@
         gaps_in = 10;
         gaps_out = 20;
         border_size = 1;
-        #col.active_border = "rgba(00ffffee)";
-        #col.inactive_border = "rgba(595959aa)";
+        col = {
+          active_border = "rgba(00ffffee)";
+          inactive_border = "rgba(595959aa)";
+        };
         layout = "dwindle";
         cursor_inactive_timeout = 5;
       };
@@ -48,16 +50,28 @@
         drop_shadow = false;
         shadow_range = 4;
         shadow_render_power = 3;
-        #col.shadow = "rgba(1a1a1aee)";
+        col = {shadow = "rgba(1a1a1aee)";};
         inactive_opacity = 0.8;
       };
 
       animations = {
         enabled = true;
 
-        bezier = ["wind, 0.05, 0.9, 0.1, 1.05" "winIn, 0.1, 1.1, 0.1, 1.1" "winOut, 0.3, -0.3, 0, 1 liner, 1, 1, 1, 1"];
+        bezier = [
+          "smoothOut, 0.36, 0, 0.66, -0.56"
+          "smoothIn, 0.25, 1, 0.5, 1"
+          "overshot, 0.4,0.8,0.2,1.2"
+        ];
 
-        animation = ["windows, 1, 6, wind, slide" "windowsIn, 1, 6, winIn, slide" "windowsOut, 1, 5, winOut, slide" "windowsOut, 1, 5, winOut, slide" "border, 1, 1, liner" "borderangle, 1, 30, liner, loop" "fade, 1, 10, default" "workspaces, 1, 5, wind"];
+        animation = [
+          "windows, 1, 4, overshot, slide"
+          "windowsOut, 1, 4, smoothOut, slide"
+          "border,1,10,default"
+
+          "fade, 1, 10, smoothIn"
+          "fadeDim, 1, 10, smoothIn"
+          "workspaces,1,4,overshot,slidevert"
+        ];
       };
 
       dwindle = {
