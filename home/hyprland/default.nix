@@ -34,7 +34,6 @@
         border_size = 1;
         "col.active_border" = "rgba(00ffffee)";
         "col.inactive_border" = "rgba(595959aa)";
-        };
         layout = "dwindle";
         cursor_inactive_timeout = 5;
       };
