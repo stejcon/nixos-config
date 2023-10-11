@@ -87,6 +87,8 @@
     zathura
     pulsemixer
     virt-manager
+    gamemode
+    mangohud
   ];
 
   xdg.portal.enable = true;
