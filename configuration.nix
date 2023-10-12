@@ -89,6 +89,7 @@
     virt-manager
     gamemode
     mangohud
+    direnv
   ];
 
   xdg.portal.enable = true;
