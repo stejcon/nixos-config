@@ -90,6 +90,7 @@
     gamemode
     mangohud
     direnv
+    nix-direnv
   ];
 
   xdg.portal.enable = true;
