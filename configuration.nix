@@ -89,9 +89,11 @@
     virt-manager
     gamemode
     mangohud
-    direnv
-    nix-direnv
   ];
+
+  programs.direnv = {
+    enable = true;
+  };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
