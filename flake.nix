@@ -11,6 +11,7 @@
   };
 
   outputs = {
+    inputs,
     nixpkgs,
     home-manager,
     nixos-hardware,
@@ -24,6 +25,7 @@
     nixosConfigurations = {
       # Laptop setup
       loki = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         inherit system;
         modules = [
           ./configuration.nix
@@ -42,6 +44,7 @@
 
       # Desktop setup
       thor = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         inherit system;
         modules = [
           ./configuration.nix
