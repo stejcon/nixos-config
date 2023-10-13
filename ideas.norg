@@ -13,3 +13,5 @@
 - ( ) Add gaming support, including gamemode, mangohud, lutris, proton version management, and steam, all without flatpaks
 - ( ) Figure out wtf is going on with librespot, or use a different librespot based spotify player
 - ( ) Get a better bluetooth menu, doable with ewww and maybe waybar
+- ( ) Investigate if I want to add agenix or something similar to handle secrets
+- ( ) Setup pass to handle passwords
