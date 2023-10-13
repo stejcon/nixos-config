@@ -11,11 +11,9 @@
   };
 
   outputs = {
-    inputs,
     nixpkgs,
     home-manager,
     nixos-hardware,
-    ...
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -25,7 +23,7 @@
     nixosConfigurations = {
       # Laptop setup
       loki = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit nixpkgs; };
         inherit system;
         modules = [
           ./configuration.nix
@@ -44,7 +42,7 @@
 
       # Desktop setup
       thor = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit nixpkgs; };
         inherit system;
         modules = [
           ./configuration.nix

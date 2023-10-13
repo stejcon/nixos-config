@@ -1,4 +1,4 @@
-{pkgs, inputs, ...}: {
+{pkgs, nixpkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
 
   # Use the grub EFI boot loader.
@@ -118,6 +118,6 @@
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
-    registry.nixpkgs.flake = inputs.nixpkgs;
+    registry.nixpkgs.flake = nixpkgs;
   };
 }
