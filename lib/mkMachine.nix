@@ -11,14 +11,14 @@ nixpkgs.lib.nixosSystem {
 
   modules =
     [
-      ./hosts/${name}
-      ./configuration.nix
+      ../hosts/${name}
+      ../configuration.nix
       home-manager.nixosModules.home-manager
       {
         home-manager = {
           useUserPackages = true;
           useGlobalPkgs = true;
-          users.stephen = ./home;
+          users.stephen = ../home;
         };
       }
     ]
