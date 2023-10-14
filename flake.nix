@@ -17,6 +17,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     mkMachine = import ./lib/mkMachine.nix;
+    mkHome = import ./lib/mkHome.nix;
   in {
     formatter.${system} = pkgs.alejandra;
 
@@ -38,10 +39,7 @@
     };
 
     homeConfigurations = {
-      stephen = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [./home];
-      };
+      stephen = mkHome {inherit home-manager nixpkgs;};
     };
   };
 }
