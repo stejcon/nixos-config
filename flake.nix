@@ -3,59 +3,37 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     nixos-hardware.url = "github:nixos/nixos-hardware";
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
     nixos-hardware,
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    mkMachine = import ./lib/mkMachine.nix;
   in {
     formatter.${system} = pkgs.alejandra;
 
     nixosConfigurations = {
       # Laptop setup
-      loki = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit nixpkgs; };
-        inherit system;
-        modules = [
-          ./configuration.nix
-          ./hosts/loki/hardware-configuration.nix
+      loki = mkMachine {
+        inherit nixpkgs home-manager;
+        name = "loki";
+        extraModules = [
           nixos-hardware.nixosModules.framework-12th-gen-intel
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              users.stephen = ./home;
-            };
-          }
         ];
       };
 
       # Desktop setup
-      thor = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit nixpkgs; };
-        inherit system;
-        modules = [
-          ./configuration.nix
-          ./hosts/thor/hardware-configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              users.stephen = ./home;
-            };
-          }
-        ];
+      thor = mkMachine {
+        inherit nixpkgs home-manager;
+        name = "thor";
       };
     };
 
