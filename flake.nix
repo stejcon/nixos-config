@@ -16,13 +16,14 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    mkMachine = import ./lib/mkMachine.nix {inherit nixpkgs home-manager;};
+    mkMachine = import ./lib/mkMachine.nix;
   in {
     formatter.${system} = pkgs.alejandra;
 
     nixosConfigurations = {
       # Laptop setup
       loki = mkMachine {
+        inherit nixpkgs home-manager;
         name = "loki";
         extraModules = [
           nixos-hardware.nixosModules.framework-12th-gen-intel
@@ -31,6 +32,7 @@
 
       # Desktop setup
       thor = mkMachine {
+        inherit nixpkgs home-manager;
         name = "thor";
       };
     };
