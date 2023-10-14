@@ -1,5 +1,5 @@
 - ( ) Edit home to have both an independant output and a nixos integration
-- ( ) Add a couple of custom functions to make it easy to make new machines, shouldn't be a need for all of the boilerplate
+- (x) Add a couple of custom functions to make it easy to make new machines, shouldn't be a need for all of the boilerplate
 - ( ) Change home to have "suites" or "collections" of configs, such as a development package
 -- ( ) Maybe this should be done with both configuration.nix and home.nix, but how can they be joined into one?
 - ( ) Take all settings that will never change such as what locales and fonts I have installed, and keep it seperate to packages which I may change
