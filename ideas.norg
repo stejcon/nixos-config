@@ -15,3 +15,5 @@
 - ( ) Get a better bluetooth menu, doable with ewww and maybe waybar
 - ( ) Investigate if I want to add agenix or something similar to handle secrets
 - ( ) Setup pass to handle passwords
+- ( ) Add mkHome to lib/
+- ( ) Swap to systemd-boot instead of grub, supposedly faster
