@@ -1,4 +1,8 @@
-{pkgs, nixpkgs, ...}: {
+{
+  pkgs,
+  nixpkgs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
 
   # Use the grub EFI boot loader.
