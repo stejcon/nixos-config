@@ -63,11 +63,6 @@
     blueman.enable = true;
   };
 
-  programs.hyprland.enable = true;
-  programs.dconf = {
-    enable = true;
-  };
-
   users.users.stephen = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
@@ -77,8 +72,6 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
-    firefox
-    git
     texlive.combined.scheme-full
     btop
     ncdu
@@ -93,17 +86,29 @@
     virt-manager
     gamemode
     mangohud
+    grim
+    slurp
   ];
 
-  programs.direnv = {
-    enable = true;
+  programs = {
+    hyprland = {enable = true;};
+    dconf = {enable = true;};
+    direnv = {enable = true;};
+    firefox = {enable = true;};
+    git = {
+      enable = true;
+      lfs.enable = true;
+    };
   };
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-  ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+    xdgOpenUsePortal = true;
+  };
 
   fonts.packages = with pkgs; [
     liberation_ttf_v1

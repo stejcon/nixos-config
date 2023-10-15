@@ -4,7 +4,7 @@
 --- ( ) Maybe this should be done with both configuration.nix and home.nix, but how can they be joined into one?
 --- ( ) Take all settings that will never change such as what locales and fonts I have installed, and keep it seperate to packages which I may change
 - (x) Add a couple of custom functions to make it easy to make new machines, shouldn't be a need for all of the boilerplate
-- ( ) Check every installed package and see should I be using programs instead of environment system packages
+- (x) Check every installed package and see should I be using programs instead of environment system packages
 - ( ) Try and see can nixos automatically format drives to have a common lvm setup across all machines
 - ( ) Setup zram and swapfiles
 - ( ) Redo waybar or replace with ewww
@@ -17,3 +17,4 @@
 - ( ) Investigate if I want to add agenix or something similar to handle secrets
 - ( ) Setup pass to handle passwords
 - ( ) Swap to systemd-boot instead of grub, supposedly faster
+- ( ) Switch to zsh shell with full home configuration
