@@ -67,6 +67,7 @@
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
     initialPassword = "password";
+    shell = pkgs.zsh;
   };
 
   environment.systemPackages = with pkgs; [
@@ -99,6 +100,7 @@
       enable = true;
       lfs.enable = true;
     };
+    zsh = {enable = true;};
   };
 
   xdg.portal = {
