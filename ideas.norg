@@ -8,8 +8,9 @@
 - (x) Check every installed package and see should I be using programs instead of environment system packages
 - ( ) Try and see can nixos automatically format drives to have a common lvm setup across all machines
 - ( ) Setup zram and swapfiles
-- ( ) Redo waybar or replace with ewww
 - ( ) Edit hyprland, focusing on animations and keybinds
+-- ( ) Redo waybar or replace with ewww
+-- ( ) Add mako support for notifications
 -- ( ) ADD A DAMN BIND FOR SCREENSHOTS
 - ( ) Edit neovim to use only nixvim
 - ( ) Add gaming support, including gamemode, mangohud, lutris, proton version management, and steam, all without flatpaks
