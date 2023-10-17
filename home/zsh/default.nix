@@ -8,7 +8,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      theme = "pure";
+      theme = "simple";
     };
   };
 }
