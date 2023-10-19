@@ -22,3 +22,4 @@
 - (x) Switch to zsh shell with full home configuration
 - ( ) Review all oh-my-zsh plugins and check if any would actually be useful
 - ( ) Add fingerprint reader support for laptop
+- (!) Update SSH port so it isnt 22 so it's safer to have the wifi opened up with ddns
