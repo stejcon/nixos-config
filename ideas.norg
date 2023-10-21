@@ -23,3 +23,4 @@
 - ( ) Review all oh-my-zsh plugins and check if any would actually be useful
 - ( ) Add fingerprint reader support for laptop
 - (!) Update SSH port so it isnt 22 so it's safer to have the wifi opened up with ddns
+- ( ) check whether error on install with hyprland portal when hyprland is installed is caused by hyprland package or home manager config with nvidia patches
