@@ -54,8 +54,10 @@
     openssh = {
       enable = true;
       settings = {
-        PasswordAuthentication = true;
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
         X11Forwarding = true;
+        PermitRootLogin = false;
       };
     };
     printing.enable = true;
@@ -68,6 +70,9 @@
     extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
     initialPassword = "password";
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCspsHlBLTJL4VHKRO1xuLbnG/fay9anQLB+mhQfoHW+zVtzQv3xCPatfxIyGeaSSpV2RBO3w/oRauLVT3jfAzwjVj4FmXSztfbcJQY2Fk9CKYb+JthBqLKggSyixr39LfGNVpf5nw8vZbsSJS3ASJHzAGLnBuX184IufJspEo7MRKXpCmun2ukZT8advYO1N1QeaUjmxApZ5vvPrchpMm/tgZThYrooSIDIKjl2871DKb5Zkdojb0L1+UZ5HktMVexunJ35ik3qWJyrLNjAaP1NM9Xtg42lIR/949HkdeiXAkTH6rViCow7TKC1kirHmBpbWf+H7NduMZByTSECdcLcyBb6GxYX26lb/VQyoltHjZjKhaF3aiJYKu1hV6GQpia3/+1DuzSM+qqAHMgLY3/VS08yDDvE130SlD0SYmLlcn/s0+A7e+QDmBUpwVjOoxpqAAesgs1mAOvA7FJCSEc8YAdt9PEYDzREeunOnd0hX7TWSZ7aWOg45lMfDn4pac= stephen"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
