@@ -57,7 +57,6 @@
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         X11Forwarding = true;
-        PermitRootLogin = false;
       };
     };
     printing.enable = true;
