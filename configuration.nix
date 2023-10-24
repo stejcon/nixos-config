@@ -89,6 +89,7 @@
     mangohud
     grim
     slurp
+    libreoffice
   ];
 
   programs = {
