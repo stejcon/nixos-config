@@ -43,6 +43,7 @@
     xserver = {
       enable = true;
       displayManager.gdm.enable = true;
+      desktopManager.plasma5.enable = true;
     };
     pipewire = {
       enable = true;
