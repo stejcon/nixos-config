@@ -91,7 +91,7 @@
     grim
     slurp
     libreoffice
-    python311.pygments
+    python311Packages.pygments
   ];
 
   programs = {
