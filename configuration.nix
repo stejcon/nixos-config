@@ -91,6 +91,7 @@
     grim
     slurp
     libreoffice
+    python3.withPackages(ps: [ps.pygments])
   ];
 
   programs = {
