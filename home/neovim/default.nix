@@ -77,6 +77,7 @@ in {
       gitsigns-nvim
       vim-illuminate
       nvim-notify
+      no-neck-pain-nvim
     ];
 
     extraPackages = with pkgs; [
