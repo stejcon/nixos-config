@@ -1,5 +1,5 @@
 {...}: {
-  imports = [./neovim ./kitty ./tmux ./git ./hyprland ./bluetooth ./zsh];
+  imports = [./neovim ./kitty ./tmux ./git ./hyprland ./bluetooth ./zsh ./waybar];
 
   home.username = "stephen";
   home.homeDirectory = "/home/stephen";
