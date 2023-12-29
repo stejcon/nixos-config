@@ -103,7 +103,7 @@
     "hyprland/window" = {
       format = "  {}";
       rewrite = {
-        "(.*) — Mozilla Firefox" = "$1 󰈹";
+        "(.*) — Mozilla Firefox" = "Firefox 󰈹";
         "(.*)Steam" = "Steam 󰓓";
       };
       separate-outputs = true;
