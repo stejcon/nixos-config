@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   scripts = import ./scripts.nix {inherit pkgs;};
 
   workspaces = {
@@ -15,7 +12,7 @@
       urgent = "";
     };
     on-click = "activate";
-    persistent_workspaces = { "*" = 5; };
+    persistent_workspaces = {"*" = 5;};
   };
 
   mainWaybarConfig = {
