@@ -28,7 +28,6 @@
     modules-left = ["custom/logo" "hyprland/workspaces"];
     modules-center = ["hyprland/window"];
     modules-right = [
-      "hyprland/language"
       "network"
       "bluetooth"
       "pulseaudio#microphone"
@@ -108,13 +107,6 @@
         "(.*)Steam" = "Steam 󰓓";
       };
       separate-outputs = true;
-    };
-
-    "hyprland/language" = {
-      format = " {}";
-      format-uk = "державна";
-      format-en = "english";
-      format-ru = "русский";
     };
 
     memory = {
