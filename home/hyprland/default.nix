@@ -1,14 +1,7 @@
-{
-  osConfig,
-  pkgs,
-  ...
-}: {
+{osConfig, ...}: {
   wayland.windowManager = {
     hyprland.enable = true;
-    hyprland.enableNvidiaPatches =
-      if osConfig.networking.hostName == "thor"
-      then true
-      else false; # TODO: Change this so it can check if the host has nvidia hardware without hardcoding the host name
+
     # TODO: Switch to using hyprland.settings instead of the xdg method below
     hyprland.settings = {
       monitor = ["DP-1,1920x1080@165,auto,1" "HDMI-A-1,1920x1080@60,auto,1" ",preferred,auto,1"];
