@@ -26,6 +26,7 @@
     position = "top";
 
     modules-left = ["custom/logo" "hyprland/workspaces"];
+    modules-center = ["hyprland/window"];
     modules-right = [
       "hyprland/language"
       "network"
