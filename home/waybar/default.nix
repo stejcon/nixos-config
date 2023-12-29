@@ -15,7 +15,7 @@
       urgent = "";
     };
     on-click = "activate";
-    # persistent_workspaces = { "*" = 10; };
+    persistent_workspaces = { "*" = 5; };
   };
 
   mainWaybarConfig = {
