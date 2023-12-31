@@ -53,8 +53,20 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
       desktopManager.plasma5.enable = true;
+    };
+
+    # TODO: Should use "--sessions" argument in tuigreet
+    # Figure out how to correctly find the .desktop file for every enabled window manager/desktop
+    # May require everything to be in modules first
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+          user = "greeter";
+        };
+      };
     };
     pipewire = {
       enable = true;
@@ -73,6 +85,18 @@
     printing.enable = true;
     flatpak.enable = true;
     blueman.enable = true;
+  };
+
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 
   users.users.stephen = {
