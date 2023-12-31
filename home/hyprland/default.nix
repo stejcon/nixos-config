@@ -29,6 +29,7 @@
   };
 
   services = {
+    # TODO: Add a timeout to suspend the computer
     swayidle = {
       enable = true;
       timeouts = [
