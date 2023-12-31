@@ -1,9 +1,21 @@
 {
+  inputs,
   pkgs,
-  nixpkgs,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
+
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+  
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users.stephen = {...}: {
+      imports = [
+        ./home
+      ];
+    };
+  };
 
   # Use the grub EFI boot loader.
   boot.loader = {
@@ -132,6 +144,6 @@
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }
