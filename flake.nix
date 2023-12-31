@@ -16,7 +16,7 @@
     my-lib = import ./my-lib/default.nix {inherit inputs;};
   in
     with my-lib; {
-      formatter = forAllSystems (pkgs: { default = pkgs.alejandra; });
+      formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
 
       nixosConfigurations = {
         loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;
