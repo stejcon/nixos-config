@@ -13,7 +13,7 @@
     systemctl --user restart xdg-desktop-portal.service &
 
     # wait a tiny bit for wallpaper
-    sleep 2
+    sleep 1
 
     # TODO: Need to be able to change wallpaper
     ${pkgs.swww}/bin/swww img ${./thor-background.webp} &
@@ -210,7 +210,6 @@ in {
           "$mainMod      , e, exec, dolphin"
           "$mainMod      , v, togglefloating,"
           "$mainMod      , p, exec, wofi --show drun"
-          "$mainMod SHIFT, j, togglesplit,"
           "$mainMod      , f, fullscreen"
 
           "$mainMod, left, movefocus, l"
