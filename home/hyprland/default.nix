@@ -265,5 +265,6 @@ in {
     swww
     networkmanagerapplet
     wofi
+    libnotify
   ];
 }
