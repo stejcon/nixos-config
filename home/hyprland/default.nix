@@ -36,6 +36,11 @@
           timeout = 600;
           command = "${config.programs.swaylock.package}/bin/swaylock";
         }
+        {
+          timeout = 10;
+          command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+          resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+        }
       ];
       events = [
         {
