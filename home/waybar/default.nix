@@ -3,8 +3,12 @@
 
   workspaces = {
     format = "{icon}";
+    format-icons = {
+      active = "";
+      default = "";
+      urgent = "";
+    };
     on-click = "activate";
-    all-outputs = false;
   };
 
   mainWaybarConfig = {
