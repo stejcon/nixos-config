@@ -100,6 +100,7 @@ in {
       defaultTimeout = 3000;
       font = "JetBrainsMono Nerd Font 10";
       backgroundColor = "#3c3c3c";
+      borderColor = "#595959";
     };
   };
 
