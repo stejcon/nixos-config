@@ -53,6 +53,7 @@
   services = {
     xserver = {
       enable = true;
+      displayManager = {};
       desktopManager.plasma5.enable = true;
     };
     greetd = {
