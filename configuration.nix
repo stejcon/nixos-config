@@ -51,11 +51,11 @@
   };
 
   services = {
-    xserver = {
-      enable = true;
-      displayManager = {};
-      desktopManager.plasma5.enable = true;
-    };
+    # xserver = {
+    #   enable = true;
+    #   displayManager = {};
+    #   desktopManager.plasma5.enable = true;
+    # };
     greetd = {
       settings = {
         default_session = {
