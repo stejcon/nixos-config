@@ -160,6 +160,9 @@
     sudo.wheelNeedsPassword = false;
     doas.wheelNeedsPassword = false;
     polkit.enable = true;
+    pam = {
+      services.swaylock = {};
+    };
   };
 
   system.stateVersion = "22.11"; # Did you read the comment?
