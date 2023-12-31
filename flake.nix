@@ -14,10 +14,9 @@
 
   outputs = {...} @ inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
-    pkgs = my-lib.mkPkgs "x86_64-linux";
   in
     with my-lib; {
-      formatter."x86_64-linux" = pkgs.alejandra;
+      formatter = forAllSystems (pkgs: { default = pkgs.alejandra; });
 
       nixosConfigurations = {
         loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;

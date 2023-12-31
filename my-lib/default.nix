@@ -4,6 +4,14 @@
     config = {allowUnfree = true;};
   });
 
+  forAllSystems = pkgs:
+    inputs.nixpkgs.lib.genAttrs [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ] (system: pkgs inputs.nixpkgs.legacyPackages.${system});
+
   mkHome = sys: config:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = mkPkgs sys;
