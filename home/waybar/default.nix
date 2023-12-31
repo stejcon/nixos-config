@@ -47,15 +47,14 @@
     height = 14;
     position = "top";
 
-    modules-left = ["custom/logo" "hyprland/workspaces"];
-    modules-center = ["hyprland/window"];
+    modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/window"];
+    modules-center = ["tray"];
     modules-right = [
       "network"
       "bluetooth"
       "pulseaudio#microphone"
       "custom/battery"
       "clock"
-      "tray"
     ];
 
     "wlr/workspaces" = workspaces;

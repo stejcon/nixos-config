@@ -98,7 +98,8 @@ in {
       enable = true;
       borderRadius = 5;
       defaultTimeout = 3000;
-      font = "WenQuanYi Zen Hei Mono 12";
+      font = "JetBrainsMono Nerd Font 10";
+      backgroundColor = "#3c3c3c";
     };
   };
 
