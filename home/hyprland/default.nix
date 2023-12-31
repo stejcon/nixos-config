@@ -9,11 +9,11 @@
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
     hyprctl setcursor Bibata-Modern-Ice 16 &
 
-     systemctl --user import-environment PATH &
-     systemctl --user restart xdg-desktop-portal.service &
+    systemctl --user import-environment PATH &
+    systemctl --user restart xdg-desktop-portal.service &
 
-     # wait a tiny bit for wallpaper
-     sleep 2
+    # wait a tiny bit for wallpaper
+    sleep 2
 
     # TODO: Need to be able to change wallpaper
     ${pkgs.swww}/bin/swww img ${./thor-background.webp} &
