@@ -19,10 +19,6 @@
     ${pkgs.swww}/bin/swww img ${./thor-background.webp} &
   '';
 in{
-  import = [
-    ../waybar
-  ];
-
   programs = {
     swaylock = {
       enable = true;
