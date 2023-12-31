@@ -3,7 +3,7 @@
   config,
   inputs,
   ...
-}: let 
+}: let
   startScript = pkgs.writeShellScriptBin "start" ''
     ${pkgs.swww}/bin/swww init &
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
@@ -18,7 +18,35 @@
     # TODO: Need to be able to change wallpaper
     ${pkgs.swww}/bin/swww img ${./thor-background.webp} &
   '';
-in{
+
+  # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
+  customMonitors = [
+    {
+      name = "DP-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 165;
+      x = 0;
+      y = 0;
+    }
+    {
+      name = "HDMI-A-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 165;
+      x = 1920;
+      y = 0;
+    }
+    {
+      name = "eDP-1";
+      width = 2256;
+      height = 1504;
+      refreshRate = 60;
+      x = 0;
+      y = 0;
+    }
+  ];
+in {
   programs = {
     swaylock = {
       enable = true;
@@ -85,7 +113,13 @@ in{
         layout = "master";
       };
 
-      monitor = ["DP-1,1920x1080@165,auto,1" "HDMI-A-1,1920x1080@60,auto,1" ",preferred,auto,1"];
+      monitor =
+        map (
+          m: let
+            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            position = "${toString m.x}x${toString m.y}";
+          in "${m.name},${resolution},${position},1"
+        ) customMonitors;
 
       input = {
         kb_layout = "us";
@@ -127,15 +161,15 @@ in{
       animations = {
         enabled = true;
 
-          bezier = "myBezier, 0.25, 0.9, 0.1, 1.02";
+        bezier = "myBezier, 0.25, 0.9, 0.1, 1.02";
 
-          animation = [
-            "windows, 1, 7, myBezier"
-            "windowsOut, 1, 7, default, popin 80%"
-            "border, 1, 10, default"
-            "borderangle, 1, 8, default"
-            "fade, 1, 7, default"
-          ];
+        animation = [
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+        ];
       };
 
       dwindle = {
@@ -154,32 +188,41 @@ in{
 
       "$mainMod" = "SUPER";
 
-      bind = [
-        "$mainMod      , return, exec, kitty --title Kitty" 
-        "$mainMod      , b, exec, firefox" 
-        "$mainMod      , q, killactive," 
-        "$mainMod SHIFT, q, exit," 
-        "$mainMod      , e, exec, dolphin" 
-        "$mainMod      , v, togglefloating," 
-        "$mainMod      , p, exec, wofi --show drun" 
-        "$mainMod SHIFT, j, togglesplit," 
-        "$mainMod      , f, fullscreen" 
+      bind =
+        [
+          "$mainMod      , return, exec, kitty --title Kitty"
+          "$mainMod      , b, exec, firefox"
+          "$mainMod      , q, killactive,"
+          "$mainMod SHIFT, q, exit,"
+          "$mainMod      , e, exec, dolphin"
+          "$mainMod      , v, togglefloating,"
+          "$mainMod      , p, exec, wofi --show drun"
+          "$mainMod SHIFT, j, togglesplit,"
+          "$mainMod      , f, fullscreen"
 
-        "$mainMod, left, movefocus, l" 
-        "$mainMod, right, movefocus, r" 
-        "$mainMod, up, movefocus, u" 
-        "$mainMod, down, movefocus, d" 
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        "$mainMod, h, movefocus, l" 
-        "$mainMod, l, movefocus, r" 
-        "$mainMod, k, movefocus, u" 
-        "$mainMod, j, movefocus, d" 
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
 
-        "$mainMod, mouse_down, workspace, e+1" 
-        "$mainMod, mouse_up, workspace, e-1"
-      ]
-      ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString(if n== 0 then 10 else n)}") [1 2 3 4 5 6 7 8 9 0]
-      ++ map (n: "$mainMod, ${toString n}, workspace, ${toString (if n == 0 then 10 else n)}") [1 2 3 4 5 6 7 8 9 0];
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+        ]
+        ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
+          if n == 0
+          then 10
+          else n
+        )}") [1 2 3 4 5 6 7 8 9 0]
+        ++ map (n: "$mainMod, ${toString n}, workspace, ${toString (
+          if n == 0
+          then 10
+          else n
+        )}") [1 2 3 4 5 6 7 8 9 0];
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
