@@ -1,29 +1,36 @@
 {pkgs, ...}: let
   scripts = import ./scripts.nix {inherit pkgs;};
 
-  # workspaces = {
-  #   format = "{icon}";
-  #   # TODO: If I break the sequence, waybar crashes, should be done with a map somehow
-  #   format-icons = {
-  #     "1" = "1";
-  #     "2" = "2";
-  #     "3" = "3";
-  #     "4" = "4";
-  #     "5" = "5";
-  #     "6" = "1";
-  #     "7" = "2";
-  #     "8" = "3";
-  #     "9" = "4";
-  #     "10" = "5";
-  #     "11" = "1";
-  #     "12" = "2";
-  #     "13" = "3";
-  #     "14" = "4";
-  #     "15" = "5";
-  #   };
-  #   on-click = "activate";
-  #   all-outputs = false;
-  # };
+  workspaces = {
+    format = "{icon}";
+    # TODO: If I break the sequence, waybar crashes, should be done with a map somehow
+    format-icons = {
+      "1" = "1";
+      "2" = "2";
+      "3" = "3";
+      "4" = "4";
+      "5" = "5";
+      "6" = "1";
+      "7" = "2";
+      "8" = "3";
+      "9" = "4";
+      "10" = "5";
+      "11" = "1";
+      "12" = "2";
+      "13" = "3";
+      "14" = "4";
+      "15" = "5";
+    };
+    persistent_workspaces = {
+      "1" = [];
+      "2" = [];
+      "3" = [];
+      "4" = [];
+      "5" = [];
+    };
+    on-click = "activate";
+    all-outputs = false;
+  };
 
   mainWaybarConfig = {
     mod = "dock";
@@ -43,8 +50,8 @@
       "tray"
     ];
 
-    # "wlr/workspaces" = workspaces;
-    # "hyprland/workspaces" = workspaces;
+    "wlr/workspaces" = workspaces;
+    "hyprland/workspaces" = workspaces;
 
     bluetooth = {
       format = "";
