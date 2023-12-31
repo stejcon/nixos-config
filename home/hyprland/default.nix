@@ -104,13 +104,13 @@ in {
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
 
-    plugin = {
-      split-monitor-workspaces = {
-        count = 5;
-      };
-    };
-
     settings = {
+      plugin = {
+        split-monitor-workspaces = {
+          count = 5;
+        };
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -120,13 +120,14 @@ in {
         layout = "master";
       };
 
-      monitor = map (
-        m: let
-          resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-          position = "${toString m.x}x${toString m.y}";
-        in "${m.name},${resolution},${position},1"
-      )
-      customMonitors;
+      monitor =
+        map (
+          m: let
+            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            position = "${toString m.x}x${toString m.y}";
+          in "${m.name},${resolution},${position},1"
+        )
+        customMonitors;
 
       input = {
         kb_layout = "us";
