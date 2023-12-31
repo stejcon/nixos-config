@@ -96,6 +96,9 @@ in {
     };
     mako = {
       enable = true;
+      borderRadius = 5;
+      defaultTimeout = 3000;
+      font = "WenQuanYi Zen Hei Mono 12";
     };
   };
 
