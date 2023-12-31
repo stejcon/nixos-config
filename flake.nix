@@ -3,43 +3,28 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nixos-hardware,
-  }: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    mkMachine = import ./lib/mkMachine.nix;
-    mkHome = import ./lib/mkHome.nix;
-  in {
-    formatter.${system} = pkgs.alejandra;
-
-    nixosConfigurations = {
-      # Laptop setup
-      loki = mkMachine {
-        inherit nixpkgs home-manager;
-        name = "loki";
-        extraModules = [
-          nixos-hardware.nixosModules.framework-12th-gen-intel
-        ];
-      };
-
-      # Desktop setup
-      thor = mkMachine {
-        inherit nixpkgs home-manager;
-        name = "thor";
-      };
-    };
-
-    homeConfigurations = {
-      stephen = mkHome {inherit home-manager nixpkgs;};
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = {...} @ inputs: let
+    my-lib = import ./my-lib/default.nix {inherit inputs;};
+  in
+    with my-lib; {
+      formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
+
+      nixosConfigurations = {
+        loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;
+        thor = mkMachine "x86_64-linux" ./hosts/thor/default.nix;
+      };
+
+      homeConfigurations = {
+        stephen = mkHome "x86_64-linux" ./home/default.nix;
+      };
+    };
 }
