@@ -22,11 +22,16 @@
       "15" = "5";
     };
     persistent_workspaces = {
-      "1" = [];
-      "2" = [];
-      "3" = [];
-      "4" = [];
-      "5" = [];
+      "1" = ["DP-1" "eDP-1"];
+      "2" = ["DP-1" "eDP-1"];
+      "3" = ["DP-1" "eDP-1"];
+      "4" = ["DP-1" "eDP-1"];
+      "5" = ["DP-1" "eDP-1"];
+      "11" = ["HDMI-A-1"];
+      "12" = ["HDMI-A-1"];
+      "13" = ["HDMI-A-1"];
+      "14" = ["HDMI-A-1"];
+      "15" = ["HDMI-A-1"];
     };
     on-click = "activate";
     all-outputs = false;
