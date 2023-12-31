@@ -53,9 +53,12 @@
   services = {
     xserver = {
       enable = true;
-    #   displayManager = {};
       desktopManager.plasma5.enable = true;
     };
+
+    # TODO: Should use "--sessions" argument in tuigreet
+    # Figure out how to correctly find the .desktop file for every enabled window manager/desktop
+    # May require everything to be in modules first
     greetd = {
       enable = true;
       settings = {
