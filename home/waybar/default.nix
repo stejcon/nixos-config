@@ -43,8 +43,8 @@
       "tray"
     ];
 
-    "wlr/workspaces" = workspaces;
-    "hyprland/workspaces" = workspaces;
+    # "wlr/workspaces" = workspaces;
+    # "hyprland/workspaces" = workspaces;
 
     bluetooth = {
       format = "";
