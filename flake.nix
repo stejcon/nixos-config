@@ -12,19 +12,20 @@
     };
   };
 
-  outputs = {...}@inputs: let
+  outputs = {...} @ inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
     pkgs = my-lib.mkPkgs "x86_64-linux";
-  in with my-lib; {
-    formatter."x86_64-linux" = pkgs.alejandra;
+  in
+    with my-lib; {
+      formatter."x86_64-linux" = pkgs.alejandra;
 
-    nixosConfigurations = {
-      loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;
-      thor = mkMachine "x86_64-linux" ./hosts/thor/default.nix;
-    };
+      nixosConfigurations = {
+        loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;
+        thor = mkMachine "x86_64-linux" ./hosts/thor/default.nix;
+      };
 
-    homeConfigurations = {
-      stephen = mkHome "x86_64-linux" ./home/default.nix;
+      homeConfigurations = {
+        stephen = mkHome "x86_64-linux" ./home/default.nix;
+      };
     };
-  };
 }
