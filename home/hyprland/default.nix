@@ -1,4 +1,9 @@
-{osConfig, pkgs, config, ...}: {
+{
+  osConfig,
+  pkgs,
+  config,
+  ...
+}: {
   programs = {
     swaylock = {
       enable = true;
