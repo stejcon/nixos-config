@@ -4,13 +4,12 @@
     config = {allowUnfree = true;};
   });
 
-  forAllSystems =
-    inputs.nixpkgs.lib.genAttrs [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+  forAllSystems = inputs.nixpkgs.lib.genAttrs [
+    "x86_64-linux"
+    "aarch64-linux"
+    "x86_64-darwin"
+    "aarch64-darwin"
+  ];
 
   mkHome = sys: config:
     inputs.home-manager.lib.homeManagerConfiguration {
