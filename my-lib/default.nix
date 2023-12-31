@@ -1,4 +1,6 @@
-{inputs}: rec {
+{inputs}: let
+  my-lib = (import ./default.nix) {inherit inputs;};
+in rec {
   mkPkgs = sys: (import inputs.nixpkgs {
     system = "${sys}";
     config = {allowUnfree = true;};
@@ -15,7 +17,7 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = mkPkgs sys;
       extraSpecialArgs = {
-        inherit inputs;
+        inherit inputs my-lib;
       };
       modules = [
         config
@@ -26,7 +28,7 @@
     inputs.nixpkgs.lib.nixosSystem {
       pkgs = mkPkgs sys;
       specialArgs = {
-        inherit inputs;
+        inherit inputs my-lib;
         system = sys;
       };
       modules = [
