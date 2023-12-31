@@ -48,13 +48,13 @@
     position = "top";
 
     modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/window"];
-    modules-center = ["tray"];
+    modules-center = ["clock"];
     modules-right = [
       "network"
       "bluetooth"
-      "pulseaudio#microphone"
+      "pulseaudio"
       "custom/battery"
-      "clock"
+      "tray"
     ];
 
     "wlr/workspaces" = workspaces;
