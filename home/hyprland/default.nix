@@ -51,6 +51,9 @@
       ];
       systemdTarget = "hyprland-session.target";
     };
+    mako = {
+      enable = true;
+    };
   };
 
   wayland.windowManager.hyprland = {
