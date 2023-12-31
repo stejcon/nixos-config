@@ -205,14 +205,14 @@ in{
         "waybar"
       ];
     };
-
-    home.packages = with pkgs; [
-      grim
-      slurp
-      wl-clipboard
-      swww
-      networkmanagerapplet
-      wofi
-    ];
   };
+
+  home.packages = with pkgs; [
+    grim
+    slurp
+    wl-clipboard
+    swww
+    networkmanagerapplet
+    wofi
+  ];
 }
