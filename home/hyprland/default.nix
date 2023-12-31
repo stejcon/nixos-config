@@ -105,9 +105,9 @@ in {
     plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
 
     plugin = {
- split-monitor-workspaces = {
+      split-monitor-workspaces = {
         count = 5;
-    };
+      };
     };
 
     settings = {
@@ -120,13 +120,13 @@ in {
         layout = "master";
       };
 
-      monitor =
-        map (
-          m: let
-            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-            position = "${toString m.x}x${toString m.y}";
-          in "${m.name},${resolution},${position},1"
-        ) customMonitors;
+      monitor = map (
+        m: let
+          resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+          position = "${toString m.x}x${toString m.y}";
+        in "${m.name},${resolution},${position},1"
+      )
+      customMonitors;
 
       input = {
         kb_layout = "us";
