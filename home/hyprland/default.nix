@@ -203,11 +203,11 @@ in {
 
       bind =
         [
-          "$mainMod      , return, exec, kitty --title Kitty"
-          "$mainMod      , b, exec, firefox"
+          "$mainMod      , return, exec, ${pkgs.kitty}/bin/kitty --title Kitty"
+          "$mainMod      , b, exec, ${pkgs.firefox}/bin/firefox"
           "$mainMod      , q, killactive,"
           "$mainMod SHIFT, q, exit,"
-          "$mainMod      , e, exec, dolphin"
+          "$mainMod      , e, exec, ${pkgs.lf}/bin/lf"
           "$mainMod      , v, togglefloating,"
           "$mainMod      , p, exec, wofi --show drun"
           "$mainMod      , f, fullscreen"
