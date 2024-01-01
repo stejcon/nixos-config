@@ -6,58 +6,22 @@
     enable = true;
     commands = {
       drag-out = ''%${pkgs.ripdrag}/bin/ripdrag -a -x "$fx"'';
-      editor-open = ''$$EDITOR "$f"'';
-      edit-dir = ''$$EDITOR .'';
-      mkdirfile = ''
-        ''${{
-            printf "File: "
-            read DIR
-            mk $DIR
-        }}
-      '';
-
-
-      # on-cd = ''
-      #   ''${{
-      #       notify-send "$(pwd)"
-      #       ls -a | grep '\.meta$'
-      #   }}
-      # '';
+      editor-open = ''${pkgs.neovim}/bin/nvim "$f"'';
+      edit-dir = ''${pkgs.neovim}/bin/nvim .'';
     };
+
     keybindings = {
-      "\\\"" = "";
-      o = "";
-      d = "";
-      e = "";
-      f = "";
-      c = "mkdirfile";
       "." = "set hidden!";
       D = "delete";
       p = "paste";
       dd = "cut";
       y = "copy";
-      "`" = "mark-load";
-      "\\'" = "mark-load";
       "<enter>" = "open";
       a = "rename";
       r = "reload";
       C = "clear";
       U = "unselect";
-
       do = "drag-out";
-
-      "g~" = "cd";
-      gh = "cd";
-      "g/" = "/";
-      gd = "cd ~/Downloads";
-      gt = "cd /tmp";
-      gv = "cd ~/Videos";
-      go = "cd ~/Documents";
-      gc = "cd ~/.config";
-      gn = "cd ~/nixconf";
-      gp = "cd ~/Projects";
-      gs = "cd ~/.local/share";
-      gm = "cd /run/media";
 
       ee = "editor-open";
       "e." = "edit-dir";
