@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
   xdg.configFile."lf/icons".source = ./icons;
 
   programs.lf = {
@@ -11,7 +10,7 @@
     };
 
     keybindings = {
-"\\\"" = "";
+      "\\\"" = "";
       o = "";
       d = "";
       e = "";
@@ -32,7 +31,6 @@
       ee = "editor-open";
       "e." = "edit-dir";
       V = ''''$${pkgs.bat}/bin/bat --paging=always --theme=gruvbox "$f"'';
-
 
       "<C-d>" = "5j";
       "<C-u>" = "5k";
