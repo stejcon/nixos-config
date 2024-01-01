@@ -114,17 +114,11 @@
     ncdu
     fzf
     glow
-    wl-clipboard
-    wofi
-    swww
-    networkmanagerapplet
     zathura
     pulsemixer
     virt-manager
     gamemode
     mangohud
-    grim
-    slurp
     libreoffice
     python311
     python311Packages.pygments

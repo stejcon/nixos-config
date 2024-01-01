@@ -3,16 +3,41 @@
 
   workspaces = {
     format = "{icon}";
+    # TODO: If I break the sequence, waybar crashes, should be done with a map somehow
     format-icons = {
-      "1" = "";
-      "2" = "";
-      "3" = "";
+      "1" = "1";
+      "2" = "2";
+      "3" = "3";
+      "4" = "4";
+      "5" = "5";
+      "6" = "1";
+      "7" = "2";
+      "8" = "3";
+      "9" = "4";
+      "10" = "5";
+      "11" = "1";
+      "12" = "2";
+      "13" = "3";
+      "14" = "4";
+      "15" = "5";
       active = "";
       default = "";
       urgent = "";
     };
+    persistent_workspaces = {
+      "1" = ["DP-1" "eDP-1"];
+      "2" = ["DP-1" "eDP-1"];
+      "3" = ["DP-1" "eDP-1"];
+      "4" = ["DP-1" "eDP-1"];
+      "5" = ["DP-1" "eDP-1"];
+      "11" = ["HDMI-A-1"];
+      "12" = ["HDMI-A-1"];
+      "13" = ["HDMI-A-1"];
+      "14" = ["HDMI-A-1"];
+      "15" = ["HDMI-A-1"];
+    };
     on-click = "activate";
-    persistent_workspaces = {"*" = 5;};
+    all-outputs = false;
   };
 
   mainWaybarConfig = {
@@ -22,14 +47,13 @@
     height = 14;
     position = "top";
 
-    modules-left = ["custom/logo" "hyprland/workspaces"];
-    modules-center = ["hyprland/window"];
+    modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/window"];
+    modules-center = ["clock"];
     modules-right = [
       "network"
       "bluetooth"
-      "pulseaudio#microphone"
+      "pulseaudio"
       "custom/battery"
-      "clock"
       "tray"
     ];
 

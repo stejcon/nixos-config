@@ -1,9 +1,52 @@
 {
-  osConfig,
   pkgs,
   config,
+  inputs,
   ...
-}: {
+}: let
+  startScript = pkgs.writeShellScriptBin "start" ''
+    ${pkgs.swww}/bin/swww init &
+    ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
+    hyprctl setcursor Bibata-Modern-Ice 16 &
+
+    systemctl --user import-environment PATH &
+    systemctl --user restart xdg-desktop-portal.service &
+
+    # wait a tiny bit for wallpaper
+    sleep 1
+
+    # TODO: Need to be able to change wallpaper
+    ${pkgs.swww}/bin/swww img ${./thor-background.webp} &
+  '';
+
+  # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
+  customMonitors = [
+    {
+      name = "DP-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 165;
+      x = 0;
+      y = 0;
+    }
+    {
+      name = "HDMI-A-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 165;
+      x = 1920;
+      y = 0;
+    }
+    {
+      name = "eDP-1";
+      width = 2256;
+      height = 1504;
+      refreshRate = 60;
+      x = 0;
+      y = 0;
+    }
+  ];
+in {
   programs = {
     swaylock = {
       enable = true;
@@ -51,85 +94,57 @@
       ];
       systemdTarget = "hyprland-session.target";
     };
+    mako = {
+      enable = true;
+      borderRadius = 5;
+      defaultTimeout = 3000;
+      font = "JetBrainsMono Nerd Font 10";
+      backgroundColor = "#3c3c3c";
+      borderColor = "#595959";
+    };
   };
 
-  wayland.windowManager = {
-    hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
 
-    # TODO: Switch to using hyprland.settings instead of the xdg method below
-    hyprland.settings = {
-      monitor = ["DP-1,1920x1080@165,auto,1" "HDMI-A-1,1920x1080@60,auto,1" ",preferred,auto,1"];
+    settings = {
+      plugin = {
+        split-monitor-workspaces = {
+          count = 5;
+        };
+      };
 
-      exec-once = ["waybar" "swww init" "swww img /home/stephen/.config/hypr/background.webp"];
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 2;
+        "col.active_border" = "rgba(00ffffee)";
+        "col.inactive_border" = "rgba(595959aa)";
+        layout = "master";
+      };
+
+      monitor =
+        map (
+          m: let
+            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            position = "${toString m.x}x${toString m.y}";
+          in "${m.name},${resolution},${position},1"
+        )
+        customMonitors;
 
       input = {
         kb_layout = "us";
         numlock_by_default = true;
-
         follow_mouse = 2;
-
         touchpad = {
           natural_scroll = true;
         };
-
+        repeat_rate = 40;
+        repeat_delay = 250;
+        force_no_accel = true;
         sensitivity = 0;
-      };
-
-      general = {
-        gaps_in = 10;
-        gaps_out = 20;
-        border_size = 1;
-        "col.active_border" = "rgba(00ffffee)";
-        "col.inactive_border" = "rgba(595959aa)";
-        layout = "dwindle";
-        cursor_inactive_timeout = 5;
-      };
-
-      decoration = {
-        rounding = 5;
-        blur = {
-          enabled = true;
-          size = 8;
-          passes = 1;
-        };
-        drop_shadow = false;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
-        inactive_opacity = 0.8;
-      };
-
-      animations = {
-        enabled = true;
-
-        bezier = [
-          "smoothOut, 0.36, 0, 0.66, -0.56"
-          "smoothIn, 0.25, 1, 0.5, 1"
-          "overshot, 0.4,0.8,0.2,1.2"
-        ];
-
-        animation = [
-          "windows, 1, 4, overshot, slide"
-          "windowsOut, 1, 4, smoothOut, slide"
-          "border,1,10,default"
-
-          "fade, 1, 10, smoothIn"
-          "fadeDim, 1, 10, smoothIn"
-          "workspaces,1,4,overshot,slidevert"
-        ];
-      };
-
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
-
-      master = {
-        new_is_master = true;
-      };
-
-      gestures = {
-        workspace_swipe = true;
       };
 
       misc = {
@@ -143,18 +158,119 @@
         swallow_regex = "^(kitty)$";
       };
 
+      decoration = {
+        rounding = 5;
+        blur = {
+          enabled = true;
+          size = 8;
+          passes = 1;
+        };
+        drop_shadow = false;
+        shadow_range = 30;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(1a1a1aee)";
+      };
+
+      animations = {
+        enabled = true;
+
+        bezier = "myBezier, 0.25, 0.9, 0.1, 1.02";
+
+        animation = [
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+        ];
+      };
+
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+      };
+
+      master = {
+        new_is_master = true;
+        orientation = "master";
+      };
+
+      gestures = {
+        workspace_swipe = true;
+      };
+
       "$mainMod" = "SUPER";
 
-      bind = ["$mainMod, Return, exec, kitty --title Kitty" "$mainMod, Q, killactive, " "$mainMod_SHIFT, Q, exit, " "$mainMod, E, exec, dolphin" "$mainMod, V, togglefloating, " "$mainMod, P, exec, wofi --show drun" "$mainMod, R, pseudo," "$mainMod, J, togglesplit," "$mainMod, F, fullscreen" "$mainMod, B, exec, firefox" "$mainMod, left, movefocus, l" "$mainMod, right, movefocus, r" "$mainMod, up, movefocus, u" "$mainMod, down, movefocus, d" "$mainMod, h, movefocus, l" "$mainMod, l, movefocus, r" "$mainMod, k, movefocus, u" "$mainMod, j, movefocus, d" "$mainMod, 1, workspace, 1" "$mainMod, 2, workspace, 2" "$mainMod, 3, workspace, 3" "$mainMod, 4, workspace, 4" "$mainMod, 5, workspace, 5" "$mainMod, 6, workspace, 6" "$mainMod, 7, workspace, 7" "$mainMod, 8, workspace, 8" "$mainMod, 9, workspace, 9" "$mainMod, 0, workspace, 10" "$mainMod SHIFT, 1, movetoworkspace, 1" "$mainMod SHIFT, 2, movetoworkspace, 2" "$mainMod SHIFT, 3, movetoworkspace, 3" "$mainMod SHIFT, 4, movetoworkspace, 4" "$mainMod SHIFT, 5, movetoworkspace, 5" "$mainMod SHIFT, 6, movetoworkspace, 6" "$mainMod SHIFT, 7, movetoworkspace, 7" "$mainMod SHIFT, 8, movetoworkspace, 8" "$mainMod SHIFT, 9, movetoworkspace, 9" "$mainMod SHIFT, 0, movetoworkspace, 10" "$mainMod, mouse_down, workspace, e+1" "$mainMod, mouse_up, workspace, e-1"];
-      bindm = ["$mainMod, mouse:272, movewindow" "$mainMod, mouse:273, resizewindow"];
+      bind =
+        [
+          "$mainMod      , return, exec, ${pkgs.kitty}/bin/kitty --title Kitty"
+          "$mainMod      , b, exec, ${pkgs.firefox}/bin/firefox"
+          "$mainMod      , q, killactive,"
+          "$mainMod SHIFT, q, exit,"
+          "$mainMod      , e, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.lf}/bin/lf"
+          "$mainMod      , v, togglefloating,"
+          "$mainMod      , p, exec, ${pkgs.wofi} --show drun"
+          "$mainMod SHIFT, s, exec, ${pkgs.grimblast} --notify copysave area"
+          "$mainMod      , f, fullscreen"
+
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
+
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+        ]
+        ++ map (n: "$mainMod SHIFT, ${toString n}, split-movetoworkspacesilent, ${toString (
+          if n == 0
+          then 10
+          else n
+        )}") [1 2 3 4 5]
+        ++ map (n: "$mainMod, ${toString n}, split-workspace, ${toString (
+          if n == 0
+          then 10
+          else n
+        )}") [1 2 3 4 5];
+
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+      ];
+
+      # league of legends fixes
+      windowrulev2 = [
+        "float,class:^(leagueclientux.exe)$,title:^(League of Legends)$"
+        "tile,class:^(league of legends.exe)$,title:^(League of Legends (TM) Client)$ windowrule = size 1920 1080,^(league of legends.exe)$"
+      ];
+
+      windowrule = [
+        "size 1600 900,^(leagueclientux.exe)$"
+        "center,^(leagueclientux.exe)$"
+        "center,^(league of legends.exe)$"
+        "forceinput,^(league of legends.exe)$"
+      ];
+
+      exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "${pkgs.bash}/bin/bash ${startScript}/bin/start"
+        "waybar"
+      ];
     };
   };
 
-  # TODO: After using hyprland.settings, try and find a good way to autoscale to any monitor, alternatively, use AI to generate a new wallpaper every boot?
-  xdg.configFile."hypr/background.webp".source =
-    if osConfig.networking.hostName == "loki"
-    then ./loki-background.webp
-    else ./thor-background.webp;
-
-  # TODO: Mako, for notifications. Remember to add to exec-once in hyprland conf
+  home.packages = with pkgs; [
+    grim
+    slurp
+    wl-clipboard
+    swww
+    networkmanagerapplet
+    wofi
+    libnotify
+    grimblast
+  ];
 }
