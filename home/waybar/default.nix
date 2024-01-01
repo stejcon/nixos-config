@@ -95,8 +95,7 @@
       };
       format = "󰥔 {:%H:%M}";
       format-alt = "󰥔 {:%A, %B %d, %Y (%R)} ";
-      # tooltip-format = ''
-      #   <span size='9pt' font='JetBrainsMono 13'>{calendar}</span>'';
+      tooltip-format = ''"<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"'';
     };
 
     "custom/battery" = {
