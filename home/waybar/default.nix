@@ -156,9 +156,9 @@
       format-source = "  {volume}%";
       format-source-muted = "  {volume}%";
       on-click = "${pkgs.pavucontrol}/bin/pavucontrol --tab 4";
-      on-click-middle = "${pkgs.pamixer} --default-source --toggle-mute";
-      on-scroll-down = "${pkgs.pamixer} --default-source --decrease 5";
-      on-scroll-up = "${pkgs.pamixer} --default-source --increase 5";
+      on-click-middle = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+      on-scroll-down = "${pkgs.pamixer}/bin/pamixer --default-source --decrease 5";
+      on-scroll-up = "${pkgs.pamixer}/bin/pamixer --default-source --increase 5";
       scroll-step = 5;
     };
 
