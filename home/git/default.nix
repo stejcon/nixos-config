@@ -60,5 +60,4 @@
   home.packages = with pkgs; [
     gitflow
   ];
-
 }
