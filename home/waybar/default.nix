@@ -47,7 +47,7 @@
     height = 14;
     position = "top";
 
-    modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/window"];
+    modules-left = ["custom/power" "hyprland/workspaces" "hyprland/window"];
     modules-center = ["clock"];
     modules-right = [
       "network"
@@ -116,9 +116,11 @@
       interval = 10;
     };
 
-    "custom/logo" = {
+    "custom/power" = {
       exec = "echo ' '";
       format = "{}";
+      tooltip = false;
+      on-click = "${pkgs.wlogout}/bin/wlogout --protocol layer-shell";
     };
 
     "hyprland/window" = {
@@ -343,7 +345,7 @@
         padding-right: 4px;
     }
 
-    #custom-logo {
+    #custom-power {
         margin-left: 6px;
         padding-right: 4px;
         color: @blue_1;
@@ -364,5 +366,9 @@ in {
     });
     style = css;
     settings = {mainBar = mainWaybarConfig;};
+  };
+
+  programs.wlogout = {
+    enable = true;
   };
 }
