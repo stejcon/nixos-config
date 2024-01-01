@@ -36,7 +36,6 @@
       "14" = ["HDMI-A-1"];
       "15" = ["HDMI-A-1"];
     };
-    on-click = "activate";
     all-outputs = false;
   };
 
