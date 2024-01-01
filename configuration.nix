@@ -16,17 +16,30 @@
     };
   };
 
-  # Use the grub EFI boot loader.
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
+  boot = {
+    # BBR is a more improved congestion control method
+    kernelModules = ["tcp_bbr"];
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+
+    # Increase TCP window sizes for high bandwidth WAN connections
+    # Assumes 10 GBit/s over 200ms latency worst case
+    kernel.sysctl."net.core.wmem_max" = 1073741824; # 1 GiB
+    kernel.sysctl."net.core.rmem_max" = 1073741824; # 1 GiB
+    kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
+    kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
+
+    # Use the grub EFI boot loader.
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
     };
   };
 
