@@ -104,8 +104,7 @@
     };
 
     "custom/power" = {
-      exec = "echo ' '";
-      format = "{}";
+      format = "";
       tooltip = false;
       on-click = "${scripts.power}/bin/power";
     };
