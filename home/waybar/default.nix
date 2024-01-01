@@ -108,7 +108,7 @@
       exec = "echo ' '";
       format = "{}";
       tooltip = false;
-      on-click = "${pkgs.wlogout}/bin/wlogout --protocol layer-shell";
+      on-click = "${scripts.power}/bin/power";
     };
 
     "hyprland/window" = {
@@ -345,10 +345,6 @@ in {
     });
     style = css;
     settings = {mainBar = mainWaybarConfig;};
-  };
-
-  programs.wlogout = {
-    enable = true;
   };
 
   home.packages = with pkgs; [
