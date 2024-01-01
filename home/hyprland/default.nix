@@ -270,5 +270,6 @@ in {
     networkmanagerapplet
     wofi
     libnotify
+    lf
   ];
 }
