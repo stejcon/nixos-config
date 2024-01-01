@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config, ...}:
 {
   xdg.configFile."lf/icons".source = ./icons;
 
@@ -6,8 +6,8 @@
     enable = true;
     commands = {
       drag-out = ''%${pkgs.ripdrag}/bin/ripdrag -a -x "$fx"'';
-      editor-open = ''${pkgs.neovim}/bin/nvim "$f"'';
-      edit-dir = ''${pkgs.neovim}/bin/nvim .'';
+      editor-open = ''${config.programs.neovim.package}/bin/nvim "$f"'';
+      edit-dir = ''${config.programs.neovim.package}/bin/nvim .'';
     };
 
     keybindings = {
