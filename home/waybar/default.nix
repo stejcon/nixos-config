@@ -68,6 +68,7 @@
       tooltip-format = " {device_alias}";
       tooltip-format-connected = "{device_enumerate}";
       tooltip-format-enumerate-connected = " {device_alias}";
+      on-click = "${pkgs.blueman}/bin/blueman-manager";
     };
 
     clock = {
@@ -354,5 +355,6 @@ in {
   home.packages = with pkgs; [
     pamixer
     pavucontrol
+    blueman
   ];
 }
