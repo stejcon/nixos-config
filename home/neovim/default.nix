@@ -21,6 +21,7 @@ in {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
       plenary-nvim # Config
