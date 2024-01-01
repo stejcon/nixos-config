@@ -207,7 +207,7 @@ in {
           "$mainMod      , b, exec, ${pkgs.firefox}/bin/firefox"
           "$mainMod      , q, killactive,"
           "$mainMod SHIFT, q, exit,"
-          "$mainMod      , e, exec, ${pkgs.kitty} -e ${pkgs.lf}/bin/lf"
+          "$mainMod      , e, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.lf}/bin/lf"
           "$mainMod      , v, togglefloating,"
           "$mainMod      , p, exec, wofi --show drun"
           "$mainMod      , f, fullscreen"
