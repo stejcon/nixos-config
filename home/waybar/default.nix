@@ -24,7 +24,7 @@
       default = "";
       urgent = "";
     };
-    persistent_workspaces = {
+    persistent-workspaces = {
       "1" = ["DP-1" "eDP-1"];
       "2" = ["DP-1" "eDP-1"];
       "3" = ["DP-1" "eDP-1"];
@@ -36,7 +36,6 @@
       "14" = ["HDMI-A-1"];
       "15" = ["HDMI-A-1"];
     };
-    on-click = "activate";
     all-outputs = false;
   };
 
@@ -47,12 +46,13 @@
     height = 14;
     position = "top";
 
-    modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/window"];
+    modules-left = ["custom/power" "hyprland/workspaces" "hyprland/window"];
     modules-center = ["clock"];
     modules-right = [
       "network"
       "bluetooth"
       "pulseaudio"
+      "pulseaudio#microphone"
       "custom/battery"
       "tray"
     ];
@@ -67,6 +67,7 @@
       tooltip-format = " {device_alias}";
       tooltip-format-connected = "{device_enumerate}";
       tooltip-format-enumerate-connected = " {device_alias}";
+      on-click = "${pkgs.blueman}/bin/blueman-manager";
     };
 
     clock = {
@@ -93,15 +94,7 @@
       };
       format = "󰥔 {:%H:%M}";
       format-alt = "󰥔 {:%A, %B %d, %Y (%R)} ";
-      tooltip-format = ''
-        <span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>'';
-    };
-
-    cpu = {
-      format = "󰍛 {usage}%";
-      format-alt = "{icon0}{icon1}{icon2}{icon3}";
-      format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
-      interval = 10;
+      tooltip-format = ''<tt><small>{calendar}</small></tt>'';
     };
 
     "custom/battery" = {
@@ -110,15 +103,10 @@
       interval = 10;
     };
 
-    "custom/gpu-usage" = {
-      exec = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits";
-      format = "{}";
-      interval = 10;
-    };
-
-    "custom/logo" = {
-      exec = "echo ' '";
-      format = "{}";
+    "custom/power" = {
+      format = " ";
+      tooltip = false;
+      on-click = "${scripts.power}/bin/power";
     };
 
     "hyprland/window" = {
@@ -128,15 +116,6 @@
         "(.*)Steam" = "Steam 󰓓";
       };
       separate-outputs = true;
-    };
-
-    memory = {
-      format = "󰾆 {percentage}%";
-      format-alt = "󰾅 {used}GB";
-      interval = 30;
-      max-length = 10;
-      tooltip = true;
-      tooltip-format = " {used:0.1f}GB/{total:0.1f}GB";
     };
 
     network = {
@@ -150,7 +129,7 @@
     };
 
     pulseaudio = {
-      format = "{icon}  {volume}%";
+      format = "{icon} {volume}%";
       format-icons = {
         car = " ";
         default = ["" "" ""];
@@ -160,11 +139,11 @@
         phone = " ";
         portable = " ";
       };
-      format-muted = "婢 {volume}%";
-      on-click = "pavucontrol -t 3";
-      on-click-middle = "pamixer -t";
-      on-scroll-down = "pamixer -d 5";
-      on-scroll-up = "pamixer -i 5";
+      format-muted = "󰖁 {volume}%";
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol --tab 3";
+      on-click-middle = "${pkgs.pamixer}/bin/pamixer --toggle-mute";
+      on-scroll-down = "${pkgs.pamixer}/bin/pamixer --decrease 5";
+      on-scroll-up = "${pkgs.pamixer}/bin/pamixer --increase 5";
       scroll-step = 5;
       tooltip-format = "{icon} {desc} {volume}%";
     };
@@ -173,10 +152,10 @@
       format = "{format_source}";
       format-source = "  {volume}%";
       format-source-muted = "  {volume}%";
-      on-click = "pavucontrol -t 4";
-      on-click-middle = "pamixer --default-source -t";
-      on-scroll-down = "pamixer --default-source -d 5";
-      on-scroll-up = "pamixer --default-source -i 5";
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol --tab 4";
+      on-click-middle = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+      on-scroll-down = "${pkgs.pamixer}/bin/pamixer --default-source --decrease 5";
+      on-scroll-up = "${pkgs.pamixer}/bin/pamixer --default-source --increase 5";
       scroll-step = 5;
     };
 
@@ -343,7 +322,7 @@
         padding-right: 4px;
     }
 
-    #custom-logo {
+    #custom-power {
         margin-left: 6px;
         padding-right: 4px;
         color: @blue_1;
@@ -365,4 +344,10 @@ in {
     style = css;
     settings = {mainBar = mainWaybarConfig;};
   };
+
+  home.packages = with pkgs; [
+    pamixer
+    pavucontrol
+    blueman
+  ];
 }
