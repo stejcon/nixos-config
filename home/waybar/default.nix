@@ -53,6 +53,7 @@
       "network"
       "bluetooth"
       "pulseaudio"
+      "pulseaudio#microphone"
       "custom/battery"
       "tray"
     ];
@@ -152,7 +153,7 @@
     };
 
     pulseaudio = {
-      format = "{icon}  {volume}%";
+      format = "{icon} {volume}%";
       format-icons = {
         car = " ";
         default = ["" "" ""];
@@ -162,11 +163,11 @@
         phone = " ";
         portable = " ";
       };
-      format-muted = "婢 {volume}%";
-      on-click = "pavucontrol -t 3";
-      on-click-middle = "pamixer -t";
-      on-scroll-down = "pamixer -d 5";
-      on-scroll-up = "pamixer -i 5";
+      format-muted = "󰖁 {volume}%";
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol --tab 3";
+      on-click-middle = "${pkgs.pamixer}/bin/pamixer --toggle-mute";
+      on-scroll-down = "${pkgs.pamixer}/bin/pamixer --decrease 5";
+      on-scroll-up = "${pkgs.pamixer}/bin/pamixer --increase 5";
       scroll-step = 5;
       tooltip-format = "{icon} {desc} {volume}%";
     };
@@ -175,10 +176,10 @@
       format = "{format_source}";
       format-source = "  {volume}%";
       format-source-muted = "  {volume}%";
-      on-click = "pavucontrol -t 4";
-      on-click-middle = "pamixer --default-source -t";
-      on-scroll-down = "pamixer --default-source -d 5";
-      on-scroll-up = "pamixer --default-source -i 5";
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol --tab 4";
+      on-click-middle = "${pkgs.pamixer} --default-source --toggle-mute";
+      on-scroll-down = "${pkgs.pamixer} --default-source --decrease 5";
+      on-scroll-up = "${pkgs.pamixer} --default-source --increase 5";
       scroll-step = 5;
     };
 
@@ -371,4 +372,9 @@ in {
   programs.wlogout = {
     enable = true;
   };
+
+  home.packages = with pkgs; [
+    pamixer
+    pavucontrol
+  ];
 }
