@@ -24,7 +24,7 @@
       default = "";
       urgent = "";
     };
-    persistent_workspaces = {
+    persistent-workspaces = {
       "1" = ["DP-1" "eDP-1"];
       "2" = ["DP-1" "eDP-1"];
       "3" = ["DP-1" "eDP-1"];
@@ -95,8 +95,8 @@
       };
       format = "󰥔 {:%H:%M}";
       format-alt = "󰥔 {:%A, %B %d, %Y (%R)} ";
-      tooltip-format = ''
-        <span size='9pt' font='JetBrainsMono 13'>{calendar}</span>'';
+      # tooltip-format = ''
+      #   <span size='9pt' font='JetBrainsMono 13'>{calendar}</span>'';
     };
 
     "custom/battery" = {
