@@ -209,7 +209,8 @@ in {
           "$mainMod SHIFT, q, exit,"
           "$mainMod      , e, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.lf}/bin/lf"
           "$mainMod      , v, togglefloating,"
-          "$mainMod      , p, exec, wofi --show drun"
+          "$mainMod      , p, exec, ${pkgs.wofi} --show drun"
+          "$mainMod SHIFT, s, exec, ${pkgs.grimblast} --notify copysave area"
           "$mainMod      , f, fullscreen"
 
           "$mainMod, left, movefocus, l"
@@ -270,6 +271,6 @@ in {
     networkmanagerapplet
     wofi
     libnotify
-    lf
+    grimblast
   ];
 }
