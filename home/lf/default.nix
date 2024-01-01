@@ -11,6 +11,12 @@
     };
 
     keybindings = {
+"\\\"" = "";
+      o = "";
+      d = "";
+      e = "";
+      f = "";
+
       "." = "set hidden!";
       D = "delete";
       p = "paste";
