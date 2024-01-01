@@ -98,22 +98,9 @@
         <span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>'';
     };
 
-    cpu = {
-      format = "󰍛 {usage}%";
-      format-alt = "{icon0}{icon1}{icon2}{icon3}";
-      format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
-      interval = 10;
-    };
-
     "custom/battery" = {
       exec = "${scripts.battery}/bin/script";
       format = " 󰁹 {}";
-      interval = 10;
-    };
-
-    "custom/gpu-usage" = {
-      exec = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits";
-      format = "{}";
       interval = 10;
     };
 
@@ -131,15 +118,6 @@
         "(.*)Steam" = "Steam 󰓓";
       };
       separate-outputs = true;
-    };
-
-    memory = {
-      format = "󰾆 {percentage}%";
-      format-alt = "󰾅 {used}GB";
-      interval = 30;
-      max-length = 10;
-      tooltip = true;
-      tooltip-format = " {used:0.1f}GB/{total:0.1f}GB";
     };
 
     network = {
