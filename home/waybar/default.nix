@@ -95,7 +95,7 @@
       };
       format = "󰥔 {:%H:%M}";
       format-alt = "󰥔 {:%A, %B %d, %Y (%R)} ";
-      tooltip-format = ''"<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"'';
+      tooltip-format = ''"<tt><small>{calendar}</small></tt>"'';
     };
 
     "custom/battery" = {
