@@ -4,6 +4,8 @@
   '';
 
   power = pkgs.writeShellScriptBin "power" ''
+    sleep 0.1
+
     entries=" Lock\n⇠ Logout\n⏾ Suspend\n⭮ Reboot\n⏻ Shutdown\n󰜺 Cancel"
 
     selected=$(echo -e $entries|${pkgs.wofi}/bin/wofi --width 250 --height 210 --dmenu --cache-file /dev/null | awk '{print tolower($2)}')
