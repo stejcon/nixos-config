@@ -83,9 +83,6 @@
     };
     spotifyd = {
       enable = true;
-      package = pkgs.spotifyd.override {
-        withMpris = true;
-      };
     };
     pipewire = {
       enable = true;
