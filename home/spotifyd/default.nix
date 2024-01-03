@@ -8,18 +8,17 @@
         };
         settings = {
           global = {
-            username = "pkj258alfons";
             backend = "alsa";
             device = "default";
             mixer = "PCM";
             volume-controller = "alsa";
             device_name = "Speaker";
             device_type = "speaker";
-            bitrate = 96;
-            cache_path = ".cache/spotifyd";
+            bitrate = 320;
+            no_audio_cache = true;
             volume-normalisation = true;
             normalisation-pregain = -10;
-            initial_volume = "50";
+            initial_volume = "100";
           };
         };
       };
