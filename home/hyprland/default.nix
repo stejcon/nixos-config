@@ -98,6 +98,8 @@ in {
       enable = true;
       borderRadius = 5;
       defaultTimeout = 3000;
+      width = 250;
+      height = 100;
       font = "JetBrainsMono Nerd Font 10";
       backgroundColor = "#3c3c3c";
       borderColor = "#595959";
