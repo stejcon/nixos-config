@@ -25,7 +25,11 @@
   test-update = pkgs.writeShellScriptBin "update" ''
 state="$PLAYER_EVENT"
 
-datadir="$HOME/.data/spotify"
+datadir="$HOME/.local/state/spotifyd-metadata"
+if [[ ! -d "$datadir" ]]; then
+    mkdir -p "$datadir"
+fi
+
 data_log="$datadir/event-log"
 data_status="$datadir/status"
 data_metadata="$datadir/metadata"
