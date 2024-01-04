@@ -1,6 +1,6 @@
 {pkgs}: {
   battery = pkgs.writeShellScriptBin "script" ''
-    ${pkgs.acpi}/bin/acpi | awk '{print $4}' | sed s/%,//
+    ${pkgs.acpi}/bin/acpi | awk '{print $4}' | sed s/,//
   '';
 
   power = pkgs.writeShellScriptBin "power" ''
