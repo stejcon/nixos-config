@@ -59,6 +59,25 @@ case "$state" in
     echo "player status: play" >> $data_log
     echo "playing" > $data_status
     has_metadata || update_metadata
+
+    # Extract relevant information
+    art_url=$(cat "$metadata" | grep -m 1 'mpris:artUrl' | awk '{print $3}')
+    title=$(cat "$metadata" | grep -m 1 'xesam:title' | awk '{for (i=3; i<=NF; i++) printf "%s ", $i; printf "\n"}')
+    artist=$(cat "$metadata" | grep -m 1 'xesam:artist' | awk '{for (i=3; i<=NF; i++) printf "%s ", $i;}')
+
+    # Download the image using curl
+    tmp_image=$(mktemp /tmp/temp_image_XXXXXX.jpg)
+    curl -o "$tmp_image" "$art_url"
+
+    # Convert the downloaded image to PNG
+    tmp_png=$(mktemp /tmp/temp_image_XXXXXX.png)
+    convert "$tmp_image" "$tmp_png"
+
+    # Display the notification with notify-send
+    notify-send -i "$tmp_png" "Now Playing" "$title\nby $artist"
+
+    # Clean up temporary files
+    rm "$tmp_image" "$tmp_png"
   ;;
   "pause")
     echo "player status: pause" >> $data_log
