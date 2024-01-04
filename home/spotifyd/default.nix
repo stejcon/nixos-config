@@ -64,7 +64,7 @@ case "$state" in
   "play")
     echo "player status: play" >> $data_log
     echo "playing" > $data_status
-    ${spotify-update}/bin/spotify-update && (has_metadata || update_metadata)
+    ${spotify-update}/bin/update && (has_metadata || update_metadata)
   ;;
   "pause")
     echo "player status: pause" >> $data_log
