@@ -11,6 +11,7 @@
       mouse_mode = false;
       copy_command = "wl-copy";
       theme = "catppuccin-mocha";
+      simplified_ui = true;
     };
   };
 }
