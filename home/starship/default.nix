@@ -15,6 +15,10 @@
         symbol = "❄️";
         format = "[$symbol $name]($style)";
       };
+
+      git_metrics = {
+        disabled = false;
+      };
     };
   };
 }
