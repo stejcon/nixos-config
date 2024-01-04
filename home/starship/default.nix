@@ -8,11 +8,12 @@
       format = "$directory$git_branch$git_metrics$fill$nix_shell";
 
       fill = {
-        symbol = "";
+        symbol = " ";
       };
 
       nix_shell = {
-        format = "[$symbol$state( \($name\))]($style)";
+        symbol = "❄️";
+        format = "[$symbol(\($name\))]($style)";
       };
     };
   };
