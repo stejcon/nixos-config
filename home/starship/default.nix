@@ -5,7 +5,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
-      format = "$directory$git_branch$git_metrics$fill$nix_shell$character";
+      format = "$directory$git_branch$git_metrics$fill$nix_shell\n$character";
 
       fill = {
         symbol = " ";
