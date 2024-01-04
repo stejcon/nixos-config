@@ -65,9 +65,9 @@ case "$state" in
     title=$(cat "$metadata" | grep -m 1 'xesam:title' | awk '{for (i=3; i<=NF; i++) printf "%s ", $i; printf "\n"}')
     artist=$(cat "$metadata" | grep -m 1 'xesam:artist' | awk '{for (i=3; i<=NF; i++) printf "%s ", $i;}')
 
-    echo $art_url
-    echo $title
-    echo $artist
+    notify-send "$art_url"
+    notify-send "$title"
+    notify-send "$artist"
 
     # Download the image using curl
     tmp_image=$(mktemp /tmp/temp_image_XXXXXX.jpg)
