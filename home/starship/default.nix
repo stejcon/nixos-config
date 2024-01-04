@@ -6,6 +6,10 @@
     enableZshIntegration = true;
     settings = {
       format = "$directory$git_branch$git_metrics$fill$direnv";
+
+      fill = {
+        symbol = "";
+      };
     };
   };
 }
