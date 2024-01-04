@@ -1,7 +1,13 @@
 {pkgs, ...}: let 
   spotify-update = pkgs.writeShellScriptBin "update" ''
-    # Get metadata using playerctl
-    metadata=$(${pkgs.playerctl}/bin/playerctl metadata)
+datadir="$HOME/.local/state/spotifyd-metadata"
+if [[ ! -d "$datadir" ]]; then
+    mkdir -p "$datadir"
+fi
+
+data_log="$datadir/event-log"
+data_status="$datadir/status"
+metadata="$datadir/metadata"
 
     # Extract relevant information
     art_url=$(echo "$metadata" | grep -m 1 'mpris:artUrl' | awk '{print $3}')
@@ -58,30 +64,7 @@ case "$state" in
   "play")
     echo "player status: play" >> $data_log
     echo "playing" > $data_status
-    has_metadata || update_metadata
-
-    # Extract relevant information
-    art_url=$(cat "$metadata" | grep -m 1 'mpris:artUrl' | awk '{print $3}')
-    title=$(cat "$metadata" | grep -m 1 'xesam:title' | awk '{for (i=3; i<=NF; i++) printf "%s ", $i; printf "\n"}')
-    artist=$(cat "$metadata" | grep -m 1 'xesam:artist' | awk '{for (i=3; i<=NF; i++) printf "%s ", $i;}')
-
-    notify-send "$art_url"
-    notify-send "$title"
-    notify-send "$artist"
-
-    # Download the image using curl
-    tmp_image=$(mktemp /tmp/temp_image_XXXXXX.jpg)
-    curl -o "$tmp_image" "$art_url"
-
-    # Convert the downloaded image to PNG
-    tmp_png=$(mktemp /tmp/temp_image_XXXXXX.png)
-    convert "$tmp_image" "$tmp_png"
-
-    # Display the notification with notify-send
-    notify-send -i "$tmp_png" "Now Playing" "$title\nby $artist"
-
-    # Clean up temporary files
-    rm "$tmp_image" "$tmp_png"
+    ${spotify-update}/bin/spotify-update && (has_metadata || update_metadata)
   ;;
   "pause")
     echo "player status: pause" >> $data_log
