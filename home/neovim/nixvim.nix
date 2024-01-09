@@ -64,5 +64,19 @@
         options.silent = true;
       }
     ];
+
+    plugins = {
+      oil = {
+        enable = true;
+        type = true;
+        icon = true;
+        size = true;
+        permissions = true;
+        mtime = true;
+        viewOptions = {
+          showHidden = true;
+        };
+      };
+    };
   };
 }
