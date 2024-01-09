@@ -16,7 +16,7 @@ with lib; let
     };
   };
 in {
-  imports = [./nixvim.nix]
+  imports = [./nixvim.nix];
   # programs.neovim = {
   #   enable = true;
   #   viAlias = true;
