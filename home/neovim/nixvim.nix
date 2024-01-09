@@ -10,6 +10,8 @@
         mapleader = " ";
         maplocalleader = " ";
       };
+      
+      plugins.lsp.enable = false;
 
       options = {
         backup = false;
