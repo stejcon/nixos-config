@@ -68,8 +68,8 @@
     plugins = {
       oil = {
         enable = true;
-        type = true;
-        icon = true;
+        columns.type = true;
+        columns.icon = true;
         size = true;
         permissions = true;
         mtime = true;
