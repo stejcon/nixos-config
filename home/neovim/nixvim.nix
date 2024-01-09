@@ -116,25 +116,25 @@
         key = "<Space>h";
         mode = ["n"];
         action = "<C-w>h";
-        description = "Window: Focus left";
+        options.desc = "Window: Focus left";
       }
       {
         key = "<Space>j";
         mode = ["n"];
         action = "<C-w>j";
-        description = "Window: Focus down";
+        options.desc = "Window: Focus down";
       }
       {
         key = "<Space>k";
         mode = ["n"];
         action = "<C-w>k";
-        description = "Window: Focus up";
+        options.desc = "Window: Focus up";
       }
       {
         key = "<Space>l";
         mode = ["n"];
         action = "<C-w>l";
-        description = "Window: Focus right";
+        options.desc = "Window: Focus right";
       }
     ];
 
