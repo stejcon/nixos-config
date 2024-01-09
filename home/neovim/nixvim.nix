@@ -40,6 +40,7 @@
       splitright = true;
       swapfile = true;
       termguicolors = true;
+      timeout = true;
       timeoutlen = 300;
       undofile = true;
       updatetime = 300;
@@ -60,20 +61,10 @@
       spelllang = "en_uk";
     };
 
-    keymaps = [
-      {
-        key = "<Space>";
-        action = "<NOP>";
-        options.silent = true;
-      }
-      {
-        key = "<Esc>";
-        action = ":noh<CR><ESC>";
-        options.silent = true;
-      }
-    ];
-
     plugins = {
+      which-key = {
+        enable = true;
+      };
       oil = {
         enable = true;
         columns = {
@@ -87,6 +78,26 @@
         };
       };
     };
+
+    keymaps = [
+      {
+        key = "<Space>";
+        action = "<NOP>";
+        options.silent = true;
+      }
+      {
+        key = "<Esc>";
+        action = ":noh<CR><ESC>";
+        options.silent = true;
+      }
+      {
+        key = "-";
+        action = ''require("oil").open_float()''
+        lua = true;
+        mode = ["n"];
+        options.desc = "Oil: Open Floation Window";
+      }
+    ];
 
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
