@@ -69,7 +69,7 @@
       oil = {
         enable = true;
         columns.type = true;
-        columns.icon = true;
+        columns.icon.enable = true;
         size = true;
         permissions = true;
         mtime = true;
