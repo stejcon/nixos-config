@@ -97,6 +97,10 @@
       tooltip-format = ''<tt><small>{calendar}</small></tt>'';
     };
 
+    # TODO: Only do this on laptops, not on everything
+    # Doesn't show up on desktops but still runs, doesn't matter but annoys me
+    # Also add different icons depending on level, can I use my script with waybar
+    # module so I can notify-send on critical battery?
     "custom/battery" = {
       exec = "${scripts.battery}/bin/script";
       format = " 󰁹 {}";
