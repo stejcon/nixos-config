@@ -73,7 +73,6 @@
           size.enable = true;
           mtime.enable = true;
           permissions.enable = true;
-          type.enable = true;
         };
         viewOptions = {
           showHidden = true;
