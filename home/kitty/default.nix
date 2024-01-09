@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font.name = "JetBrainsMono Nerd Font Mono";
-    font.size = 12;
+    font.size = 11;
     theme = "Catppuccin-Mocha";
     settings = {
       active_tab_font_style = "bold";
