@@ -97,6 +97,30 @@
         options.desc = "Oil: Open Floation Window";
         options.silent = true;
       }
+      {
+        key = "<C-h>";
+        mode = ["n"];
+        action = "<C-w>h";
+        description = "Window: Focus left";
+      }
+      {
+        key = "<C-j>";
+        mode = ["n"];
+        action = "<C-w>j";
+        description = "Window: Focus down";
+      }
+      {
+        key = "<C-k>";
+        mode = ["n"];
+        action = "<C-w>k";
+        description = "Window: Focus up";
+      }
+      {
+        key = "<C-l>";
+        mode = ["n"];
+        action = "<C-w>l";
+        description = "Window: Focus right";
+      }
     ];
 
     extraPlugins = with pkgs.vimPlugins; [
