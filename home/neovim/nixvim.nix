@@ -9,6 +9,9 @@
     enable = true;
     clipboard.providers.wl-copy.enable = true;
 
+    # TODO remove when neovim 0.10 is out as this should be the default behavior
+    filetype.extension.typ = "typst";
+
     colorschemes = {
       catppuccin = {
         enable = true;
@@ -79,10 +82,23 @@
       };
       lsp = {
         enable = true;
+        keymaps = {
+          lspBuf = 
+            {
+              K = "hover";
+              gD = "references";
+              gd = "definition";
+              gi = "implementation";
+              gt = "type_definition";
+              "<leader>f" = "format";
+            };
+        };
         servers = {
           clangd.enable = true;
           rust-analyzer = {
             enable = true;
+            installRustc = false;
+            installCargo = false;
           };
           nil_ls = {
             enable = true;
