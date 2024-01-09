@@ -20,7 +20,8 @@
 
       git_metrics = {
         disabled = false;
-      } // builtins.fromTOML (builtins.readFile ./mocha.toml);
-    };
+      };
+    } // builtins.fromTOML (builtins.readFile ./mocha.toml);
+
   };
 }
