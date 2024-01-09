@@ -7,6 +7,8 @@
     settings = {
       format = "$directory$git_branch$git_metrics$fill$nix_shell\n$character";
 
+      palette = "catppuccin_mocha";
+
       fill = {
         symbol = " ";
       };
@@ -18,7 +20,7 @@
 
       git_metrics = {
         disabled = false;
-      };
+      } // builtins.fromTOML (builtins.readFile ./mocha.toml);
     };
   };
 }
