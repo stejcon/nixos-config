@@ -1,6 +1,6 @@
 {pkgs}: {
   battery = pkgs.writeShellScriptBin "script" ''
-    cat /sys/class/power_supply/BAT0/capacity
+    ${pkgs.acpi}/bin/acpi | awk '{print $4}' | sed s/,//
   '';
 
   power = pkgs.writeShellScriptBin "power" ''
