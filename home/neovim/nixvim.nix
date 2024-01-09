@@ -9,6 +9,14 @@
     enable = true;
     clipboard.providers.wl-copy.enable = true;
 
+    colorschemes = {
+      catppuccin = {
+        enable = true;
+        flavour = "mocha";
+        showBufferEnd = true;
+      };
+    };
+
     globals = {
       mapleader = " ";
       maplocalleader = " ";
