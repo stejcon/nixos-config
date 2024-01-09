@@ -98,25 +98,25 @@
         options.silent = true;
       }
       {
-        key = "<C-h>";
+        key = "<Space>h";
         mode = ["n"];
         action = "<C-w>h";
         description = "Window: Focus left";
       }
       {
-        key = "<C-j>";
+        key = "<Space>j";
         mode = ["n"];
         action = "<C-w>j";
         description = "Window: Focus down";
       }
       {
-        key = "<C-k>";
+        key = "<Space>k";
         mode = ["n"];
         action = "<C-w>k";
         description = "Window: Focus up";
       }
       {
-        key = "<C-l>";
+        key = "<Space>l";
         mode = ["n"];
         action = "<C-w>l";
         description = "Window: Focus right";
