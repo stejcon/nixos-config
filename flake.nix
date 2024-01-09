@@ -16,6 +16,11 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {...} @ inputs: let
