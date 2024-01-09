@@ -69,11 +69,11 @@
       oil = {
         enable = true;
         columns = {
-          type.enable = true;
           icon.enable = true;
-          size = true;
-          permissions = true;
-          mtime = true;
+          size.enable = true;
+          mtime.enable = true;
+          permissions.enable = true;
+          type.enable = true;
         };
         viewOptions = {
           showHidden = true;
