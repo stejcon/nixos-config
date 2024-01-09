@@ -92,8 +92,7 @@
       }
       {
         key = "-";
-        action = ''require("oil").open_float()'';
-        lua = true;
+        action = '':lua require("oil").open_float()'';
         mode = ["n"];
         options.desc = "Oil: Open Floation Window";
       }
