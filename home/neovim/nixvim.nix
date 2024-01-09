@@ -77,6 +77,21 @@
           showHidden = true;
         };
       };
+      lsp = {
+        enable = true;
+        servers = {
+          clangd.enable = true;
+          rust-analyzer = {
+            enable = true;
+          };
+          nil_ls = {
+            enable = true;
+            settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
+          };
+          pyright.enable = true;
+          typst-lsp.enable = true;
+        };
+      };
     };
 
     keymaps = [
