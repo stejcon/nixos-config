@@ -114,7 +114,7 @@
         sources = [
           {name = "nvim_lsp";}
           {name = "path";}
-          {name = "buffer"; options.get_bufnrs.__raw = "vim.api.nvim_list_bufs";}
+          {name = "buffer";}
           {name = "luasnip";}
         ];
         mapping = {
