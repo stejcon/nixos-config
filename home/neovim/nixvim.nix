@@ -6,7 +6,7 @@
   imports = [inputs.nixvim.homeManagerModules.nixvim];
 
   programs.nixvim = {
-        enable = true;
+    enable = true;
     clipboard.providers.wl-copy.enable = true;
 
     # TODO remove when neovim 0.10 is out as this should be the default behavior
@@ -207,9 +207,10 @@
           };
           nil_ls = {
             enable = true;
-            settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
-            extraOptions.settings.nil.nix.flake.autoArchive = true;
-            extraOptions.settings.nil.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
+            extraOptions.settings.nil = {
+              nix.flake.autoArchive = true;
+              formatting.command = ["${pkgs.alejandra}/bin/alejandra -q"];
+            };
           };
           pyright.enable = true;
           typst-lsp.enable = true;
