@@ -88,8 +88,14 @@
             gD = "references";
             gd = "definition";
             gi = "implementation";
-            gt = "type_definition";
-            "<leader>fm" = { action = "format"; desc = "LSP: Format"; };
+            gt = {
+              action = "type_definition";
+              desc = "LSP: Type Definition";
+            };
+            "<leader>fm" = {
+              action = "format";
+              desc = "LSP: Format";
+            };
           };
         };
         servers = {
@@ -102,6 +108,7 @@
           nil_ls = {
             enable = true;
             settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
+            extraSettings = {autoArchive = true;};
           };
           pyright.enable = true;
           typst-lsp.enable = true;
