@@ -139,6 +139,7 @@
           };
         };
       };
+
       lsp = {
         enable = true;
         keymaps = {
