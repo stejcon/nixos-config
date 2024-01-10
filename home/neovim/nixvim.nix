@@ -80,24 +80,46 @@
           showHidden = true;
         };
       };
-
       fidget = {
         enable = true;
       };
-
       luasnip = {
         enable = true;
       };
-
       treesitter = {
         enable = true;
         folding = true;
         indent = true;
         incrementalSelection.enable = true;
       };
-
-      treesitter-context.enable = true;
-
+      treesitter-context = {
+        enable = true;
+      };
+      gitsigns = {
+        enable = true;
+      };
+      notify = {
+        enable = true;
+      };
+      comment-nvim = {
+        enable = true;
+        opleader = {line = "<C-b>";};
+        toggler = {line = "<C-b>";};
+      };
+      typst-vim = {
+        enable = true;
+        cmd = "${pkgs.typst}/bin/typst";
+        concealMath = true;
+        pdfViewer = "${pkgs.zathura}/bin/zathura";
+      };
+      image = {
+        enable = true;
+        backend = "kitty";
+      };
+      molten = {
+        enable = true;
+        imageProvider = "image.nvim";
+      };
       telescope = {
         enable = true;
         keymaps = {
@@ -209,7 +231,7 @@
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;
-              formatting.command = ["${pkgs.alejandra}/bin/alejandra" "-q"];
+              formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             };
           };
           pyright.enable = true;
