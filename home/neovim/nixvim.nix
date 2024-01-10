@@ -289,4 +289,9 @@
       nvim-web-devicons
     ];
   };
+
+  home.packages = with pkgs; [
+    python311Packages.jupyter-client
+    python311Packages.nbformat
+  ];
 }
