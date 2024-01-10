@@ -112,14 +112,6 @@
         concealMath = true;
         pdfViewer = "${pkgs.zathura}/bin/zathura";
       };
-      # image = {
-      #   enable = true;
-      #   backend = "kitty";
-      # };
-      molten = {
-        enable = true;
-        imageProvider = "none";
-      };
       telescope = {
         enable = true;
         keymaps = {
@@ -163,7 +155,6 @@
           "<CR>" = "cmp.mapping.confirm({ select = true })";
         };
       };
-
       lsp = {
         enable = true;
         keymaps = {
@@ -239,7 +230,6 @@
         };
       };
     };
-
     keymaps = [
       {
         key = "<Space>";
@@ -284,14 +274,8 @@
         options.desc = "Window: Focus right";
       }
     ];
-
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
     ];
   };
-
-  home.packages = with pkgs; [
-    python311Packages.jupyter-client
-    python311Packages.nbformat
-  ];
 }
