@@ -101,9 +101,9 @@
       telescope = {
         enable = true;
         keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fg" = "live_grep";
-          "<leader>fb" = "buffers";
+          "<leader>ff" = { action = "find_files"; desc = "Telescope: Find Files"; };
+          "<leader>fg" = { action = "live_grep"; desc = "Telescope: Live Grep"; };
+          "<leader>fb" = { action = "buffers"; desc = "Telescope: Buffers"; };
         };
       };
 
@@ -117,26 +117,20 @@
           {name = "buffer";}
           {name = "luasnip";}
         ];
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
+mapping = {
+          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<C-Space>" = "cmp.mapping.complete()";
+          "<C-e>" = "cmp.mapping.close()";
           "<Tab>" = {
-            action = ''
-              function(fallback)
-                if cmp.visible() then
-                  cmp.select_next_item()
-                elseif luasnip.expandable() then
-                  luasnip.expand()
-                elseif luasnip.expand_or_jumpable() then
-                  luasnip.expand_or_jump()
-                elseif check_backspace() then
-                  fallback()
-                else
-                  fallback()
-                end
-              end
-            '';
             modes = ["i" "s"];
+            action = "cmp.mapping.select_next_item()";
           };
+          "<S-Tab>" = {
+            modes = ["i" "s"];
+            action = "cmp.mapping.select_prev_item()";
+          };
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
         };
       };
 
@@ -205,7 +199,7 @@
           };
           nil_ls = {
             enable = true;
-            settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra -q"];
+            settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             extraOptions.settings.nil.nix.flake.autoArchive = true;
           };
           pyright.enable = true;
