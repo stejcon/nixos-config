@@ -112,13 +112,13 @@
         concealMath = true;
         pdfViewer = "${pkgs.zathura}/bin/zathura";
       };
-      image = {
-        enable = true;
-        backend = "kitty";
-      };
+      # image = {
+      #   enable = true;
+      #   backend = "kitty";
+      # };
       molten = {
         enable = true;
-        imageProvider = "image.nvim";
+        imageProvider = "none";
       };
       telescope = {
         enable = true;
