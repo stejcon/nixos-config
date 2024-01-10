@@ -83,14 +83,52 @@
       lsp = {
         enable = true;
         keymaps = {
+          diagnostic = {
+            gl = {
+              action = "open_float";
+              desc = "Diagnostic: Open Float";
+            };
+            "[d" = {
+              action = "goto_prev";
+              desc = "Diagnostic: Go To Previous";
+            };
+            "]d" = {
+              action = "goto_next";
+              desc = "Diagnostic: Go To Next";
+            };
+          };
           lspBuf = {
-            K = "hover";
-            gD = "references";
-            gd = "definition";
-            gi = "implementation";
+            K = {
+              action = "hover";
+              desc = "LSP: Hover";
+            };
+            gD = {
+              action = "references";
+              desc = "LSP: Go to References";
+            };
+            gd = {
+              action = "definition";
+              desc = "LSP: Go to Definition";
+            };
+            gi = {
+              action = "implementation";
+              desc = "LSP: Go to Implementation";
+            };
             gt = {
               action = "type_definition";
               desc = "LSP: Type Definition";
+            };
+            gs = {
+              action = "signature_help";
+              desc = "LSP: Signature Help";
+            };
+            "<F2>" = {
+              action = "rename";
+              desc = "LSP: Rename Variable";
+            };
+            "<F4>" = {
+              action = "code_action";
+              desc = "LSP: Code Action";
             };
             "<leader>fm" = {
               action = "format";
@@ -108,7 +146,6 @@
           nil_ls = {
             enable = true;
             settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
-            extraSettings.nix.flake.autoArchive = true;
             extraOptions.settings.nil.nix.flake.autoArchive = true;
           };
           pyright.enable = true;
