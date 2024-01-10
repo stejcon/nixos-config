@@ -109,6 +109,7 @@
             enable = true;
             settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             extraSettings.nix.flake.autoArchive = true;
+            extraOptions.settings.nil.nix.flake.autoArchive = true;
           };
           pyright.enable = true;
           typst-lsp.enable = true;
@@ -124,6 +125,7 @@
       }
       {
         key = "<Esc>";
+        mode = ["n"];
         action = ":noh<CR><ESC>";
         options.silent = true;
       }
