@@ -85,6 +85,10 @@
         enable = true;
       };
 
+      luasnip = {
+        enable = true;
+      };
+
       lsp = {
         enable = true;
         keymaps = {
