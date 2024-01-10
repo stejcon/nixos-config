@@ -80,6 +80,11 @@
           showHidden = true;
         };
       };
+
+      fidget = {
+        enable = true;
+      };
+
       lsp = {
         enable = true;
         keymaps = {
