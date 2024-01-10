@@ -209,7 +209,7 @@
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;
-              formatting.command = ["${pkgs.alejandra}/bin/alejandra -q"];
+              formatting.command = ["${pkgs.alejandra}/bin/alejandra" "-q"];
             };
           };
           pyright.enable = true;
