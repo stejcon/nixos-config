@@ -6,7 +6,7 @@
   imports = [inputs.nixvim.homeManagerModules.nixvim];
 
   programs.nixvim = {
-    enable = true;
+        enable = true;
     clipboard.providers.wl-copy.enable = true;
 
     # TODO remove when neovim 0.10 is out as this should be the default behavior
@@ -101,12 +101,20 @@
       telescope = {
         enable = true;
         keymaps = {
-          "<leader>ff" = { action = "find_files"; desc = "Telescope: Find Files"; };
-          "<leader>fg" = { action = "live_grep"; desc = "Telescope: Live Grep"; };
-          "<leader>fb" = { action = "buffers"; desc = "Telescope: Buffers"; };
+          "<leader>ff" = {
+            action = "find_files";
+            desc = "Telescope: Find Files";
+          };
+          "<leader>fg" = {
+            action = "live_grep";
+            desc = "Telescope: Live Grep";
+          };
+          "<leader>fb" = {
+            action = "buffers";
+            desc = "Telescope: Buffers";
+          };
         };
       };
-
       nvim-cmp = {
         enable = true;
         autoEnableSources = true;
@@ -117,7 +125,7 @@
           {name = "buffer";}
           {name = "luasnip";}
         ];
-mapping = {
+        mapping = {
           "<C-d>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-Space>" = "cmp.mapping.complete()";
@@ -201,6 +209,7 @@ mapping = {
             enable = true;
             settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             extraOptions.settings.nil.nix.flake.autoArchive = true;
+            extraOptions.settings.nil.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
           };
           pyright.enable = true;
           typst-lsp.enable = true;
