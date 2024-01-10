@@ -108,7 +108,7 @@
           nil_ls = {
             enable = true;
             settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
-            extraOptions.settings = {autoArchive = true;};
+            extraOptions.settings.nix.flake.autoArchive = true;
           };
           pyright.enable = true;
           typst-lsp.enable = true;
