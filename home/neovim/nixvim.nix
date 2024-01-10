@@ -89,6 +89,56 @@
         enable = true;
       };
 
+      treesitter = {
+        enable = true;
+        folding = true;
+        indent = true;
+        incrementalSelection.enable = true;
+      };
+
+      treesitter-context.enable = true;
+
+      telescope = {
+        enable = true;
+        keymaps = {
+          "<leader>ff" = "find_files";
+          "<leader>fg" = "live_grep";
+          "<leader>fb" = "buffers";
+        };
+      };
+
+      nvim-cmp = {
+        enable = true;
+        autoEnableSources = true;
+        snippet.expand = "luasnip";
+        sources = [
+          {name = "nvim_lsp";}
+          {name = "path";}
+          {name = "buffer"; options.get_bufnrs.__raw = "vim.api.nvim_list_bufs";}
+          {name = "luasnip";}
+        ];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<Tab>" = {
+            action = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif luasnip.expandable() then
+                  luasnip.expand()
+                elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif check_backspace() then
+                  fallback()
+                else
+                  fallback()
+                end
+              end
+            '';
+            modes = ["i" "s"];
+          };
+        };
+      };
       lsp = {
         enable = true;
         keymaps = {
@@ -154,7 +204,7 @@
           };
           nil_ls = {
             enable = true;
-            settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
+            settings.formatting.command = ["${pkgs.alejandra}/bin/alejandra -q"];
             extraOptions.settings.nil.nix.flake.autoArchive = true;
           };
           pyright.enable = true;
