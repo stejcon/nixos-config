@@ -1,21 +1,45 @@
 {
+  inputs,
   pkgs,
-  nixpkgs,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
-  # Use the grub EFI boot loader.
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users.stephen = {...}: {
+      imports = [
+        ./home
+      ];
     };
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
+  };
+
+  boot = {
+    # BBR is a more improved congestion control method
+    kernelModules = ["tcp_bbr"];
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+
+    # Increase TCP window sizes for high bandwidth WAN connections
+    # Assumes 10 GBit/s over 200ms latency worst case
+    kernel.sysctl."net.core.wmem_max" = 1073741824; # 1 GiB
+    kernel.sysctl."net.core.rmem_max" = 1073741824; # 1 GiB
+    kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
+    kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
+
+    # Use the grub EFI boot loader.
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
     };
   };
 
@@ -42,7 +66,20 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
+      desktopManager.plasma5.enable = true;
+    };
+
+    # TODO: Should use "--sessions" argument in tuigreet
+    # Figure out how to correctly find the .desktop file for every enabled window manager/desktop
+    # May require everything to be in modules first
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+          user = "greeter";
+        };
+      };
     };
     pipewire = {
       enable = true;
@@ -64,6 +101,18 @@
     blueman.enable = true;
   };
 
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
+
   users.users.stephen = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
@@ -83,17 +132,14 @@
     ncdu
     fzf
     glow
-    wl-clipboard
-    wofi
-    swww
-    networkmanagerapplet
     zathura
     pulsemixer
     virt-manager
     gamemode
     mangohud
-    grim
-    slurp
+    libreoffice
+    python311
+    python311Packages.pygments
   ];
 
   programs = {
@@ -126,6 +172,9 @@
     sudo.wheelNeedsPassword = false;
     doas.wheelNeedsPassword = false;
     polkit.enable = true;
+    pam = {
+      services.swaylock = {};
+    };
   };
 
   system.stateVersion = "22.11"; # Did you read the comment?
@@ -133,6 +182,6 @@
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }

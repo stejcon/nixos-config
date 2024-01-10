@@ -50,7 +50,6 @@
 
   # Tell Xorg to use the nvidia driver (also valid for Wayland)
   services.xserver.videoDrivers = ["nvidia"];
-  programs.hyprland.enableNvidiaPatches = true;
 
   hardware.nvidia = {
     # Modesetting is needed for most Wayland compositors
