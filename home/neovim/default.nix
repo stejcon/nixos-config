@@ -47,7 +47,8 @@
       timeoutlen = 300;
       undofile = true;
       updatetime = 300;
-      writebackup = false;
+      writebackup = true;
+      backupcopy = "yes";
       cursorline = true;
       relativenumber = true;
       numberwidth = 2;
