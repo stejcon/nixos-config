@@ -47,7 +47,7 @@
       timeoutlen = 300;
       undofile = true;
       updatetime = 300;
-      writebackup = true;
+      writebackup = false;
       backupcopy = "yes";
       cursorline = true;
       relativenumber = true;
@@ -101,6 +101,10 @@
       };
       notify = {
         enable = true;
+      };
+      magma-nvim = {
+        enable = true;
+        imageProvider = "kitty";
       };
       comment-nvim = {
         enable = true;
@@ -247,7 +251,7 @@
         key = "-";
         action = '':lua require("oil").open_float()<CR>'';
         mode = ["n"];
-        options.desc = "Oil: Open Floation Window";
+        options.desc = "Oil: Open Floating Window";
         options.silent = true;
       }
       {
