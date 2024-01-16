@@ -65,6 +65,14 @@
       spelllang = "en_uk";
     };
 
+    autoCmd = [
+      {
+        event = ["BufEnter" "BufWinEnter"];
+        pattern = ["*.typ"];
+        command = "TypstWatch";
+      }
+    ];
+
     plugins = {
       which-key = {
         enable = true;
