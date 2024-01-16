@@ -8,10 +8,8 @@
   programs.nixvim = {
     enable = true;
     clipboard.providers.wl-copy.enable = true;
-
     # TODO remove when neovim 0.10 is out as this should be the default behavior
     filetype.extension.typ = "typst";
-
     colorschemes = {
       catppuccin = {
         enable = true;
@@ -19,12 +17,10 @@
         showBufferEnd = true;
       };
     };
-
     globals = {
       mapleader = " ";
       maplocalleader = " ";
     };
-
     options = {
       backup = false;
       clipboard = "unnamedplus";
@@ -64,15 +60,6 @@
       foldenable = true;
       spelllang = "en_uk";
     };
-
-    autoCmd = [
-      {
-        event = ["BufRead"];
-        pattern = ["*.typ"];
-        command = "TypstWatch";
-      }
-    ];
-
     plugins = {
       which-key = {
         enable = true;
@@ -290,6 +277,13 @@
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
       no-neck-pain-nvim
+    ];
+    autoCmd = [
+      {
+        event = ["BufRead"];
+        pattern = ["*.typ"];
+        command = "TypstWatch";
+      }
     ];
   };
 }
