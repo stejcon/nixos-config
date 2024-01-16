@@ -282,4 +282,8 @@
       }
     ];
   };
+
+  home.packages = with pkgs; [
+    ripgrep # Needed for Telescope live_grep
+  ];
 }
