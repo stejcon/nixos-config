@@ -67,7 +67,7 @@
 
     autoCmd = [
       {
-        event = ["BufEnter" "BufWinEnter"];
+        event = ["BufRead"];
         pattern = ["*.typ"];
         command = "TypstWatch";
       }
