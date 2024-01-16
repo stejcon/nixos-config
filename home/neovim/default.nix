@@ -280,8 +280,8 @@
     ];
     autoCmd = [
       {
-        event = ["BufRead"];
-        pattern = ["*.typ"];
+        event = ["FileType"];
+        pattern = ["typst"];
         command = "TypstWatch";
       }
     ];
