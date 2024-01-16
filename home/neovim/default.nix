@@ -282,7 +282,7 @@
       {
         event = ["FileType"];
         pattern = ["typst"];
-        command = "TypstWatch";
+        command = "silent! TypstWatch";
       }
     ];
   };
