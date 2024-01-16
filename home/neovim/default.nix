@@ -97,10 +97,6 @@
       notify = {
         enable = true;
       };
-      magma-nvim = {
-        enable = true;
-        imageProvider = "kitty";
-      };
       comment-nvim = {
         enable = true;
         opleader = {line = "<C-b>";};
