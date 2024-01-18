@@ -107,10 +107,6 @@
         cmd = "${pkgs.typst}/bin/typst";
         concealMath = true;
         pdfViewer = "${pkgs.zathura}/bin/zathura";
-        keymaps = {
-          silent = true;
-          watch = "<leader>w";
-        };
       };
       telescope = {
         enable = true;
@@ -272,6 +268,12 @@
         mode = ["n"];
         action = "<C-w>l";
         options.desc = "Window: Focus right";
+      }
+      {
+        key = "<leader>w";
+        mode = ["n"];
+        action = "silent! TypstWatch";
+        options.desc = "Typst Watch";
       }
     ];
     extraPlugins = with pkgs.vimPlugins; [
