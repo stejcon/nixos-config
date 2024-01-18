@@ -272,7 +272,7 @@
       {
         key = "<leader>w";
         mode = ["n"];
-        action = "silent! TypstWatch";
+        action = ":silent! TypstWatch<CR>";
         options.desc = "Typst Watch";
       }
     ];
