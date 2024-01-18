@@ -107,6 +107,10 @@
         cmd = "${pkgs.typst}/bin/typst";
         concealMath = true;
         pdfViewer = "${pkgs.zathura}/bin/zathura";
+        keymaps = {
+          silent = true;
+          watch = "<leader>w";
+        };
       };
       telescope = {
         enable = true;
