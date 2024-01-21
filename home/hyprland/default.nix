@@ -229,7 +229,7 @@ in {
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
         ]
-        ++ map (n: "$mainMod SHIFT, ${toString n}, split-movetoworkspacesilent, ${toString (
+        ++ map (n: "$mainMod SHIFT, ${toString n}, split-movetoworkspace, ${toString (
           if n == 0
           then 10
           else n
