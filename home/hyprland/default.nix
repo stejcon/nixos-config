@@ -223,8 +223,8 @@ in {
           "$mainMod, k, movefocus, u"
           "$mainMod, j, movefocus, d"
 
-          "$mainMod SHIFT, j, split-changemonitorsilent, next"
-          "$mainMod SHIFT, k, split-changemonitorsilent, prev"
+          "$mainMod SHIFT, j, split-changemonitor, next"
+          "$mainMod SHIFT, k, split-changemonitor, prev"
 
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
