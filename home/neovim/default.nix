@@ -8,10 +8,8 @@
   programs.nixvim = {
     enable = true;
     clipboard.providers.wl-copy.enable = true;
-
     # TODO remove when neovim 0.10 is out as this should be the default behavior
     filetype.extension.typ = "typst";
-
     colorschemes = {
       catppuccin = {
         enable = true;
@@ -19,12 +17,10 @@
         showBufferEnd = true;
       };
     };
-
     globals = {
       mapleader = " ";
       maplocalleader = " ";
     };
-
     options = {
       backup = false;
       clipboard = "unnamedplus";
@@ -48,6 +44,7 @@
       undofile = true;
       updatetime = 300;
       writebackup = false;
+      backupcopy = "yes";
       cursorline = true;
       relativenumber = true;
       numberwidth = 2;
@@ -63,7 +60,6 @@
       foldenable = true;
       spelllang = "en_uk";
     };
-
     plugins = {
       which-key = {
         enable = true;
@@ -246,7 +242,7 @@
         key = "-";
         action = '':lua require("oil").open_float()<CR>'';
         mode = ["n"];
-        options.desc = "Oil: Open Floation Window";
+        options.desc = "Oil: Open Floating Window";
         options.silent = true;
       }
       {
@@ -278,5 +274,16 @@
       nvim-web-devicons
       no-neck-pain-nvim
     ];
+    autoCmd = [
+      {
+        event = ["FileType"];
+        pattern = ["typst"];
+        command = "silent! TypstWatch";
+      }
+    ];
   };
+
+  home.packages = with pkgs; [
+    ripgrep # Needed for Telescope live_grep
+  ];
 }
