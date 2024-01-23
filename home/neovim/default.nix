@@ -269,6 +269,12 @@
         action = "<C-w>l";
         options.desc = "Window: Focus right";
       }
+      {
+        key = "<leader>w";
+        mode = ["n"];
+        action = ":silent! TypstWatch<CR>";
+        options.desc = "Typst Watch";
+      }
     ];
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
