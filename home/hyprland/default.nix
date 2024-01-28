@@ -16,7 +16,7 @@
     sleep 1
 
     # TODO: Need to be able to change wallpaper
-    ${pkgs.swww}/bin/swww img ${./thor-background.webp} &
+    ${pkgs.swww}/bin/swww img ${./a-wooded-landscape-the-path-on-the-dyke.jpg} &
   '';
 
   # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
