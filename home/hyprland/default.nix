@@ -5,6 +5,7 @@
   ...
 }: let
   startScript = pkgs.writeShellScriptBin "start" ''
+    ${pkgs.swww}/bin/swww init &
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
     hyprctl setcursor Bibata-Modern-Ice 16 &
 
@@ -15,7 +16,7 @@
     sleep 1
 
     # TODO: Need to be able to change wallpaper
-    ${pkgs.swaybg}/bin/swaybg -i ${./a-wooded-landscape-the-path-on-the-dyke.jpg} -m fill &
+    ${pkgs.swww}/bin/swww img ${./a-wooded-landscape-the-path-on-the-dyke.jpg} &
   '';
 
   # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
