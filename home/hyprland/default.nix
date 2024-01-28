@@ -15,7 +15,7 @@
     sleep 1
 
     # TODO: Need to be able to change wallpaper
-    ${pkgs.swaybg}/bin/swaybg -i ${./thor-background.webp} &
+    ${pkgs.swaybg}/bin/swaybg -i ${./a-wooded-landscape-the-path-on-the-dyke.jpg} -m fill &
   '';
 
   # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
