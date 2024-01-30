@@ -129,6 +129,7 @@
         enable = true;
         autoEnableSources = true;
         snippet.expand = "luasnip";
+        preselect = "None";
         sources = [
           {name = "nvim_lsp";}
           {name = "path";}
