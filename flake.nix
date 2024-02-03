@@ -25,9 +25,20 @@
 
   outputs = {...} @ inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
-  in
+  in rec
     with my-lib; {
       formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
+
+      packages = {
+	"aarch64".default = homeConfigurations.stephen-pi.activationPackage;
+      };
+
+      apps = {
+	"aarch64".default = {
+          type = "app";
+	  program = "${packages.aarch64.default}/activate";
+	};
+      };
 
       nixosConfigurations = {
         loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;
