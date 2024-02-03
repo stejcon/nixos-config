@@ -36,7 +36,7 @@
       apps = {
         "aarch64-linux".default = {
           type = "app";
-          program = "${packages.aarch64.default}/activate";
+          program = "${packages.aarch64-linux.default}/activate";
         };
       };
 
