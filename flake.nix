@@ -30,11 +30,11 @@
       formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
 
       packages = {
-        "aarch64".default = homeConfigurations.stephen-pi.activationPackage;
+        "aarch64-linux".default = homeConfigurations.stephen-pi.activationPackage;
       };
 
       apps = {
-        "aarch64".default = {
+        "aarch64-linux".default = {
           type = "app";
           program = "${packages.aarch64.default}/activate";
         };
@@ -47,7 +47,7 @@
 
       homeConfigurations = {
         stephen = mkHome "x86_64-linux" ./home/default.nix;
-        stephen-pi = mkHome "aarch64" ./home/headless.nix;
+        stephen-pi = mkHome "aarch64-linux" ./home/headless.nix;
       };
     };
 }
