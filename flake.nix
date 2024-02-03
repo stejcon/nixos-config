@@ -25,8 +25,8 @@
 
   outputs = {...} @ inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
-  in rec {
-    with my-lib; {
+  in
+    with my-lib;  rec{
       formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
 
       packages = {
@@ -49,6 +49,5 @@
         stephen = mkHome "x86_64-linux" ./home/default.nix;
 	stephen-pi = mkHome "aarch64" ./home/headless.nix;
       };
-    };
     };
 }
