@@ -36,6 +36,7 @@
 
       homeConfigurations = {
         stephen = mkHome "x86_64-linux" ./home/default.nix;
+	stephen-pi = mkHome "aarch64" ./home/headless.nix;
       };
     };
 }
