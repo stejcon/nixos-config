@@ -8,7 +8,7 @@
     ./zoxide
     ./starship
     ./direnv
-  ]
+  ];
 
   home = {
     username = "stephen";

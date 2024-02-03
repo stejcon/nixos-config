@@ -26,18 +26,18 @@
   outputs = {...} @ inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
   in
-    with my-lib;  rec{
+    with my-lib; rec {
       formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
 
       packages = {
-	"aarch64".default = homeConfigurations.stephen-pi.activationPackage;
+        "aarch64".default = homeConfigurations.stephen-pi.activationPackage;
       };
 
       apps = {
-	"aarch64".default = {
+        "aarch64".default = {
           type = "app";
-	  program = "${packages.aarch64.default}/activate";
-	};
+          program = "${packages.aarch64.default}/activate";
+        };
       };
 
       nixosConfigurations = {
@@ -47,7 +47,7 @@
 
       homeConfigurations = {
         stephen = mkHome "x86_64-linux" ./home/default.nix;
-	stephen-pi = mkHome "aarch64" ./home/headless.nix;
+        stephen-pi = mkHome "aarch64" ./home/headless.nix;
       };
     };
 }
