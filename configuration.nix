@@ -117,7 +117,6 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
-    texlive.combined.scheme-full
     btop
     ncdu
     fzf
@@ -128,8 +127,7 @@
     gamemode
     mangohud
     libreoffice
-    python311
-    python311Packages.pygments
+    google-chrome
   ];
 
   programs = {

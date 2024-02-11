@@ -97,6 +97,26 @@
       notify = {
         enable = true;
       };
+      neorg = {
+        enable = true;
+        lazyLoading = true;
+        modules = {
+          "core.defaults" = {
+            __empty = null;
+          };
+          "core.concealer" = {
+            __empty = null;
+          };
+          "core.completion" = {
+            config = {
+              engine = "nvim-cmp";
+            };
+          };
+          "core.summary" = {
+            __empty = null;
+          };
+        };
+      };
       comment-nvim = {
         enable = true;
         opleader = {line = "<C-b>";};
@@ -129,6 +149,7 @@
         enable = true;
         autoEnableSources = true;
         snippet.expand = "luasnip";
+        preselect = "None";
         sources = [
           {name = "nvim_lsp";}
           {name = "path";}
@@ -148,7 +169,7 @@
             modes = ["i" "s"];
             action = "cmp.mapping.select_prev_item()";
           };
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<CR>" = "cmp.mapping.confirm({ select = false })";
         };
       };
       lsp = {
