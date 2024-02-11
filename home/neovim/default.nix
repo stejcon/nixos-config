@@ -97,6 +97,26 @@
       notify = {
         enable = true;
       };
+      neorg = {
+        enable = true;
+        lazyLoading = true;
+        modules = {
+          "core.defaults" = {
+            __empty = null;
+          };
+          "core.concealer" = {
+            __empty = null;
+          };
+          "core.completion" = {
+            config = {
+              engine = "nvim-cmp";
+            };
+          };
+          "core.summary" = {
+            __empty = null;
+          };
+        };
+      };
       comment-nvim = {
         enable = true;
         opleader = {line = "<C-b>";};
