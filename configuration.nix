@@ -132,6 +132,7 @@
     gamemode
     mangohud
     libreoffice
+    google-chrome
   ];
 
   programs = {
