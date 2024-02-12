@@ -9,5 +9,8 @@
       inactive_tab_font_style = "italic";
       confirm_os_window_close = 0;
     };
+    extraConfig = "
+        enable_audio_bell no
+    ";
   };
 }
