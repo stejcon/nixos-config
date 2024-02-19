@@ -285,7 +285,7 @@
             settings.plugins = {
               black = {
                 enabled = true;
-                line_length = 88;
+                line_length = 92;
               };
               flake8.enabled = true;
             };
