@@ -283,6 +283,7 @@
           pylsp = {
             enable = true;
             settings.plugins = {
+              autopep8.enabled = false;
               black = {
                 enabled = true;
                 line_length = 92;
