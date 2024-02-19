@@ -292,7 +292,7 @@
               };
               flake8 = {
                 enabled = true;
-                ignore = ["E501"];
+                maxLineLength = 88;
               };
             };
           };
