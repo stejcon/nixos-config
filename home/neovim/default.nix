@@ -283,7 +283,10 @@
           pylsp = {
             enable = true;
             settings.plugins = {
-              black.enabled = true;
+              black = {
+                enabled = true;
+                line_length = 88;
+              };
               flake8.enabled = true;
             };
           };
