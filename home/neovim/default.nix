@@ -172,6 +172,51 @@
           "<CR>" = "cmp.mapping.confirm({ select = false })";
         };
       };
+      none-ls = {
+        enable = true;
+        enableLspFormat = true;
+        sources = {
+          code_actions = {
+            ltrs = {
+              enable = true;
+            };
+            shellcheck = {
+              enable = true;
+            };
+            statix = {
+              enable = true;
+            };
+          };
+          diagnostics = {
+            ltrs = {
+              enable = true;
+            };
+            shellcheck = {
+              enable = true;
+            };
+            statix = {
+              enable = true;
+            };
+            flake8 = {
+              enable = true;
+            };
+          };
+          formatting = {
+            rustfmt = {
+              enable = true;
+            };
+            alejandra = {
+              enable = true;
+            };
+            black = {
+              enable = true;
+            };
+          };
+        };
+      };
+      lsp-format = {
+        enable = true;
+      };
       lsp = {
         enable = true;
         keymaps = {
@@ -239,7 +284,6 @@
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;
-              formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             };
           };
           pyright.enable = true;
