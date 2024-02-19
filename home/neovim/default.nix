@@ -197,18 +197,12 @@
             statix = {
               enable = true;
             };
-            flake8 = {
-              enable = true;
-            };
           };
           formatting = {
             rustfmt = {
               enable = true;
             };
             alejandra = {
-              enable = true;
-            };
-            black = {
               enable = true;
             };
           };
@@ -286,7 +280,7 @@
               nix.flake.autoArchive = true;
             };
           };
-          pyright.enable = true;
+          ruff-lsp.enable = true;
           typst-lsp.enable = true;
         };
       };
