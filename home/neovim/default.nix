@@ -284,6 +284,9 @@
             enable = true;
             settings.plugins = {
               autopep8.enabled = false;
+              pycodestyle.enabled = false;
+              pyflakes.enabled = false;
+              yapf.enabled = false;
               black = {
                 enabled = true;
                 line_length = 92;
