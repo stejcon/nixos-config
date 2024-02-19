@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = {...} @ inputs: let
+  outputs = inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
   in
     with my-lib; {
