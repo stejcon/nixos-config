@@ -283,8 +283,8 @@
           pylsp = {
             enable = true;
             settings.plugins = {
-              black.enable = true;
-              flake8.enable = true;
+              black.enabled = true;
+              flake8.enabled = true;
             };
           };
           typst-lsp.enable = true;
