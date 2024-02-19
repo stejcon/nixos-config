@@ -289,7 +289,6 @@
               yapf.enabled = false;
               black = {
                 enabled = true;
-                line_length = 79;
               };
               flake8 = {
                 enabled = true;
