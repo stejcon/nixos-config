@@ -159,11 +159,6 @@
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
-      package = pkgs.steam.override {
-        extraEnv = {
-          STEAM_EXTRA_COMPAT_TOOLS_PATHS = lib.makeBinPath [pkgs.proton-ge-custom];
-        };
-      };
     };
   };
 
