@@ -280,7 +280,10 @@
               nix.flake.autoArchive = true;
             };
           };
-          ruff-lsp.enable = true;
+          ruff-lsp = {
+            rootDir = ''require('lspconfig').util.find_git_ancestor'';
+            enable = true;
+          };
           typst-lsp.enable = true;
         };
       };
