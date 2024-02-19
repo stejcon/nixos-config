@@ -217,6 +217,9 @@
       lsp-format = {
         enable = true;
       };
+      refactoring = {
+        enable = true;
+      };
       lsp = {
         enable = true;
         keymaps = {
