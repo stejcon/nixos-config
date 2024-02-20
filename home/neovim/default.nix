@@ -97,6 +97,26 @@
       notify = {
         enable = true;
       };
+      neorg = {
+        enable = true;
+        lazyLoading = true;
+        modules = {
+          "core.defaults" = {
+            __empty = null;
+          };
+          "core.concealer" = {
+            __empty = null;
+          };
+          "core.completion" = {
+            config = {
+              engine = "nvim-cmp";
+            };
+          };
+          "core.summary" = {
+            __empty = null;
+          };
+        };
+      };
       comment-nvim = {
         enable = true;
         opleader = {line = "<C-b>";};
@@ -151,6 +171,45 @@
           };
           "<CR>" = "cmp.mapping.confirm({ select = false })";
         };
+      };
+      none-ls = {
+        enable = true;
+        enableLspFormat = true;
+        sources = {
+          code_actions = {
+            ltrs = {
+              enable = true;
+            };
+            shellcheck = {
+              enable = true;
+            };
+            statix = {
+              enable = true;
+            };
+          };
+          diagnostics = {
+            ltrs = {
+              enable = true;
+            };
+            shellcheck = {
+              enable = true;
+            };
+            statix = {
+              enable = true;
+            };
+          };
+          formatting = {
+            rustfmt = {
+              enable = true;
+            };
+            alejandra = {
+              enable = true;
+            };
+          };
+        };
+      };
+      lsp-format = {
+        enable = true;
       };
       lsp = {
         enable = true;
@@ -219,10 +278,24 @@
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;
-              formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             };
           };
-          pyright.enable = true;
+          pylsp = {
+            enable = true;
+            settings.plugins = {
+              autopep8.enabled = false;
+              pycodestyle.enabled = false;
+              pyflakes.enabled = false;
+              yapf.enabled = false;
+              black = {
+                enabled = true;
+              };
+              flake8 = {
+                enabled = true;
+                maxLineLength = 88;
+              };
+            };
+          };
           typst-lsp.enable = true;
         };
       };
