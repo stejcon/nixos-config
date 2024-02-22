@@ -124,9 +124,11 @@
       };
       typst-vim = {
         enable = true;
-        cmd = "${pkgs.typst}/bin/typst";
-        concealMath = true;
-        pdfViewer = "${pkgs.zathura}/bin/zathura";
+        settings = {
+          cmd = "${pkgs.typst}/bin/typst";
+          concealMath = true;
+          pdfViewer = "${pkgs.zathura}/bin/zathura";
+        };
       };
       telescope = {
         enable = true;
