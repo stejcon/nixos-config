@@ -12,8 +12,9 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    # FIXME: Temporarily changed url until upstream is fixed
     split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
+      url = "github:zjeffer/split-monitor-workspaces/fix/zjeffer/hyprlang-breaking-changes";
       inputs.hyprland.follows = "hyprland";
     };
 
