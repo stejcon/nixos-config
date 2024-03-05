@@ -13,4 +13,6 @@
       simplified_ui = true;
     };
   };
+
+  programs.zsh.initExtraFirst = ''export ZELLIJ_AUTO_ATTACH="true"'';
 }
