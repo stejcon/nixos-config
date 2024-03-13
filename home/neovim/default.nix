@@ -192,9 +192,6 @@
             };
           };
           formatting = {
-            rustfmt = {
-              enable = true;
-            };
             alejandra = {
               enable = true;
             };
