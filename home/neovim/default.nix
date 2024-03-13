@@ -164,14 +164,8 @@
             "<C-f>" = "cmp.mapping.scroll_docs(4)";
             "<C-Space>" = "cmp.mapping.complete()";
             "<C-e>" = "cmp.mapping.close()";
-            "<Tab>" = {
-              modes = ["i" "s"];
-              action = "cmp.mapping.select_next_item()";
-            };
-            "<S-Tab>" = {
-              modes = ["i" "s"];
-              action = "cmp.mapping.select_prev_item()";
-            };
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
             "<CR>" = "cmp.mapping.confirm({ select = false })";
           };
         };
