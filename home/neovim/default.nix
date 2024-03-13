@@ -147,31 +147,33 @@
           };
         };
       };
-      nvim-cmp = {
+      cmp = {
         enable = true;
         autoEnableSources = true;
-        snippet.expand = "luasnip";
-        preselect = "None";
-        sources = [
-          {name = "nvim_lsp";}
-          {name = "path";}
-          {name = "buffer";}
-          {name = "luasnip";}
-        ];
-        mapping = {
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
-          "<Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_next_item()";
+        settings = {
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          preselect = "cmp.PreselectMode.None";
+          sources = [
+            {name = "nvim_lsp";}
+            {name = "path";}
+            {name = "buffer";}
+            {name = "luasnip";}
+          ];
+          mapping = {
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.close()";
+            "<Tab>" = {
+              modes = ["i" "s"];
+              action = "cmp.mapping.select_next_item()";
+            };
+            "<S-Tab>" = {
+              modes = ["i" "s"];
+              action = "cmp.mapping.select_prev_item()";
+            };
+            "<CR>" = "cmp.mapping.confirm({ select = false })";
           };
-          "<S-Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_prev_item()";
-          };
-          "<CR>" = "cmp.mapping.confirm({ select = false })";
         };
       };
       none-ls = {
