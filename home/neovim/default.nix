@@ -187,9 +187,6 @@
             ltrs = {
               enable = true;
             };
-            shellcheck = {
-              enable = true;
-            };
             statix = {
               enable = true;
             };
@@ -293,6 +290,7 @@
             };
           };
           typst-lsp.enable = true;
+          bashls.enable = true;
         };
       };
     };
