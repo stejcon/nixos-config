@@ -179,9 +179,6 @@
         enableLspFormat = true;
         sources = {
           code_actions = {
-            shellcheck = {
-              enable = true;
-            };
             statix = {
               enable = true;
             };
