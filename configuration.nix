@@ -106,6 +106,9 @@
     printing.enable = true;
     flatpak.enable = true;
     blueman.enable = true;
+
+    # TODO: fprintd is currently broken and enabled by default, disable for the minute
+    fprintd.enable = false;
   };
 
   systemd.services.greetd.serviceConfig = {
