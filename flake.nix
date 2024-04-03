@@ -12,11 +12,6 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    # FIXME: Temporarily changed url until upstream is fixed
-    split-monitor-workspaces = {
-      url = "github:zjeffer/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     nixvim = {
       url = "github:nix-community/nixvim";
