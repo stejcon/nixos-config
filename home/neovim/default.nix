@@ -66,14 +66,16 @@
       };
       oil = {
         enable = true;
-        columns = {
-          icon.enable = true;
-          size.enable = true;
-          mtime.enable = true;
-          permissions.enable = true;
-        };
-        viewOptions = {
-          showHidden = true;
+        settings = {
+          columns = [
+            "icon"
+            "permissions"
+            "size"
+            "mtime"
+          ];
+          view_options = {
+            show_hidden = true;
+          };
         };
       };
       fidget = {
