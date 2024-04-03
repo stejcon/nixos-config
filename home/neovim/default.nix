@@ -21,7 +21,7 @@
       mapleader = " ";
       maplocalleader = " ";
     };
-    options = {
+    opts = {
       backup = false;
       clipboard = "unnamedplus";
       completeopt = ["menu" "menuone" "noselect"];
