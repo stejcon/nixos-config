@@ -107,7 +107,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    plugins = [inputs.hyprsplit.packages.${pkgs.system}.default];
+    plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
 
     settings = {
       plugin = {
