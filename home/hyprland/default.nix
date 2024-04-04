@@ -227,6 +227,9 @@ in {
           "$mainMod, k, movefocus, u"
           "$mainMod, j, movefocus, d"
 
+          "$mainMod, SHIFT, j, split:swapactiveworkspaces, current +1"
+          "$mainMod, SHIFT, k, split:swapactiveworkspaces, current -1"
+
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
         ]
