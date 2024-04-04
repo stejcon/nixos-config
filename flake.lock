@@ -302,11 +302,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712250379,
-        "narHash": "sha256-Z26T9oPe1rNP7q+gOli2t3/6Gb4/LwifYoMyxOam/PQ=",
+        "lastModified": 1712251810,
+        "narHash": "sha256-Jby15IrAYcwPeM2Z/mPzY1p80DPQFsy5TMFyrf3st3M=",
         "owner": "stejcon",
         "repo": "hyprsplit",
-        "rev": "9863f4382decea55998daa814cc4ea6d27b17d46",
+        "rev": "3fb9c5a4ed47b632a3b3ee5a05890371e1a0df78",
         "type": "github"
       },
       "original": {
