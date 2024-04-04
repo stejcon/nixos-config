@@ -13,6 +13,11 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    hyprsplit = {
+      url = "github:stejcon/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
