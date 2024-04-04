@@ -147,6 +147,10 @@ in {
         sensitivity = 0;
       };
 
+      debug = {
+        disable_logs = false;
+      };
+
       misc = {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
