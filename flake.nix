@@ -14,7 +14,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     hyprsplit = {
-      url = "github:stejcon/hyprsplit";
+      url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
 

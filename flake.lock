@@ -302,15 +302,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1712326821,
-        "narHash": "sha256-fIhQNZRIXat+E4D4gNQxiMg8W28FbZ5Ws6DEEX0ar9o=",
-        "owner": "stejcon",
+        "lastModified": 1712427024,
+        "narHash": "sha256-/V61qPIKKU+SCZr/oZPINCPEVgfdJ6i3aorxSQssGTM=",
+        "owner": "shezdy",
         "repo": "hyprsplit",
-        "rev": "80040b5e76fc8510255cd786dd82f0990da17613",
+        "rev": "3b71eaf6025860f28a4a0dd270d679c8d23f3dff",
         "type": "github"
       },
       "original": {
-        "owner": "stejcon",
+        "owner": "shezdy",
         "repo": "hyprsplit",
         "type": "github"
       }
