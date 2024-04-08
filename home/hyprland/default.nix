@@ -107,8 +107,15 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
 
     settings = {
+      plugin = {
+        hyprsplit = {
+          num_workspaces = 5;
+        };
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -216,15 +223,18 @@ in {
           "$mainMod, k, movefocus, u"
           "$mainMod, j, movefocus, d"
 
+          "$mainMod SHIFT, j, split:swapactiveworkspaces, current +1"
+          "$mainMod SHIFT, k, split:swapactiveworkspaces, current -1"
+
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
         ]
-        ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
+        ++ map (n: "$mainMod SHIFT, ${toString n}, split:movetoworkspace, ${toString (
           if n == 0
           then 10
           else n
         )}") [1 2 3 4 5]
-        ++ map (n: "$mainMod, ${toString n}, workspace, ${toString (
+        ++ map (n: "$mainMod, ${toString n}, split:workspace, ${toString (
           if n == 0
           then 10
           else n
