@@ -143,15 +143,21 @@
         keymaps = {
           "<leader>ff" = {
             action = "find_files";
-            desc = "Telescope: Find Files";
+            options = {
+              desc = "Telescope: Find Files";
+            };
           };
           "<leader>fg" = {
             action = "live_grep";
-            desc = "Telescope: Live Grep";
+            options = {
+              desc = "Telescope: Live Grep";
+            };
           };
           "<leader>fb" = {
             action = "buffers";
-            desc = "Telescope: Buffers";
+            options = {
+              desc = "Telescope: Buffers";
+            };
           };
         };
       };
