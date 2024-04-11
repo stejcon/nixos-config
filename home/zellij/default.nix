@@ -11,6 +11,9 @@
       copy_command = "wl-copy";
       theme = "catppuccin-mocha";
       simplified_ui = true;
+      default_mode = "locked";
     };
   };
+
+  programs.zsh.initExtraFirst = ''export ZELLIJ_AUTO_ATTACH="true"'';
 }
