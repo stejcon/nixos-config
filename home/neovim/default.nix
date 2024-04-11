@@ -21,7 +21,7 @@
       mapleader = " ";
       maplocalleader = " ";
     };
-    options = {
+    opts = {
       backup = false;
       clipboard = "unnamedplus";
       completeopt = ["menu" "menuone" "noselect"];
@@ -66,14 +66,16 @@
       };
       oil = {
         enable = true;
-        columns = {
-          icon.enable = true;
-          size.enable = true;
-          mtime.enable = true;
-          permissions.enable = true;
-        };
-        viewOptions = {
-          showHidden = true;
+        settings = {
+          columns = [
+            "icon"
+            "permissions"
+            "size"
+            "mtime"
+          ];
+          view_options = {
+            show_hidden = true;
+          };
         };
       };
       fidget = {
@@ -117,60 +119,97 @@
           };
         };
       };
-      comment-nvim = {
+      comment = {
         enable = true;
-        opleader = {line = "<C-b>";};
-        toggler = {line = "<C-b>";};
+        settings = {
+          opleader = {
+            line = "<C-b>";
+          };
+          toggler = {
+            line = "<C-b>";
+          };
+        };
       };
       typst-vim = {
         enable = true;
-        cmd = "${pkgs.typst}/bin/typst";
-        concealMath = true;
-        pdfViewer = "${pkgs.zathura}/bin/zathura";
+        settings = {
+          cmd = "${pkgs.typst}/bin/typst";
+          concealMath = true;
+          pdfViewer = "${pkgs.zathura}/bin/zathura";
+        };
       };
       telescope = {
         enable = true;
         keymaps = {
           "<leader>ff" = {
             action = "find_files";
-            desc = "Telescope: Find Files";
+            options = {
+              desc = "Telescope: Find Files";
+            };
           };
           "<leader>fg" = {
             action = "live_grep";
-            desc = "Telescope: Live Grep";
+            options = {
+              desc = "Telescope: Live Grep";
+            };
           };
           "<leader>fb" = {
             action = "buffers";
-            desc = "Telescope: Buffers";
+            options = {
+              desc = "Telescope: Buffers";
+            };
           };
         };
       };
-      nvim-cmp = {
+      cmp = {
         enable = true;
         autoEnableSources = true;
-        snippet.expand = "luasnip";
-        preselect = "None";
-        sources = [
-          {name = "nvim_lsp";}
-          {name = "path";}
-          {name = "buffer";}
-          {name = "luasnip";}
-        ];
-        mapping = {
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
-          "<Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_next_item()";
+        settings = {
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          preselect = "cmp.PreselectMode.None";
+          sources = [
+            {name = "nvim_lsp";}
+            {name = "path";}
+            {name = "buffer";}
+            {name = "luasnip";}
+          ];
+          mapping = {
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.close()";
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+            "<CR>" = "cmp.mapping.confirm({ select = false })";
           };
-          "<S-Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_prev_item()";
-          };
-          "<CR>" = "cmp.mapping.confirm({ select = false })";
         };
+      };
+      none-ls = {
+        enable = true;
+        enableLspFormat = true;
+        sources = {
+          code_actions = {
+            statix = {
+              enable = true;
+            };
+          };
+          diagnostics = {
+            ltrs = {
+              enable = true;
+            };
+            statix = {
+              enable = true;
+            };
+          };
+          formatting = {
+            alejandra = {
+              enable = true;
+            };
+          };
+        };
+      };
+      lsp-format = {
+        enable = true;
       };
       lsp = {
         enable = true;
@@ -239,11 +278,26 @@
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;
-              formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
             };
           };
-          pyright.enable = true;
+          pylsp = {
+            enable = true;
+            settings.plugins = {
+              autopep8.enabled = false;
+              pycodestyle.enabled = false;
+              pyflakes.enabled = false;
+              yapf.enabled = false;
+              black = {
+                enabled = true;
+              };
+              flake8 = {
+                enabled = true;
+                maxLineLength = 88;
+              };
+            };
+          };
           typst-lsp.enable = true;
+          bashls.enable = true;
         };
       };
     };

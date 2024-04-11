@@ -47,14 +47,6 @@
 
   programs.lazygit = {
     enable = true;
-    settings = {
-      git = {
-        paging = {
-          colorArg = "never";
-          pager = "${pkgs.delta}/bin/delta --dark --paging=never";
-        };
-      };
-    };
   };
 
   home.packages = with pkgs; [

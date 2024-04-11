@@ -12,8 +12,9 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
+
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
 
@@ -23,11 +24,22 @@
     };
   };
 
-  outputs = {...} @ inputs: let
+  outputs = inputs: let
     my-lib = import ./my-lib/default.nix {inherit inputs;};
   in
-    with my-lib; {
+    with my-lib; rec {
       formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
+
+      packages = {
+        "aarch64-linux".default = homeConfigurations.stephen-pi.activationPackage;
+      };
+
+      apps = {
+        "aarch64-linux".default = {
+          type = "app";
+          program = "${packages.aarch64-linux.default}/activate";
+        };
+      };
 
       nixosConfigurations = {
         loki = mkMachine "x86_64-linux" ./hosts/loki/default.nix;
@@ -36,6 +48,7 @@
 
       homeConfigurations = {
         stephen = mkHome "x86_64-linux" ./home/default.nix;
+        stephen-pi = mkHome "aarch64-linux" ./home/headless.nix;
       };
     };
 }

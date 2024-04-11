@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -16,17 +17,24 @@
     };
   };
 
+  hardware.steam-hardware.enable = true;
+
   boot = {
     # BBR is a more improved congestion control method
     kernelModules = ["tcp_bbr"];
-    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
 
-    # Increase TCP window sizes for high bandwidth WAN connections
-    # Assumes 10 GBit/s over 200ms latency worst case
-    kernel.sysctl."net.core.wmem_max" = 1073741824; # 1 GiB
-    kernel.sysctl."net.core.rmem_max" = 1073741824; # 1 GiB
-    kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
-    kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
+    kernel = {
+      sysctl = {
+        "net.ipv4.tcp_congestion_control" = "bbr";
+
+        # Increase TCP window sizes for high bandwidth WAN connections
+        # Assumes 10 GBit/s over 200ms latency worst case
+        "net.core.wmem_max" = 1073741824; # 1 GiB
+        "net.core.rmem_max" = 1073741824; # 1 GiB
+        "net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
+        "net.ipv4.tcp_wmem" = "4096 87380 1073741824";
+      };
+    }; # 1 GiB max
 
     # Use the grub EFI boot loader.
     loader = {
@@ -128,6 +136,9 @@
     mangohud
     libreoffice
     google-chrome
+    steamPackages.steamcmd
+    steam-tui
+    protonup-qt
   ];
 
   programs = {
@@ -140,6 +151,10 @@
       lfs.enable = true;
     };
     zsh = {enable = true;};
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+    };
   };
 
   xdg.portal = {
