@@ -21,7 +21,7 @@
       mapleader = " ";
       maplocalleader = " ";
     };
-    options = {
+    opts = {
       backup = false;
       clipboard = "unnamedplus";
       completeopt = ["menu" "menuone" "noselect"];
@@ -66,14 +66,16 @@
       };
       oil = {
         enable = true;
-        columns = {
-          icon.enable = true;
-          size.enable = true;
-          mtime.enable = true;
-          permissions.enable = true;
-        };
-        viewOptions = {
-          showHidden = true;
+        settings = {
+          columns = [
+            "icon"
+            "permissions"
+            "size"
+            "mtime"
+          ];
+          view_options = {
+            show_hidden = true;
+          };
         };
       };
       fidget = {
@@ -117,10 +119,16 @@
           };
         };
       };
-      comment-nvim = {
+      comment = {
         enable = true;
-        opleader = {line = "<C-b>";};
-        toggler = {line = "<C-b>";};
+        settings = {
+          opleader = {
+            line = "<C-b>";
+          };
+          toggler = {
+            line = "<C-b>";
+          };
+        };
       };
       typst-vim = {
         enable = true;
@@ -135,15 +143,21 @@
         keymaps = {
           "<leader>ff" = {
             action = "find_files";
-            desc = "Telescope: Find Files";
+            options = {
+              desc = "Telescope: Find Files";
+            };
           };
           "<leader>fg" = {
             action = "live_grep";
-            desc = "Telescope: Live Grep";
+            options = {
+              desc = "Telescope: Live Grep";
+            };
           };
           "<leader>fb" = {
             action = "buffers";
-            desc = "Telescope: Buffers";
+            options = {
+              desc = "Telescope: Buffers";
+            };
           };
         };
       };

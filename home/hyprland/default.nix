@@ -107,12 +107,12 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
+    plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
 
     settings = {
       plugin = {
-        split-monitor-workspaces = {
-          count = 5;
+        hyprsplit = {
+          num_workspaces = 5;
         };
       };
 
@@ -223,18 +223,18 @@ in {
           "$mainMod, k, movefocus, u"
           "$mainMod, j, movefocus, d"
 
-          "$mainMod SHIFT, j, split-changemonitor, next"
-          "$mainMod SHIFT, k, split-changemonitor, prev"
+          "$mainMod SHIFT, j, split:swapactiveworkspaces, current +1"
+          "$mainMod SHIFT, k, split:swapactiveworkspaces, current -1"
 
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
         ]
-        ++ map (n: "$mainMod SHIFT, ${toString n}, split-movetoworkspace, ${toString (
+        ++ map (n: "$mainMod SHIFT, ${toString n}, split:movetoworkspace, ${toString (
           if n == 0
           then 10
           else n
         )}") [1 2 3 4 5]
-        ++ map (n: "$mainMod, ${toString n}, split-workspace, ${toString (
+        ++ map (n: "$mainMod, ${toString n}, split:workspace, ${toString (
           if n == 0
           then 10
           else n
