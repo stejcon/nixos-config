@@ -13,8 +13,10 @@
     colorschemes = {
       catppuccin = {
         enable = true;
-        flavour = "mocha";
-        showBufferEnd = true;
+        settings = {
+          flavour = "mocha";
+          show_end_of_buffer = true;
+        };
       };
     };
     globals = {
