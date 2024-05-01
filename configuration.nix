@@ -90,7 +90,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --sessions ${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions:${pkgs.kdePackages}/share/wayland-sessions";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --sessions ${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
           user = "greeter";
         };
       };
