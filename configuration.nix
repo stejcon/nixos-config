@@ -74,7 +74,13 @@
   services = {
     xserver = {
       enable = true;
-      desktopManager.plasma5.enable = true;
+    };
+
+    desktopManager = {
+      plasma6 = {
+        enable = true;
+        enableQt5Integration = false;
+      };
     };
 
     # TODO: Should use "--sessions" argument in tuigreet
@@ -84,7 +90,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --sessions ${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions:${pkgs.kdePackages}/share/wayland-sessions";
           user = "greeter";
         };
       };
