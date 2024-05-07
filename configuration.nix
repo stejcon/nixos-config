@@ -17,8 +17,6 @@
     };
   };
 
-  hardware.steam-hardware.enable = true;
-
   boot = {
     # BBR is a more improved congestion control method
     kernelModules = ["tcp_bbr"];
@@ -65,21 +63,7 @@
 
   i18n.defaultLocale = "en_IE.UTF-8";
 
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-    };
-  };
-
   services = {
-    xserver = {
-      enable = true;
-      desktopManager.plasma5.enable = true;
-    };
-
-    # TODO: Should use "--sessions" argument in tuigreet
-    # Figure out how to correctly find the .desktop file for every enabled window manager/desktop
-    # May require everything to be in modules first
     greetd = {
       enable = true;
       settings = {
@@ -122,7 +106,7 @@
 
   users.users.stephen = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
+    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner"];
     initialPassword = "password";
     shell = pkgs.zsh;
   };
@@ -133,17 +117,9 @@
     btop
     ncdu
     fzf
-    glow
     zathura
     pulsemixer
-    virt-manager
-    gamemode
-    mangohud
-    libreoffice
     google-chrome
-    steamPackages.steamcmd
-    steam-tui
-    protonup-qt
   ];
 
   programs = {
@@ -156,10 +132,6 @@
       lfs.enable = true;
     };
     zsh = {enable = true;};
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-    };
   };
 
   xdg.portal = {
@@ -188,7 +160,7 @@
   system.stateVersion = "22.11"; # Did you read the comment?
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.nixUnstable;
     extraOptions = "experimental-features = nix-command flakes";
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
