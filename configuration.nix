@@ -87,7 +87,6 @@
         X11Forwarding = true;
       };
     };
-    printing.enable = true;
     flatpak.enable = true;
     blueman.enable = true;
   };
