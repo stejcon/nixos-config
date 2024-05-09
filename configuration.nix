@@ -89,6 +89,7 @@
     };
     flatpak.enable = true;
     blueman.enable = true;
+    fprintd.enable = false;
   };
 
   systemd.services.greetd.serviceConfig = {
