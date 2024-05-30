@@ -17,6 +17,7 @@
     initrd.kernelModules = ["dm-snapshot"];
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    supportedFilesystems = ["ntfs" "ext4" "vfat"];
   };
 
   fileSystems."/" = {
