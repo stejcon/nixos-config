@@ -17,17 +17,25 @@
     initrd.kernelModules = ["dm-snapshot"];
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
-    supportedFilesystems = ["ntfs" "ext4" "vfat"];
+    supportedFilesystems = ["ntfs3" "ext4" "vfat"];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/181cb82b-9c11-414c-adec-d0b41c3317f3";
-    fsType = "ext4";
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/181cb82b-9c11-414c-adec-d0b41c3317f3";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/19F0-0343";
-    fsType = "vfat";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/19F0-0343";
+      fsType = "vfat";
+    };
+
+    "/media/windows" = {
+      device = "/dev/disk/by-uuid/606888C868889F02";
+      fsType = "ntfs3";
+      options = ["rw" "uid=1000" "gid=100" "user" "exec" "umask=000"];
+    };
   };
 
   swapDevices = [];
