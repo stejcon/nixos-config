@@ -276,7 +276,7 @@
             installRustc = false;
             installCargo = false;
           };
-          nil_ls = {
+          nil-ls = {
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;
