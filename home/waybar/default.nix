@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   scripts = import ./scripts.nix {inherit pkgs;};
 
   workspaces = {
@@ -342,9 +346,7 @@
 in {
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-    });
+    package = inputs.waybar.packages.${pkgs.system}.waybar;
     style = css;
     settings = {mainBar = mainWaybarConfig;};
   };
