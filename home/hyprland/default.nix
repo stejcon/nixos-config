@@ -191,8 +191,10 @@ in {
       };
 
       master = {
-        new_is_master = true;
-        orientation = "master";
+        new_status = "inherit";
+        orientation = "center";
+        inherit_fullscreen = true;
+        always_center_master = true;
       };
 
       gestures = {
