@@ -64,20 +64,6 @@
   i18n.defaultLocale = "en_IE.UTF-8";
 
   services = {
-    xserver = {
-      enable = true;
-    };
-
-    desktopManager = {
-      plasma6 = {
-        enable = true;
-        enableQt5Integration = false;
-      };
-    };
-
-    # TODO: Should use "--sessions" argument in tuigreet
-    # Figure out how to correctly find the .desktop file for every enabled window manager/desktop
-    # May require everything to be in modules first
     greetd = {
       enable = true;
       settings = {
