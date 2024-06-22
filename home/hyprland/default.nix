@@ -191,10 +191,9 @@ in {
       };
 
       master = {
-        new_status = "inherit";
+        new_status = "slave";
         orientation = "center";
         inherit_fullscreen = true;
-        always_center_master = true;
       };
 
       gestures = {
