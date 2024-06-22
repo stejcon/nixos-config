@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  lib,
+  config,
   ...
 }: {
   imports = [
@@ -82,7 +82,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --sessions ${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-session";
           user = "greeter";
         };
       };
