@@ -17,16 +17,25 @@
     initrd.kernelModules = ["dm-snapshot"];
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    supportedFilesystems = ["ntfs3" "ext4" "vfat"];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/181cb82b-9c11-414c-adec-d0b41c3317f3";
-    fsType = "ext4";
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/181cb82b-9c11-414c-adec-d0b41c3317f3";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/19F0-0343";
-    fsType = "vfat";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/19F0-0343";
+      fsType = "vfat";
+    };
+
+    "/media/windows" = {
+      device = "/dev/disk/by-uuid/606888C868889F02";
+      fsType = "ntfs3";
+      options = ["rw" "uid=1000" "gid=100" "user" "exec" "umask=000"];
+    };
   };
 
   swapDevices = [];
@@ -48,24 +57,14 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     # Make sure opengl is enabled
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
 
     nvidia = {
-      # Modesetting is needed for most Wayland compositors
       modesetting.enable = true;
-
-      # Use the open source version of the kernel module
-      # Only available on driver 515.43.04+
-      open = false;
-
-      # Enable the nvidia settings menu
       nvidiaSettings = true;
-
-      powerManagement.enable = true;
     };
 
     bluetooth.enable = true;
