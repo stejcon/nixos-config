@@ -1,5 +1,18 @@
-{
-  programs.nixvim.plugins.lsp = {
+{pkgs, config, ...}: {
+home = {
+  packages = with pkgs; [
+    bacon
+    gcc
+    rustc
+    cargo 
+    rustfmt
+  ];
+  sessionVariables.CARGO_HOME = "${config.xdg.dataHome}/cargo";
+};
+
+  programs.nixvim.plugins = {
+
+  lsp = {
     enable = true;
 
     keymaps = {
@@ -44,14 +57,32 @@
           pyflakes.enabled = false;
           yapf.enabled = false;
           black = {
-            enabled = true;
+            enabled = false;
           };
           flake8 = {
-            enabled = true;
+            enabled = false;
             maxLineLength = 88;
           };
         };
       };
     };
+
+    efmls-configs = {
+setup = {
+nix = {
+        formatter = "alejandra";
+        linter = "statix";
+};
+        c.formatter = "clang_format";
+        "c++".formatter = "clang_format";
+        lua.formatter = "stylua";
+python = {
+        formatter = "black";
+        linter = "flake8";
+};
+        rust.formatter = "rustfmt";
+};
+    };
+};
   };
 }
