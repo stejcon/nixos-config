@@ -26,9 +26,6 @@
       which-key = {
         enable = true;
       };
-      fidget = {
-        enable = true;
-      };
       gitsigns = {
         enable = true;
       };
