@@ -1,9 +1,21 @@
-{
+{pkgs, ...}: {
   programs.nixvim = {
     opts.completeopt = ["menu" "menuone" "noselect"];
 
     plugins = {
-      luasnip.enable = true;
+      luasnip = {
+        enable = true;
+        extraConfig = {
+          enable_autosnippets = true;
+          store_selection_keys = "<Tab>";
+        };
+        fromVscode = [
+          {
+            lazyLoad = true;
+            paths = "${pkgs.vimPlugins.friendly-snippets}";
+          }
+        ];
+      };
 
       lspkind = {
         enable = true;
