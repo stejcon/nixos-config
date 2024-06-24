@@ -5,8 +5,9 @@
     ./floaterm.nix
     ./lsp.nix
     ./lualine.nix
+    ./neorg.nix
+    ./oil.nix
     ./telescope.nix
     ./treesitter.nix
-    ./oil.nix
   ];
 }
