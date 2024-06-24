@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./settings.nix
@@ -64,10 +60,6 @@
         action = ":silent! TypstWatch<CR>";
         options.desc = "Typst Watch";
       }
-    ];
-    extraPlugins = with pkgs.vimPlugins; [
-      nvim-web-devicons
-      no-neck-pain-nvim
     ];
   };
 }

@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./barbar.nix
     ./comment.nix
@@ -17,5 +17,13 @@
     ./fidget.nix
     ./efm.nix
     ./typst.nix
+    ./noneckpain.nix
   ];
+
+  programs.nixvim = {
+    # Configless extra plugins
+    extraPlugins = with pkgs.vimPlugins; [
+      nvim-web-devicons
+    ];
+  };
 }
