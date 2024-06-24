@@ -45,6 +45,7 @@
       autoindent = true;
       textwidth = 0;
       foldlevel = 99;
+      cmdheight = 0;
     };
   };
 }
