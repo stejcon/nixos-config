@@ -22,7 +22,7 @@
       {
         mode = "n";
         key = "<leader>gg";
-        action = "<cmd>Lazygit<CR>";
+        action = "<cmd>LazyGit<CR>";
       }
     ];
   };
