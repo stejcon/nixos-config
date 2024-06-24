@@ -43,15 +43,6 @@
       fidget = {
         enable = true;
       };
-      treesitter = {
-        enable = true;
-        folding = true;
-        indent = true;
-        incrementalSelection.enable = true;
-      };
-      treesitter-context = {
-        enable = true;
-      };
       gitsigns = {
         enable = true;
       };
@@ -84,29 +75,6 @@
           cmd = "${pkgs.typst}/bin/typst";
           concealMath = true;
           pdfViewer = "${pkgs.zathura}/bin/zathura";
-        };
-      };
-      telescope = {
-        enable = true;
-        keymaps = {
-          "<leader>ff" = {
-            action = "find_files";
-            options = {
-              desc = "Telescope: Find Files";
-            };
-          };
-          "<leader>fg" = {
-            action = "live_grep";
-            options = {
-              desc = "Telescope: Live Grep";
-            };
-          };
-          "<leader>fb" = {
-            action = "buffers";
-            options = {
-              desc = "Telescope: Buffers";
-            };
-          };
         };
       };
       none-ls = {
