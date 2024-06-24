@@ -7,9 +7,6 @@
       lazygit-nvim
     ];
     plugins = {
-      neogit = {
-        enable = true;
-      };
       gitsigns = {
         enable = true;
         settings = {
