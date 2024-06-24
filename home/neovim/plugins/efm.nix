@@ -10,10 +10,12 @@
         codeAction = true;
         completion = true;
       };
+      filetypes = ["c" "cpp" "rust" "lua" "nix" "python"];
     };
 
     lsp-format = {
       enable = true;
+      lspServersToEnable = ["efm"];
     };
 
     efmls-configs = {
