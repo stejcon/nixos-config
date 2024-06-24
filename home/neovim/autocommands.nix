@@ -22,7 +22,7 @@
         "markdown"
         "typst"
       ];
-      command = "setlocal spell spelllang=en,fr wrap";
+      command = "setlocal spell spelllang=en_gb wrap";
     }
   ];
 }
