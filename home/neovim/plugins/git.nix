@@ -1,15 +1,21 @@
 {pkgs, ...}: {
-  extraPlugins = with pkgs.vimPlugins; [
-    lazygit-nvim
-  ];
-
   programs.nixvim = {
     extraConfigLua = ''
-        require("telescope").load_extension("lazygit")
+      require("telescope").load_extension("lazygit")
     '';
+    extraPlugins = with pkgs.vimPlugins; [
+      lazygit-nvim
+    ];
     plugins = {
       neogit = {
         enable = true;
+      };
+      gitsigns = {
+        enable = true;
+        settings = {
+          current_line_blame = true;
+          trouble = true;
+        };
       };
     };
     keymaps = [
