@@ -26,20 +26,6 @@
       which-key = {
         enable = true;
       };
-      oil = {
-        enable = true;
-        settings = {
-          columns = [
-            "icon"
-            "permissions"
-            "size"
-            "mtime"
-          ];
-          view_options = {
-            show_hidden = true;
-          };
-        };
-      };
       fidget = {
         enable = true;
       };
@@ -114,13 +100,6 @@
         options.silent = true;
       }
       {
-        key = "-";
-        action = '':lua require("oil").open_float()<CR>'';
-        mode = ["n"];
-        options.desc = "Oil: Open Floating Window";
-        options.silent = true;
-      }
-      {
         key = "<Space>h";
         mode = ["n"];
         action = "<C-w>h";
@@ -156,8 +135,4 @@
       no-neck-pain-nvim
     ];
   };
-
-  home.packages = with pkgs; [
-    ripgrep # Needed for Telescope live_grep
-  ];
 }
