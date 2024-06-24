@@ -17,7 +17,7 @@
     };
 
     efmls-configs = {
-        enable = true;
-        };
+      enable = true;
+    };
   };
 }
