@@ -10,7 +10,7 @@
       {
         mode = "n";
         key = "<leader>w";
-        action = ":TypstWatch<cr>";
+        action = ":silent! TypstWatch<cr>";
       }
     ];
 
