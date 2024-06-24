@@ -11,5 +11,6 @@
     ./treesitter.nix
     ./which-key.nix
     ./git.nix
+    ./trouble.nix
   ];
 }
