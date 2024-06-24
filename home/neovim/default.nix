@@ -7,6 +7,8 @@
     inputs.nixvim.homeManagerModules.nixvim
     ./settings.nix
     ./autocomplete.nix
+    ./autocommands.nix
+    ./plugins
   ];
 
   programs.nixvim = {
@@ -120,7 +122,6 @@
       };
       none-ls = {
         enable = true;
-        enableLspFormat = true;
         sources = {
           code_actions = {
             statix = {
@@ -140,98 +141,6 @@
               enable = true;
             };
           };
-        };
-      };
-      lsp-format = {
-        enable = true;
-      };
-      lsp = {
-        enable = true;
-        keymaps = {
-          diagnostic = {
-            gl = {
-              action = "open_float";
-              desc = "Diagnostic: Open Float";
-            };
-            "[d" = {
-              action = "goto_prev";
-              desc = "Diagnostic: Go To Previous";
-            };
-            "]d" = {
-              action = "goto_next";
-              desc = "Diagnostic: Go To Next";
-            };
-          };
-          lspBuf = {
-            K = {
-              action = "hover";
-              desc = "LSP: Hover";
-            };
-            gD = {
-              action = "references";
-              desc = "LSP: Go to References";
-            };
-            gd = {
-              action = "definition";
-              desc = "LSP: Go to Definition";
-            };
-            gi = {
-              action = "implementation";
-              desc = "LSP: Go to Implementation";
-            };
-            gt = {
-              action = "type_definition";
-              desc = "LSP: Type Definition";
-            };
-            gs = {
-              action = "signature_help";
-              desc = "LSP: Signature Help";
-            };
-            "<F2>" = {
-              action = "rename";
-              desc = "LSP: Rename Variable";
-            };
-            "<F4>" = {
-              action = "code_action";
-              desc = "LSP: Code Action";
-            };
-            "<leader>fm" = {
-              action = "format";
-              desc = "LSP: Format";
-            };
-          };
-        };
-        servers = {
-          clangd.enable = true;
-          rust-analyzer = {
-            enable = true;
-            installRustc = false;
-            installCargo = false;
-          };
-          nil-ls = {
-            enable = true;
-            extraOptions.settings.nil = {
-              nix.flake.autoArchive = true;
-            };
-          };
-          pylsp = {
-            enable = true;
-            settings.plugins = {
-              autopep8.enabled = false;
-              pycodestyle.enabled = false;
-              pyflakes.enabled = false;
-              yapf.enabled = false;
-              black = {
-                enabled = true;
-              };
-              flake8 = {
-                enabled = true;
-                maxLineLength = 88;
-              };
-            };
-          };
-          typst-lsp.enable = true;
-          bashls.enable = true;
         };
       };
     };
@@ -288,13 +197,6 @@
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
       no-neck-pain-nvim
-    ];
-    autoCmd = [
-      {
-        event = ["FileType"];
-        pattern = ["typst"];
-        command = "silent! TypstWatch";
-      }
     ];
   };
 
