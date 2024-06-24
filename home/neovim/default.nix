@@ -23,12 +23,6 @@
       };
     };
     plugins = {
-      which-key = {
-        enable = true;
-      };
-      gitsigns = {
-        enable = true;
-      };
       notify = {
         enable = true;
       };

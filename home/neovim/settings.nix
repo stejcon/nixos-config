@@ -46,6 +46,7 @@
       textwidth = 0;
       foldlevel = 99;
       cmdheight = 0;
+      timeoutlen = 10;
     };
   };
 }

@@ -9,5 +9,7 @@
     ./oil.nix
     ./telescope.nix
     ./treesitter.nix
+    ./which-key.nix
+    ./git.nix
   ];
 }
