@@ -15,5 +15,7 @@
     ./notify.nix
     ./neorg.nix
     ./fidget.nix
+    ./efm.nix
+    ./typst.nix
   ];
 }

@@ -22,19 +22,6 @@
         };
       };
     };
-    plugins = {
-      notify = {
-        enable = true;
-      };
-      typst-vim = {
-        enable = true;
-        settings = {
-          cmd = "${pkgs.typst}/bin/typst";
-          concealMath = true;
-          pdfViewer = "${pkgs.zathura}/bin/zathura";
-        };
-      };
-    };
     keymaps = [
       {
         key = "<Space>";
