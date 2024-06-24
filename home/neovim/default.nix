@@ -13,8 +13,10 @@
     colorschemes = {
       catppuccin = {
         enable = true;
-        flavour = "mocha";
-        showBufferEnd = true;
+        settings = {
+          flavour = "mocha";
+          show_end_of_buffer = true;
+        };
       };
     };
     globals = {
@@ -274,7 +276,7 @@
             installRustc = false;
             installCargo = false;
           };
-          nil_ls = {
+          nil-ls = {
             enable = true;
             extraOptions.settings.nil = {
               nix.flake.autoArchive = true;

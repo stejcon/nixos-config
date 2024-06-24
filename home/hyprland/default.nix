@@ -193,8 +193,9 @@ in {
       };
 
       master = {
-        new_is_master = true;
-        orientation = "master";
+        new_status = "slave";
+        orientation = "center";
+        inherit_fullscreen = true;
       };
 
       gestures = {
