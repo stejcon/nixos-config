@@ -3,13 +3,13 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.nixvim.homeManagerModules.nixvim];
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+    ./settings.nix
+  ];
 
   programs.nixvim = {
     enable = true;
-    clipboard.providers.wl-copy.enable = true;
-    # TODO remove when neovim 0.10 is out as this should be the default behavior
-    filetype.extension.typ = "typst";
     colorschemes = {
       catppuccin = {
         enable = true;
@@ -18,49 +18,6 @@
           show_end_of_buffer = true;
         };
       };
-    };
-    globals = {
-      mapleader = " ";
-      maplocalleader = " ";
-    };
-    opts = {
-      backup = false;
-      clipboard = "unnamedplus";
-      completeopt = ["menu" "menuone" "noselect"];
-      conceallevel = 0;
-      hlsearch = true;
-      ignorecase = true;
-      smartcase = true;
-      pumheight = 10;
-      showmode = false;
-      showtabline = 0;
-      shiftwidth = 4;
-      tabstop = 4;
-      expandtab = true;
-      splitbelow = true;
-      splitright = true;
-      swapfile = true;
-      termguicolors = true;
-      timeout = true;
-      timeoutlen = 300;
-      undofile = true;
-      updatetime = 300;
-      writebackup = false;
-      backupcopy = "yes";
-      cursorline = true;
-      relativenumber = true;
-      numberwidth = 2;
-      signcolumn = "auto";
-      wrap = false;
-      scrolloff = 8;
-      sidescrolloff = 8;
-      laststatus = 3;
-      cmdheight = 0;
-      mouse = "";
-      foldcolumn = "1";
-      foldlevelstart = 99;
-      foldenable = true;
-      spelllang = "en_uk";
     };
     plugins = {
       which-key = {
