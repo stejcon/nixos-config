@@ -6,6 +6,7 @@
     ./autocommands.nix
     ./colorscheme.nix
     ./keymaps.nix
+    ./ftplugin.nix
     ./plugins
   ];
 
