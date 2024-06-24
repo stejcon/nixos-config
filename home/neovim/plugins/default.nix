@@ -12,5 +12,8 @@
     ./which-key.nix
     ./git.nix
     ./trouble.nix
+    ./notify.nix
+    ./neorg.nix
+    ./fidget.nix
   ];
 }
