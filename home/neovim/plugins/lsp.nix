@@ -69,22 +69,22 @@
           };
         };
       };
+    };
 
-      efmls-configs = {
-        setup = {
-          nix = {
-            formatter = "alejandra";
-            linter = "statix";
-          };
-          c.formatter = "clang_format";
-          "c++".formatter = "clang_format";
-          lua.formatter = "stylua";
-          python = {
-            formatter = "black";
-            linter = "flake8";
-          };
-          rust.formatter = "rustfmt";
+    efmls-configs = {
+      setup = {
+        nix = {
+          formatter = "alejandra";
+          linter = "statix";
         };
+        c.formatter = "clang_format";
+        "c++".formatter = "clang_format";
+        lua.formatter = "stylua";
+        python = {
+          formatter = "black";
+          linter = "flake8";
+        };
+        rust.formatter = "rustfmt";
       };
     };
   };
