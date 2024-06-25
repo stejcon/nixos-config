@@ -1,18 +1,10 @@
 {
-  pkgs,
-  config,
-  ...
-}: {
-  home = {
-    packages = with pkgs; [
-      bacon
-      gcc
-      rustc
-      cargo
-      rustfmt
-    ];
-    sessionVariables.CARGO_HOME = "${config.xdg.dataHome}/cargo";
-  };
+  imports = [
+    ./cpp.nix
+    ./rust.nix
+    ./format.nix
+    ./none-ls.nix
+  ];
 
   programs.nixvim.plugins = {
     lsp = {
@@ -40,19 +32,15 @@
       };
 
       servers = {
-        clangd.enable = true;
         lua-ls.enable = true;
-        rust-analyzer = {
-          enable = true;
-          installRustc = false;
-          installCargo = false;
-        };
+
         nil-ls = {
           enable = true;
           extraOptions.settings.nil = {
             nix.flake.autoArchive = true;
           };
         };
+
         pylsp = {
           enable = true;
           settings.plugins = {
@@ -69,23 +57,6 @@
             };
           };
         };
-      };
-    };
-
-    efmls-configs = {
-      setup = {
-        nix = {
-          formatter = "alejandra";
-          linter = "statix";
-        };
-        c.formatter = "clang_format";
-        "c++".formatter = "clang_format";
-        lua.formatter = "stylua";
-        python = {
-          formatter = "black";
-          linter = "flake8";
-        };
-        rust.formatter = "rustfmt";
       };
     };
   };

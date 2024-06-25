@@ -3,7 +3,6 @@
     ./barbar.nix
     ./comment.nix
     ./floaterm.nix
-    ./lsp.nix
     ./lualine.nix
     ./neorg.nix
     ./oil.nix
@@ -15,9 +14,8 @@
     ./notify.nix
     ./neorg.nix
     ./fidget.nix
-    ./efm.nix
-    ./typst.nix
     ./noneckpain.nix
+    ./lsp
   ];
 
   programs.nixvim = {
