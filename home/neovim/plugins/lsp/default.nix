@@ -4,6 +4,7 @@
     ./rust.nix
     ./format.nix
     ./none-ls.nix
+    ./typst.nix
   ];
 
   programs.nixvim.plugins = {

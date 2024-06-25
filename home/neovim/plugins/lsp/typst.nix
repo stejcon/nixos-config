@@ -15,13 +15,8 @@
     ];
 
     plugins = {
-      efmls-configs.setup.typst.formatter = "typstyle";
-      lsp.servers.efm.filetypes = ["typst"];
-      lsp-format.lspServersToEnable = ["tinymist"];
-
       lsp.servers.tinymist = {
         enable = true;
-        settings.formatterMode = "typstyle";
       };
 
       typst-vim = {

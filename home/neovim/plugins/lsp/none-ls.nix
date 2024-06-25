@@ -3,22 +3,20 @@
     enable = true;
     sources = {
       code_actions = {
-        statix = {
-          enable = true;
-        };
+        statix.enable = true;
       };
       diagnostics = {
-        ltrs = {
-          enable = true;
-        };
-        statix = {
-          enable = true;
-        };
+        codespell.enable = true;
+        cppcheck.enable = true;
+        ltrs.enable = true;
+        selene.enable = true;
+        statix.enable = true;
       };
       formatting = {
-        alejandra = {
-          enable = true;
-        };
+        alejandra.enable = true;
+        typstyle.enable = true;
+        clang_format.enable = true;
+        stylua.enable = true;
       };
     };
   };
