@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./barbar.nix
-    ./comment.nix
     ./floaterm.nix
     ./lualine.nix
     ./neorg.nix
