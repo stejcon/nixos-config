@@ -8,7 +8,10 @@
       {
         key = "<leader>n";
         action = ":NoNeckPain<CR>";
-        options.silent = true;
+        options = {
+          silent = true;
+          desc = "Toggle NoNeckPain";
+        };
       }
     ];
   };

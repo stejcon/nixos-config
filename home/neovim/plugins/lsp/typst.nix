@@ -10,7 +10,11 @@
       {
         mode = "n";
         key = "<leader>w";
-        action = ":silent! TypstWatch<cr>";
+        action = ":TypstWatch<cr>";
+        options = {
+          desc = "Typst Watch";
+          silent = true;
+        };
       }
     ];
 
