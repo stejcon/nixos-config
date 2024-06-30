@@ -1,40 +1,19 @@
-import { Bar } from "./js/bar/Bar.js";
-import { NotificationPopup } from "./js/notifs/NotificationPopup.js";
-import { controlpanel } from "./js/control-panel/ControlPanel.js";
-import { forMonitors } from "./js/utils.js";
-import { applauncher } from "./js/app-launcher/AppLauncher.js";
-// import { ImageWindow } from "./js/image-window/ImageWindow.js";
+function Bar(monitor = 0) {
+    const myLabel = Widget.Label({
+        label: 'some example content',
+    })
 
-let loadCSS = () => {
-  const scss = `${App.configDir}/scss/style.scss`;
-  const css = `${App.configDir}/finalcss/style.css`;
-
-  Utils.exec(`sassc ${scss} ${css}`);
-  App.resetCss(); // reset if need
-  App.applyCss(`${App.configDir}/finalcss/style.css`);
-};
-
-Utils.monitorFile(
-  `${App.configDir}/style/`,
-  function () {
-    loadCSS();
-  },
-  "directory",
-);
-
-loadCSS();
+    return Widget.Window({
+        monitor,
+        name: `bar${monitor}`, // this name has to be unique
+        anchor: ['top', 'left', 'right'],
+        child: myLabel,
+    })
+}
 
 App.config({
-  style: `${App.configDir}/finalcss/style.css`,
-  closeWindowDelay: {
-    control_panel: 300,
-    app_launcher: 300,
-  },
-  windows: [
-    ...forMonitors(Bar),
-    // ImageWindow(),
-    ...forMonitors(NotificationPopup),
-    controlpanel,
-    applauncher,
-  ],
-});
+    windows: [
+        Bar(0), // can be instantiated for each monitor
+        Bar(1),
+    ],
+})
