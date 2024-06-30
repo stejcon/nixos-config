@@ -14,6 +14,7 @@
       gtksourceview
       webkitgtk
       accountsservice
+      sassc
     ];
   };
 }
