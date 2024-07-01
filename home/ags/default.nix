@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  osConfig,
   ...
 }: {
   imports = [inputs.ags.homeManagerModules.default];

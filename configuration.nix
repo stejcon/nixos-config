@@ -90,6 +90,7 @@
     flatpak.enable = true;
     blueman.enable = true;
     fprintd.enable = false;
+    upower.enable = true;
   };
 
   systemd.services.greetd.serviceConfig = {
