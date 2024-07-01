@@ -1,15 +1,12 @@
-function Bar(monitor = 0) {
-    const myLabel = Widget.Label({
-        label: 'some example content',
-    })
+const date = Variable('', {
+    poll: [1000, 'date'],
+})
 
-    return Widget.Window({
-        monitor,
-        name: `bar${monitor}`, // this name has to be unique
-        anchor: ['top', 'left', 'right'],
-        child: myLabel,
-    })
-}
+const Bar = () => Widget.Window({
+    name: 'bar',
+    anchor: ['top', 'left', 'right'],
+    child: Widget.Label({ label: date.bind() })
+})
 
 App.config({
     windows: [
