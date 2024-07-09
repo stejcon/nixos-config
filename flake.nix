@@ -23,7 +23,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
-        nix-darwim.follows = "";
+        nix-darwin.follows = "";
         devshell.follows = "";
         treefmt-nix.follows = "";
         git-hooks.follows = "";
