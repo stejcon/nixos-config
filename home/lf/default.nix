@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   xdg.configFile."lf/icons".source = ./icons;
 
   programs.lf = {
@@ -46,13 +50,25 @@
 
     extraConfig = let
       cleaner = pkgs.writeShellScriptBin "clean.sh" ''
-        ${pkgs.ctpv}/bin/ctpvclear
-        ${pkgs.kitty}/bin/kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
+        kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
+      '';
+      previewer = pkgs.writeShellScriptBin "preview.sh" ''
+        file=$1
+        w=$2
+        h=$3
+        x=$4
+        y=$5
+
+        if [[ "$( file -Lb --mime-type "$file")" =~ ^image ]]; then
+            kitty +kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
+            exit 1
+        fi
+
+        ${lib.getExe pkgs.pistol} "$file"
       '';
     in ''
-      # set cleaner ''${pkgs.ctpv}/bin/ctpvclear
       set cleaner ${cleaner}/bin/clean.sh
-      set previewer ${pkgs.ctpv}/bin/ctpv
+      set previewer ${previewer}/bin/preview.sh
       cmd stripspace %stripspace "$f"
     '';
   };
