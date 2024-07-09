@@ -20,7 +20,14 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        nix-darwin.follows = "";
+        devshell.follows = "";
+        treefmt-nix.follows = "";
+        git-hooks.follows = "";
+      };
     };
 
     waybar = {

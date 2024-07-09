@@ -45,14 +45,31 @@
 
           inlayHints = {
             bindingModeHints.enable = true;
-            closureCaptureHints = true;
-            closureStyle = "rust_analyzer";
+            chainingHints.enable = true;
+            closingBraceHints = {
+              enable = true;
+              minLines = 25;
+            };
+            closureCaptureHints.enable = true;
+            closureStyle = "impl_fn";
             closureReturnTypeHints.enable = "always";
             discriminantHints.enable = "always";
-            expressionAdjustmentHints.enable = "always";
+            expressionAdjustmentHints = {
+              enable = "always";
+              hideOutsideUnsafe = false;
+              mode = "prefix";
+            };
             implicitDrops.enable = true;
             lifetimeElisionHints.enable = "always";
+            parameterHints.enable = true;
             rangeExclusiveHints.enable = true;
+            maxLength = 25;
+            renderColons = true;
+            typeHints = {
+              enable = true;
+              hideClosureInitilization = false;
+              hideNamedConstructor = false;
+            };
           };
         };
       };
