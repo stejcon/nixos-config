@@ -14,7 +14,7 @@
     };
 
     opts = {
-      updatetime = 100;
+      updatetime = 10;
       relativenumber = true;
       number = true;
       hidden = true;
@@ -31,7 +31,6 @@
       smartcase = true;
       scrolloff = 8;
       cursorline = true;
-      cursorcolumn = true;
       signcolumn = "yes";
       colorcolumn = "100";
       laststatus = 3;
