@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  osConfig,
   ...
 }: {
   imports = [inputs.ags.homeManagerModules.default];
@@ -23,9 +22,8 @@
       gtksourceview
       webkitgtk
       accountsservice
-      sassc
     ];
   };
 
-  home.packages = with pkgs; [sassc];
+  home.packages = with pkgs; [bun];
 }
