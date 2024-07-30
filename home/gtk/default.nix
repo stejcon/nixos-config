@@ -6,7 +6,7 @@
       name = "Bibata-Modern-Ice";
     };
     theme = {
-      package = pkgs.adw-gkt3;
+      package = pkgs.adw-gtk3;
       name = "adw-gtk3";
     };
     iconTheme = {
