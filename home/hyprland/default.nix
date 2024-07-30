@@ -117,11 +117,10 @@ in {
       };
 
       master = {
-        mfact = 0.5;
+        mfact = 0.6;
         new_status = "slave";
         orientation = "center";
         inherit_fullscreen = true;
-        always_center_master = true;
       };
 
       gestures = {
