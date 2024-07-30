@@ -33,6 +33,7 @@ in rec {
       };
       modules = [
         host
+        inputs.lix-module.nixosModules.default
         ../configuration.nix
       ];
     };
