@@ -40,8 +40,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    matugen.url = "github:InioX/matugen?ref=v2.2.0";
-    matugen.inputs.nixpkgs.follows = "nixpkgs";
+    matugen = {
+      url = "github:InioX/matugen?ref=v2.2.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
