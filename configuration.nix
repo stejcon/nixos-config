@@ -91,6 +91,7 @@
     blueman.enable = true;
     fprintd.enable = false;
     upower.enable = true;
+    power-profiles-daemon.enable = true;
   };
 
   systemd.services.greetd.serviceConfig = {
