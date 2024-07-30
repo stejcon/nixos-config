@@ -126,6 +126,7 @@
     protonup
     zulu
     modrinth-app
+    spotify-player
   ];
 
   environment.sessionVariables = {
