@@ -2,16 +2,16 @@
   gtk = {
     enable = true;
     cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
+      package = pkgs.rose-pine-cursor;
+      name = "BreezeX-RoséPine";
     };
     theme = {
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3";
+      package = pkgs.rose-pine-gtk-theme;
+      name = "rose-pine-gtk";
     };
     iconTheme = {
-      package = pkgs.gruvboxPlus;
-      name = "GruvboxPlus";
+      package = pkgs.rose-pine-icon-theme;
+      name = "rose-pine-icons";
     };
   };
 }
