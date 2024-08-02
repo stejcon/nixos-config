@@ -90,6 +90,8 @@
     flatpak.enable = true;
     blueman.enable = true;
     fprintd.enable = false;
+    upower.enable = true;
+    power-profiles-daemon.enable = true;
   };
 
   systemd.services.greetd.serviceConfig = {
@@ -124,6 +126,7 @@
     protonup
     zulu
     modrinth-app
+    spotify-player
   ];
 
   environment.sessionVariables = {
@@ -173,6 +176,25 @@
   system.stateVersion = "22.11"; # Did you read the comment?
 
   nix = {
+    gc = {
+      dates = "weekly";
+      automatic = true;
+      options = "--delete-older-than +5";
+    };
+    optimise = {
+      dates = ["weekly"];
+      automatic = true;
+    };
+    channel = {
+      enable = false;
+    };
+    settings = {
+      sandbox = true;
+      max-jobs = "auto";
+      auto-optimise-store = true;
+    };
+    daemonIOSchedClass = "idle";
+    daemonCPUSchedPolicy = "idle";
     extraOptions = "experimental-features = nix-command flakes";
     registry.nixpkgs.flake = inputs.nixpkgs;
   };

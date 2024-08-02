@@ -1,24 +1,8 @@
 {
   pkgs,
-  config,
   inputs,
   ...
 }: let
-  startScript = pkgs.writeShellScriptBin "start" ''
-    ${pkgs.swww}/bin/swww init &
-    ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
-    hyprctl setcursor Bibata-Modern-Ice 16 &
-
-    systemctl --user import-environment PATH &
-    systemctl --user restart xdg-desktop-portal.service &
-
-    # wait a tiny bit for wallpaper
-    sleep 1
-
-    # TODO: Need to be able to change wallpaper
-    ${pkgs.swww}/bin/swww img ${./a-wooded-landscape-the-path-on-the-dyke.jpg} &
-  '';
-
   # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
   customMonitors = [
     {
@@ -47,66 +31,11 @@
     }
   ];
 in {
-  programs = {
-    swaylock = {
-      enable = true;
-      package = pkgs.swaylock-effects;
-      settings = {
-        daemonize = true;
-        screenshots = true;
-        clock = true;
-        indicator = true;
-        indicator-radius = 120;
-        indicator-thickness = 10;
-        effect-blur = "7x10";
-        effect-vignette = "0.5:0.5";
-        text-color = "eeeeee";
-        ring-color = "005678";
-        key-hl-color = "ff2a6d";
-        line-color = "00000000";
-        inside-color = "00000088";
-        separator-color = "00000000";
-        fade-in = 1.0;
-      };
-    };
-  };
-
-  services = {
-    # TODO: Add a timeout to suspend the computer
-    swayidle = {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 600;
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-        {
-          timeout = 1800;
-          command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-          resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-      ];
-      systemdTarget = "hyprland-session.target";
-    };
-    mako = {
-      enable = true;
-      borderRadius = 5;
-      defaultTimeout = 3000;
-      font = "JetBrainsMono Nerd Font 10";
-      backgroundColor = "#3c3c3c";
-      borderColor = "#595959";
-    };
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    systemd.enable = true;
+    xwayland.enable = true;
     plugins = [inputs.hyprsplit.packages.${pkgs.system}.hyprsplit];
 
     settings = {
@@ -117,12 +46,8 @@ in {
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        "col.active_border" = "rgba(00ffffee)";
-        "col.inactive_border" = "rgba(595959aa)";
         layout = "master";
+        resize_on_border = true;
       };
 
       monitor =
@@ -150,6 +75,7 @@ in {
       misc = {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
+        force_default_wallpaper = 1;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
         animate_manual_resizes = true;
@@ -191,6 +117,7 @@ in {
       };
 
       master = {
+        mfact = 0.6;
         new_status = "slave";
         orientation = "center";
         inherit_fullscreen = true;
@@ -246,23 +173,10 @@ in {
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      # league of legends fixes
-      windowrulev2 = [
-        "float,class:^(leagueclientux.exe)$,title:^(League of Legends)$"
-        "tile,class:^(league of legends.exe)$,title:^(League of Legends (TM) Client)$ windowrule = size 1920 1080,^(league of legends.exe)$"
-      ];
-
-      windowrule = [
-        "size 1600 900,^(leagueclientux.exe)$"
-        "center,^(leagueclientux.exe)$"
-        "center,^(league of legends.exe)$"
-        "forceinput,^(league of legends.exe)$"
-      ];
-
       exec-once = [
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "${pkgs.bash}/bin/bash ${startScript}/bin/start"
-        "waybar"
+        "ags -b hypr"
+        "hyprctl setcursor Qogir 24"
+        "fragments"
       ];
     };
   };
