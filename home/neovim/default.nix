@@ -7,6 +7,7 @@
     ./colorscheme.nix
     ./keymaps.nix
     ./ftplugin.nix
+    ./performance.nix
     ./plugins
   ];
 

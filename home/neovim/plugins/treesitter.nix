@@ -17,7 +17,5 @@
         clearOnCursorMove = false;
       };
     };
-
-    hmts.enable = true;
   };
 }

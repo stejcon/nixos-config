@@ -19,7 +19,7 @@
     enable = true;
     settings = {
       server = {
-        settings = {
+        default_settings.rust-analyzer = {
           cargo = {
             features = "all";
           };
