@@ -179,7 +179,7 @@
     gc = {
       dates = "weekly";
       automatic = true;
-      options = "--delete-older-than +5";
+      options = "--delete-older-than 7d";
     };
     optimise = {
       dates = ["weekly"];
