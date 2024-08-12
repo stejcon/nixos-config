@@ -81,7 +81,7 @@ in {
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
         enable_swallow = true;
-        swallow_regex = "^(kitty)$";
+        swallow_regex = "^(wezterm)$";
       };
 
       decoration = {
@@ -131,11 +131,11 @@ in {
 
       bind =
         [
-          "$mainMod      , return, exec, ${pkgs.kitty}/bin/kitty --title Kitty"
+          "$mainMod      , return, exec, ${pkgs.wezterm}/bin/wezterm"
           "$mainMod      , b, exec, ${pkgs.firefox}/bin/firefox"
           "$mainMod      , q, killactive,"
           "$mainMod SHIFT, q, exit,"
-          "$mainMod      , e, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.lf}/bin/lf"
+          "$mainMod      , e, exec, ${pkgs.wezterm}/bin/wezterm -e ${pkgs.lf}/bin/lf"
           "$mainMod      , v, togglefloating,"
           "$mainMod      , p, exec, ${pkgs.wofi}/bin/wofi --show drun"
           "$mainMod SHIFT, s, exec, ${pkgs.grimblast}/bin/grimblast --notify copysave area"
