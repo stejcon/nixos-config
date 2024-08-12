@@ -21,6 +21,6 @@ config.colors = {
 }
 
 config.disable_default_key_bindings = true
-config.enable_tab_bar = true
+config.enable_tab_bar = false
 
 return config
