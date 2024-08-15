@@ -22,5 +22,6 @@ config.colors = {
 
 config.disable_default_key_bindings = true
 config.enable_tab_bar = false
+config.enable_wayland = false
 
 return config
