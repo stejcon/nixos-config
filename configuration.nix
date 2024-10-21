@@ -109,7 +109,7 @@
 
   users.users.stephen = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner"];
+    extraGroups = ["wheel" "networkmanager" "video" "audio" "lp" "scanner" "libvirtd"];
     initialPassword = "password";
     shell = pkgs.zsh;
   };
