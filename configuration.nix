@@ -92,6 +92,7 @@
     fprintd.enable = false;
     upower.enable = true;
     power-profiles-daemon.enable = true;
+    guix.enable = true;
   };
 
   systemd.services.greetd.serviceConfig = {
