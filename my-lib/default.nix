@@ -4,6 +4,7 @@ in rec {
   mkPkgs = sys: (import inputs.nixpkgs {
     system = "${sys}";
     config = {allowUnfree = true;};
+    overlays = [(import ../overlays.nix)];
   });
 
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
