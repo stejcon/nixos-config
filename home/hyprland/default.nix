@@ -1,6 +1,9 @@
 {
+  lib,
+  config,
   pkgs,
   inputs,
+  osConfig,
   ...
 }: let
   # TODO: This is temporary. Every machine should define their own monitors and wallpapers.
@@ -174,6 +177,19 @@ in {
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
+
+      env = lib.mkIf (builtins.elem "nvidia" osConfig.services.xserver.videoDrivers) [
+        "LIBVA_DRIVER_NAME,nvidia"
+        "XDG_SESSION_TYPE,wayland"
+        "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      ];
+
+      cursor = lib.mkIf (builtins.elem "nvidia" osConfig.services.xserver.videoDrivers) {
+        no_hardware_cursors = true;
+        no_break_fs_vrr = true;
+        no_warps = true;
+      };
 
       exec-once = [
         "ags -b hypr"
