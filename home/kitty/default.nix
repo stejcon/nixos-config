@@ -3,7 +3,7 @@
     enable = true;
     font.name = "JetBrainsMono Nerd Font Mono";
     font.size = 11;
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     settings = {
       active_tab_font_style = "bold";
       inactive_tab_font_style = "italic";
