@@ -91,10 +91,12 @@ in {
           size = 8;
           passes = 1;
         };
-        drop_shadow = false;
-        shadow_range = 30;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          enabled = false;
+          color = "rgba(1a1a1aee)";
+          range = 30;
+          render_power = 3;
+        };
       };
 
       animations = {
