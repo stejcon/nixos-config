@@ -33,9 +33,9 @@
       };
 
       servers = {
-        lua-ls.enable = true;
+        lua_ls.enable = true;
 
-        nil-ls = {
+        nil_ls = {
           enable = true;
           extraOptions.settings.nil = {
             nix.flake.autoArchive = true;

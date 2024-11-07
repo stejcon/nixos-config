@@ -26,7 +26,7 @@
       typst-vim = {
         enable = true;
         settings = {
-          conceal_math = true;
+          conceal_math = 1;
           auto_open_quickfix = false;
           pdf_viewer = "zathura";
         };

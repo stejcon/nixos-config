@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./barbar.nix
     ./floaterm.nix
@@ -13,14 +13,8 @@
     ./notify.nix
     ./neorg.nix
     ./fidget.nix
+    ./web-devicons.nix
     ./noneckpain.nix
     ./lsp
   ];
-
-  programs.nixvim = {
-    # Configless extra plugins
-    extraPlugins = with pkgs.vimPlugins; [
-      nvim-web-devicons
-    ];
-  };
 }
