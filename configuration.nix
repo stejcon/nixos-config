@@ -126,7 +126,6 @@
     mangohud
     protonup
     zulu
-    modrinth-app
     spotify-player
   ];
 
