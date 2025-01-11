@@ -3,25 +3,13 @@
   config,
   ...
 }: let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "Ubuntu"
-      "UbuntuMono"
-      "CascadiaCode"
-      "FantasqueSansMono"
-      "FiraCode"
-      "Mononoki"
-      "JetBrainsMono"
-    ];
-  };
-
   theme = {
     name = "adw-gtk3-dark";
     package = pkgs.adw-gtk3;
   };
   font = {
-    name = "JetBrainsMono Nerd Font";
-    package = nerdfonts;
+    name = "JetBrainsMono";
+    package = pkgs.nerd-fonts.jetbrains-mono;
     size = 11;
   };
   cursorTheme = {
